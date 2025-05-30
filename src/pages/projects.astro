@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+---
+
+<Layout
+    title="My Setup"
+    description="A list of stuff I use in my day-to-day"
+    pubDate={new Date("May 27 2025")}
+>
+    <h1>Experiments</h1>
+    <p>
+        My setup is always changing. I thought it would be fun to document where
+        I'm at right now. It's kind of hard to list some things, like how I have
+        several Macbook chargers for each room of my home, but the stuff worth
+        mentioned will be presented below.
+    </p>
+
+    <h2>Hardware</h2>
+    <ul>
+        <li>
+            Macbook Pro 16", 16GB Memory, Apple M1 Pro. - I typically use the
+            builtin keyboard and trackpad although I will ocassionally connect
+            the Mac Keyboard and Mac Mouse. I also have a secondary Macbook Pro
+            thats bigger but that's a company provided machine so I don't count
+            that.
+        </li>
+        <li>
+            I use the built-in display and a 32 inch LG display that I've had
+            for a while. I'm definitely overdue for an upgrade.
+        </li>
+        <li>
+            My mom got me the <a
+                href="https://www.amazon.com/gp/product/B006JH8T3S"
+                target="_blank"
+            >
+                Logitech HD Pro Webcam C920
+            </a> christmas and it's been working great.
+        </li>
+        <li>
+            My Headphones are the most frugal options on Amazon. I typically
+            have a trusty pair of the <a
+                href="https://www.amazon.com/Sony-MDRZX110-BLK-Stereo-Headphones/dp/B00NJ2M33I/?th=1"
+                target="_blank">Sony ZX Series</a
+            > laying around for when I need to jump into Zoom meetings, Slack Huddles
+            or Teams meetigns. When I'm out on walks, or shopping by myself, I probably
+            have a pair of Amazon Echo Buds on. (Loosing wireless earpods is expensive!)
+        </li>
+    </ul>
+    <h2>Tech Stack</h2>
+    <p>
+        These aren't going to be one-size-fits-all solutions. Just technology I
+        often reach for when the situation arises, unless I have an explicit
+        reason not too.
+    </p>
+    <ul>
+        <li>
+            For General Web Apps I'm usually reaching for the Next.js app router
+            with TailwindCSS, Shadcn, Clerk for user and organization
+            management. I host everything built with Next.js on Vercel. I
+            haven't really found a cloud database provider I'm super jazzed
+            with, although if I had to recommend anything <i>right now</i>, it
+            would be Convex.
+        </li>
+        <li>
+            Linting and formatting are still handled by ESLint and Prettier. I
+            like Biome, but its a non-issue for me and I typically just roll
+            with the defualts in Next.js unless I have a reason not too, or if
+            they annoy me.
+        </li>
+        <li>
+            I like writing integration tests that cover the expected
+            funcationlity of the web application. I should probably write a blog
+            post to expand further. Think Playright with Vitest to ensure the
+            end user is getting the expereince that was intended. I try to avoid
+            having to mock funcationlity in test enviroments. This is an draft
+            opionion I'm still fleshing out through trial and error.
+        </li>
+    </ul>
+
+    <h2>Misc</h2>
+    <ul>
+        <li>
+            Coffee at home is always Folgers Medium Roast (the big can) with
+            sugar-free French Vanilla from Coffee Mate. I keep it on the dark
+            sight, or light on the cream. My Fiancé likes her coffee pretty
+            strong so I drink my coffee pretty strong.
+        </li>
+        <li>
+            Coffee at Starbucks is always Pike Place roast with Vanilla and Half
+            & Half. Sometimes my local Starbucks will ask if I want the half and
+            half steamed. (I kind of wish they never introduced this to me,
+            because now I always do, but I won't ask for it myself because I'm
+            not the type to haggle.)
+        </li>
+        <li>
+            Favorite lunch to eat out is a good sandwhich - made with love.
+            Bonus points if I can work on my laptop at the table without feeling
+            uncomfortable. (e.g. Panera Bread)
+        </li>
+        <li>
+            My best coding occurs from around 6pm ~ 2am. Right after my siesta.
+            ✨
+        </li>
+        <li>
+            My favorite place to be is Palm Springs. I just can't get enough of
+            the culture, atmosphere and good people. It's paradise out there.
+        </li>
+    </ul>
+</Layout>

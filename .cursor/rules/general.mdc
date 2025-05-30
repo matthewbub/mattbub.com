@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+We are converting HTML to MD, word for word. The goal is to migrate my legacy blogs over to my new blog. Unfortunately all i have left is the code in production, but i would much rather prefer Markdown. 
+
+RULES
+- Always use valid markdown 
+- Do not change the text. It needs to be word for word.
+- Use proper frontmatter. See [How to Fix 'Non-Fast-Forward' Git Errors Using Terminal Commands.md](mdc:src/content/blog/How to Fix 'Non-Fast-Forward' Git Errors Using Terminal Commands.md) for a example.
