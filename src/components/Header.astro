@@ -7,7 +7,6 @@ import { SITE_TITLE } from "../consts";
     <nav>
         <h2><a href="/">{SITE_TITLE}</a></h2>
         <div class="internal-links">
-            <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
             <!-- <HeaderLink href="/about">About</HeaderLink> -->
             <HeaderLink href="/setup">My Setup</HeaderLink>
@@ -79,6 +78,25 @@ import { SITE_TITLE } from "../consts";
         width: 32px;
     }
     @media (max-width: 720px) {
+        header {
+            padding: 0 0.5em;
+        }
+        nav {
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+        .internal-links {
+            display: flex;
+            gap: 0.5em;
+            flex-wrap: wrap;
+        }
+        nav a {
+            padding: 0.5em 0.3em;
+            font-size: 0.9em;
+        }
         .social-links {
             display: none;
         }
