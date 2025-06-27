@@ -47,17 +47,31 @@ const posts = (await getCollection('blog')).sort(
 				border-radius: 12px;
 			}
 			ul li a {
-				display: block;
-			}
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      @media screen and (max-width: 720px) {
+        li > a {
+          display: block !important;
+        }
+      }
 			.title {
 				margin: 0;
 				color: rgb(var(--black));
-				line-height: 1;
-			}
+        line-height: 1;
+        font-size: 18px;
+        white-space: pre-wrap;
+        padding-right: 20px;
+      }
+
 			.date {
 				margin: 0;
-				color: rgb(var(--gray));
-			}
+        color: rgb(var(--gray));
+        font-size: 18px;
+        white-space: nowrap;
+      }
+
 			ul li a:hover h4,
 			ul li a:hover .date {
 				color: rgb(var(--accent));
