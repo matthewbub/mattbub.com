@@ -18,21 +18,22 @@
 }
 
 body {
-    font-family: "Fira Code", monospace;
+    font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
     text-align: left;
     overflow-wrap: break-word;
     color: rgb(var(--gray-dark));
-    font-size: 20px;
-    line-height: 1.7;
+    font-size: 14px;
 }
+
 main {
     width: 720px;
     max-width: calc(100% - 2em);
     margin: auto;
     padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -42,22 +43,21 @@ h6 {
     margin: 0 0 0.5rem 0;
     color: rgb(var(--black));
     line-height: 1.2;
-    font-family: 'Fira Code', monospace;
 }
 h1 {
-    font-size: 3.052em;
+    font-size: 2.2em;
 }
 h2 {
-    font-size: 2.441em;
+    font-size: 1.8em;
 }
 h3 {
-    font-size: 1.953em;
+    font-size: 1.5em;
 }
 h4 {
-    font-size: 1.563em;
+    font-size: 1.3em;
 }
 h5 {
-    font-size: 1.25em;
+    font-size: 1.1em;
 }
 strong,
 b {
@@ -71,11 +71,11 @@ a:hover {
 }
 p {
     margin-bottom: 1em;
-    font-family: 'Fira Code', monospace;
+    font-family: 'Inter', sans-serif;
 }
 .prose p {
     margin-bottom: 2em;
-    font-family: 'Fira Code', monospace;
+    font-family: 'Inter', sans-serif;
 }
 textarea {
     width: 100%;
@@ -86,11 +86,6 @@ input {
 }
 table {
     width: 100%;
-}
-ul,
-ol,
-li {
-    font-family: 'Fira Code', monospace;
 }
 img {
     max-width: 100%;
@@ -114,12 +109,13 @@ blockquote {
     padding: 0 0 0 20px;
     margin: 0px;
     font-size: 1.333em;
-    font-family: 'Fira Code', monospace;
 }
+
 hr {
     border: none;
     border-top: 1px solid rgb(var(--gray-light));
 }
+
 @media (max-width: 720px) {
     body {
         font-size: 16px;
@@ -128,19 +124,19 @@ hr {
         padding: 1em;
     }
     h1 {
-        font-size: 2.2em;
+        font-size: 1.9em;
     }
     h2 {
-        font-size: 1.8em;
+        font-size: 1.6em;
     }
     h3 {
-        font-size: 1.5em;
-    }
-    h4 {
         font-size: 1.3em;
     }
+    h4 {
+        font-size: 1.2em;
+    }
     h5 {
-        font-size: 1.1em;
+        font-size: 1.05em;
     }
 }
 
@@ -160,4 +156,70 @@ hr {
     clip-path: inset(50%);
     /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
     white-space: nowrap;
+}
+
+/* Table styling */
+.table-container {
+    display: table;
+    width: 100%;
+    margin: 1.5em 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-row:nth-child(even) {
+    background-color: rgba(var(--gray-light), 0.3);
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 1em;
+    border-bottom: 1px solid rgba(var(--gray-light), 0.8);
+    vertical-align: top;
+}
+
+.table-cell:first-child {
+    font-weight: 600;
+    color: rgb(var(--black));
+    width: 30%;
+    border-right: 1px solid rgba(var(--gray-light), 0.8);
+}
+
+.table-cell:last-child {
+    width: 70%;
+}
+
+@media (max-width: 720px) {
+    .table-container {
+        display: block;
+    }
+    
+    .table-row {
+        display: block;
+        margin-bottom: 1.5em;
+        padding: 1em;
+        background-color: rgba(var(--gray-light), 0.3);
+        border-radius: 8px;
+    }
+    
+    .table-row:nth-child(even) {
+        background-color: rgba(var(--gray-light), 0.5);
+    }
+    
+    .table-cell {
+        display: block;
+        padding: 0;
+        border: none;
+        width: 100% !important;
+    }
+    
+    .table-cell:first-child {
+        font-weight: 700;
+        margin-bottom: 0.5em;
+        border-right: none;
+    }
 }
