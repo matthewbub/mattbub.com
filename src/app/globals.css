@@ -120,3 +120,141 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Extremely compact prose styling */
+.prose {
+  @apply text-sm leading-relaxed max-w-none;
+}
+
+.prose p {
+  @apply my-3 text-neutral-800 dark:text-neutral-200;
+}
+
+.prose h1 {
+  @apply text-2xl font-medium tracking-tight mt-4 mb-2;
+}
+
+.prose h2 {
+  @apply text-lg font-medium tracking-tight mt-4 mb-1;
+}
+
+.prose h3 {
+  @apply text-base font-medium tracking-tight mt-3 mb-1;
+}
+
+.prose h4 {
+  @apply text-sm font-medium tracking-tight mt-3 mb-1;
+}
+
+.prose strong {
+  @apply font-medium;
+}
+
+.prose ul {
+  @apply list-disc pl-5 my-2;
+}
+
+.prose ol {
+  @apply list-decimal pl-5 my-2;
+}
+
+.prose li {
+  @apply my-1;
+}
+
+.prose a {
+  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+
+.prose pre {
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-xs my-3;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded text-xs;
+}
+
+.prose pre code {
+  @apply p-0;
+  border: initial;
+  line-height: 1.4;
+}
+
+.prose code span {
+  @apply font-medium;
+}
+
+.prose img {
+  @apply m-0 my-2;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-neutral-300 dark:border-neutral-700 pl-3 my-3 italic;
+}
+
+.prose table {
+  @apply w-full border-collapse my-3;
+}
+
+.prose th,
+.prose td {
+  @apply border border-neutral-300 dark:border-neutral-700 px-2 py-1 text-sm;
+}
+
+.prose th {
+  @apply bg-neutral-100 dark:bg-neutral-800 font-medium;
+}
+
+.prose hr {
+  @apply border-neutral-300 dark:border-neutral-700 my-4;
+}
+
+/* Ultra compact variant */
+.prose-compact {
+  @apply text-sm leading-snug;
+}
+
+.prose-compact p {
+  @apply my-2;
+}
+
+.prose-compact h1 {
+  @apply text-xl mt-3 mb-1;
+}
+
+.prose-compact h2 {
+  @apply text-lg mt-3 mb-1;
+}
+
+.prose-compact h3 {
+  @apply text-base mt-2 mb-1;
+}
+
+.prose-compact h4 {
+  @apply text-sm mt-2 mb-1;
+}
+
+.prose-compact ul,
+.prose-compact ol {
+  @apply my-1 pl-4;
+}
+
+.prose-compact li {
+  @apply my-0.5;
+}
+
+.prose-compact pre {
+  @apply my-2 py-1.5 px-2;
+}
+
+.prose-compact blockquote {
+  @apply my-2 pl-2;
+}
+
+.prose-compact table {
+  @apply my-2;
+}
+
+.title {
+  text-wrap: balance;
+}

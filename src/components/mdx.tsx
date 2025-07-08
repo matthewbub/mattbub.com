@@ -5,10 +5,10 @@ import { highlight } from 'sugar-high'
 import React from 'react'
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
-  let headers = data.headers.map((header, index) => (
+  const headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
   ))
-  let rows = data.rows.map((row, index) => (
+  const rows = data.rows.map((row, index) => (
     <tr key={index}>
       {row.map((cell, cellIndex) => (
         <td key={cellIndex}>{cell}</td>
@@ -26,10 +26,10 @@ function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   )
 }
 
-function CustomLink(props: any) {
-  let href = props.href
+function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  const href = props.href
 
-  if (href.startsWith('/')) {
+  if (href?.startsWith('/')) {
     return (
       <Link href={href} {...props}>
         {props.children}
@@ -37,19 +37,19 @@ function CustomLink(props: any) {
     )
   }
 
-  if (href.startsWith('#')) {
+  if (href?.startsWith('#')) {
     return <a {...props} />
   }
 
   return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
-function RoundedImage(props: any) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />
+function RoundedImage(props: React.ComponentProps<typeof Image>) {
+  return <Image className="rounded-lg" {...props} />
 }
 
 function Code({ children, ...props }: { children: string }) {
-  let codeHTML = highlight(children)
+  const codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
 }
 
@@ -64,9 +64,17 @@ function slugify(str: string) {
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
 }
 
+function Standout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+      <div className="text-blue-800">{children}</div>
+    </div>
+  )
+}
+
 function createHeading(level: number) {
   const Heading = ({ children }: { children: React.ReactNode }) => {
-    let slug = slugify(children as string)
+    const slug = slugify(children as string)
     return React.createElement(
       `h${level}`,
       { id: slug },
@@ -86,7 +94,7 @@ function createHeading(level: number) {
   return Heading
 }
 
-let components = {
+const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -97,9 +105,10 @@ let components = {
   a: CustomLink,
   code: Code,
   Table,
+  Standout,
 }
 
-export function CustomMDX(props: any) {
+export function CustomMDX(props: React.ComponentProps<typeof MDXRemote>) {
   return (
     <MDXRemote
       {...props}

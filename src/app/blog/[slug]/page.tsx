@@ -1,27 +1,28 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from '@/components/mdx'
-import { formatDate, getBlogPosts } from '@/lib/blog'
+import { notFound } from "next/navigation";
+import { CustomMDX } from "@/components/mdx";
+import { formatDate, getBlogPosts } from "@/lib/blog";
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts()
+  const posts = getBlogPosts();
 
   return posts.map((post) => ({
     slug: post.slug,
-  }))
+  }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getBlogPosts().find((post) => post.slug === slug);
   if (!post) {
-    return null
+    return null;
   }
 
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
     image,
-  } = post.metadata
+  } = post.metadata;
 
   return {
     title,
@@ -29,7 +30,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       publishedTime,
       url: `/blog/${post.slug}`,
       images: [
@@ -39,19 +40,20 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [image || `/og?title=${encodeURIComponent(title)}`],
     },
-  }
+  };
 }
 
-export default function Blog({ params }: { params: { slug: string } }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getBlogPosts().find((post) => post.slug === slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -61,8 +63,8 @@ export default function Blog({ params }: { params: { slug: string } }) {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
@@ -72,23 +74,21 @@ export default function Blog({ params }: { params: { slug: string } }) {
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `/blog/${post.slug}`,
             author: {
-              '@type': 'Person',
-              name: 'Matt Bub',
+              "@type": "Person",
+              name: "Matt Bub",
             },
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
+      <h1 className="title font-semibold text-2xl tracking-tighter mb-1">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
-        </p>
-      </div>
-      <article className="prose">
+      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-6">
+        {formatDate(post.metadata.publishedAt)}
+      </p>
+      <article className="prose prose-compact">
         <CustomMDX source={post.content} />
       </article>
     </section>
-  )
+  );
 }
