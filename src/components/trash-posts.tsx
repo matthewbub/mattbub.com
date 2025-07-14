@@ -1,10 +1,10 @@
-import { getBlogPosts } from "@/lib/blog";
+import { getTrashPosts } from "@/lib/blog";
 import { IndexList } from "./index-list";
 
-export function BlogPosts() {
-  const allBlogs = getBlogPosts();
+export function TrashPosts() {
+  const allTrashPosts = getTrashPosts();
 
-  const blogItems = allBlogs.map((post) => ({
+  const trashItems = allTrashPosts.map((post) => ({
     slug: post.slug,
     title: post.metadata.title,
     date: post.metadata.publishedAt,
@@ -12,8 +12,8 @@ export function BlogPosts() {
 
   return (
     <IndexList
-      items={blogItems}
-      basePath="/blog"
+      items={trashItems}
+      basePath="/trash"
       showDate={true}
       sortByDate={true}
     />

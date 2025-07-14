@@ -4,7 +4,7 @@ description: "Tired of that old 'Choose file' button? Yeah, me too. Let's build 
 pubDate: "August 2 2024"
 ---
 
-Alright so like when's the last time you had to actually select that old HTML "Choose file" button? I usually don't like to pull this card but _it is 2024 after all_, and since most of us are using React anyway, I figure we might as well cover what a file uploader with drag and dropping capabilities might look like in an production environment. That and I'm finding myself in a position where I need to roll my own because the current SDK I'm working with is less than satisfactory.
+Alright so like when's the last time you had to actually select that old HTML "Choose file" button? I usually don't like to pull this card but _it is 2024 after all_, and since most of us are using React anyway, I figure we might as well cover what a file uploader with drag and dropping capabilities might look like.
 
 ## Setup
 
@@ -152,4 +152,124 @@ const FileUploader = () => {
 export default FileUploader;
 ```
 
-very cool. Now lets work on some
+very cool. Now let's work on some additional features.
+
+## File Validation and Error Handling
+
+At this point we've got a basic drop zone working, but we should probably add some validation. Let's say we only want to accept image files and limit the file size.
+
+```tsx
+const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  event.preventDefault();
+  event.stopPropagation();
+  setIsDragging(false);
+  
+  const droppedFiles = Array.from(event.dataTransfer.files);
+  const validFiles: File[] = [];
+  const errors: string[] = [];
+  
+  droppedFiles.forEach(file => {
+    // Check file type
+    if (!file.type.startsWith('image/')) {
+      errors.push(`${file.name} is not an image file`);
+      return;
+    }
+    
+    // Check file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+      errors.push(`${file.name} is too large (max 5MB)`);
+      return;
+    }
+    
+    validFiles.push(file);
+  });
+  
+  if (errors.length > 0) {
+    console.error('File validation errors:', errors);
+    // You'd probably want to show these errors to the user
+  }
+  
+  setFiles(validFiles);
+};
+```
+
+## Adding a Traditional File Input
+
+Because accessibility matters, we should also provide a traditional file input as a fallback. Users might prefer clicking to select files, or they might be using assistive technology.
+
+```tsx
+const fileInputRef = useRef<HTMLInputElement>(null);
+
+const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const selectedFiles = Array.from(event.target.files || []);
+  setFiles(selectedFiles);
+};
+
+const handleClick = () => {
+  fileInputRef.current?.click();
+};
+
+return (
+  <div>
+    <div
+      className={`p-4 border border-dashed border-blue-500 rounded h-[100px] w-[300px] max-w-[300px] flex items-center justify-center cursor-pointer ${
+        isDragging ? "bg-blue-500/20" : ""
+      }`}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+      onClick={handleClick}
+      ref={dropRef}
+    >
+      <p>Drag & drop files here or click to select</p>
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileInputChange}
+        multiple
+        accept="image/*"
+        style={{ display: 'none' }}
+      />
+    </div>
+    <ul>
+      {files &&
+        files.map((file, index) => <Text key={index}>{file.name}</Text>)}
+    </ul>
+  </div>
+);
+```
+
+## File Upload Implementation
+
+Now for the actual upload part. This is where you'd typically send the files to your backend. Here's a basic example:
+
+```tsx
+const uploadFiles = async (filesToUpload: File[]) => {
+  const formData = new FormData();
+  
+  filesToUpload.forEach((file, index) => {
+    formData.append(`file-${index}`, file);
+  });
+  
+  try {
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+    
+    if (response.ok) {
+      console.log('Files uploaded successfully');
+      setFiles([]); // Clear the files after successful upload
+    } else {
+      console.error('Upload failed');
+    }
+  } catch (error) {
+    console.error('Upload error:', error);
+  }
+};
+```
+
+## Wrapping Up
+
+personally, i find joy in understanding what's happening under the hood. However in many production instances you'd probably just want to reach for an open source alternative :)
+

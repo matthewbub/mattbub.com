@@ -110,12 +110,18 @@ dependencies:
   cmdk:
     specifier: ^1.1.1
     version: 1.1.1(@types/react-dom@19.1.6)(@types/react@19.1.8)(react-dom@19.1.0)(react@19.1.0)
+  codehike:
+    specifier: ^1.0.7
+    version: 1.0.7
   date-fns:
     specifier: ^4.1.0
     version: 4.1.0
   embla-carousel-react:
     specifier: ^8.6.0
     version: 8.6.0(react@19.1.0)
+  gsap:
+    specifier: ^3.13.0
+    version: 3.13.0
   input-otp:
     specifier: ^1.4.2
     version: 1.4.2(react-dom@19.1.0)(react@19.1.0)
@@ -224,6 +230,12 @@ packages:
   /@babel/helper-validator-identifier@7.27.1:
     resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
     engines: {node: '>=6.9.0'}
+    dev: false
+
+  /@code-hike/lighter@1.0.1:
+    resolution: {integrity: sha512-mccvcsk5UTScRrE02oBz1/qzckyhD8YE3VQlQv++2bSVVZgNuCUX8MpokSCi5OmfRAAxbj6kmNiqq1Um8eXPrw==}
+    dependencies:
+      ansi-sequence-parser: 1.1.1
     dev: false
 
   /@date-fns/tz@1.2.0:
@@ -2656,6 +2668,10 @@ packages:
       uri-js: 4.4.1
     dev: true
 
+  /ansi-sequence-parser@1.1.1:
+    resolution: {integrity: sha512-vJXt3yiaUL4UU546s3rPXlsry/RnM730G1+HkpKE012AN0sx1eOrxSu95oKDIonskeLTijMgqWZ3uDEe3NFvyg==}
+    dev: false
+
   /ansi-styles@4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
@@ -2936,6 +2952,18 @@ packages:
       - '@types/react-dom'
     dev: false
 
+  /codehike@1.0.7:
+    resolution: {integrity: sha512-m4YOQv1l06qoGBLCgXRNT45MKAudXjir9v+WTs7Xb0gfze6LN3ZiUp08+WRA1N/QGT1SHbzvck8txvPq+C2EPg==}
+    dependencies:
+      '@code-hike/lighter': 1.0.1
+      diff: 5.2.0
+      estree-util-visit: 2.0.0
+      mdast-util-mdx-jsx: 3.2.0
+      unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /collapse-white-space@2.1.0:
     resolution: {integrity: sha512-loKTxY1zCOuG4j9f6EPnuyyYkf58RnhhWTvRoZEokgB+WbdXehfjFviyOVYkqzEWz1Q5kRiZdBYS5SwxbQYwzw==}
     dev: false
@@ -3170,6 +3198,11 @@ packages:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
     dependencies:
       dequal: 2.0.3
+    dev: false
+
+  /diff@5.2.0:
+    resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
+    engines: {node: '>=0.3.1'}
     dev: false
 
   /doctrine@2.1.0:
@@ -3914,6 +3947,10 @@ packages:
   /graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
+
+  /gsap@3.13.0:
+    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
+    dev: false
 
   /has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}

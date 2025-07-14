@@ -219,24 +219,32 @@
 }
 
 .prose-compact h1 {
-  @apply text-xl mt-3 mb-1;
+  @apply text-xl mt-3 mb-1 font-semibold;
 }
 
 .prose-compact h2 {
-  @apply text-lg mt-3 mb-1;
+  @apply text-lg mt-3 mb-1 font-semibold;
 }
 
 .prose-compact h3 {
-  @apply text-base mt-2 mb-1;
+  @apply text-base mt-2 mb-1 font-semibold;
 }
 
 .prose-compact h4 {
-  @apply text-sm mt-2 mb-1;
+  @apply text-sm mt-2 mb-1 font-semibold;
 }
 
 .prose-compact ul,
 .prose-compact ol {
   @apply my-1 pl-4;
+}
+
+.prose-compact ul {
+  @apply my-1 pl-4 list-disc;
+}
+
+.prose-compact ol {
+  @apply my-1 pl-4 list-decimal;
 }
 
 .prose-compact li {
@@ -258,3 +266,5 @@
 .title {
   text-wrap: balance;
 }
+
+/* markdwon */

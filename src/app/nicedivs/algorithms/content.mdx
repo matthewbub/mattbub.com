@@ -1,0 +1,36 @@
+## Merge Sort Notes
+
+- The idea is to sort small arrays and merge the results into a big array using recursion
+
+- its fast at the expense of memory
+
+Watched: https://www.youtube.com/watch?v=Ns7tGNbtvV4
+
+## Bubble Sort Notes
+
+- Move the higher valued elements to the right and the lower valued elements generally to the left
+
+Pseudo
+
+```
+- Start with a swap counter set to some non-zero number
+- Keep looping (recursion) until we make zero swaps (that's when we know it's sorted)
+  - Reset the swap counter to 0 for this pass
+  - Go through each pair of adjacent elements in the array
+    - If they're out of order, swap them and bump the counter by 1
+```
+
+- this builds the array from the largest to smallest because of the way we work from the start to end
+
+- I think this will sort the array one index at a time until completion
+- There's a point in which all the array is fully sorted, but the bubble sort is not aware of this until it runs the final pass
+
+- Worst case: You're stuck with a completely backwards array. Each element has to bubble all the way across, and since you can only get one element sorted per pass, you end up doing this `n` times.
+- Best case: The array's already sorted and you make zero swaps on the first pass.
+
+---
+
+My questions
+
+- Are Sorting algo's all achieving the same thing at different speeds? is this just a cicle jerk of time complexity
+  - A: AI says no, but pretty much thats what it is lmao

@@ -10,6 +10,12 @@ type Metadata = {
   pubDate?: string;
 };
 
+export type BlogPost = {
+  metadata: Metadata;
+  slug: string;
+  content: string;
+};
+
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   const match = frontmatterRegex.exec(fileContent);
@@ -66,7 +72,7 @@ function parseNaturalDate(dateString: string): string {
   return new Date().toISOString();
 }
 
-function getMDXData(dir: string) {
+function getMDXData(dir: string): BlogPost[] {
   const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     const { metadata, content } = readMDXFile(path.join(dir, file));
@@ -93,8 +99,12 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getBlogPosts() {
+export function getBlogPosts(): BlogPost[] {
   return getMDXData(path.join(process.cwd(), "src", "app", "blog"));
+}
+
+export function getTrashPosts(): BlogPost[] {
+  return getMDXData(path.join(process.cwd(), "src", "app", "trash"));
 }
 
 export function formatDate(date: string, includeRelative = false) {
