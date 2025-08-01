@@ -1,0 +1,30 @@
+html {
+  background-color: #181818;
+  color: #cdc8c8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+  font-family: "Rubik", sans-serif;
+}
+
+main {
+  margin-left: 40px;
+  max-width: 400px;
+}
+
+.recent-photo {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+}

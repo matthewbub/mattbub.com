@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vim Motions: A Generalist's Guide</title>
+	<meta name="description" content="A practical introduction to Vim motions for developers who want to navigate and edit text more efficiently without getting overwhelmed by advanced features.">
+</head>
+<body>
+	<h1 class="title">Vim Motions: A Generalist's Guide</h1>
+	<p class="description">A practical introduction to Vim motions for developers who want to navigate and edit text more efficiently without getting overwhelmed by advanced features.</p>
+	<p class="pubDate">February 29 2024</p>
+	<div class="content">
+		<p>Vim can be a wild place without a firm understanding of the motions required to navigate the interface. What at first seems painful by design yields many productivity benefits.</p>
+
+<p>If your only experience with Vim is getting stuck in a Vim instance, this article is for you!</p>
+
+<h2 id="basic-modes-of-vim">Basic Modes of Vim</h2>
+
+<p>First, let&rsquo;s familiarize ourselves with the basic modes of Vim. Vim operates in four primary modes, each designed for specific tasks.</p>
+
+<ol>
+<li><strong>Normal mode</strong>: The default state you&rsquo;ll see when entering Vim. Typically used for navigating throughout your document and entering into other vim modes.</li>
+<li><strong>Insert mode</strong>: This mode resembles a traditional text editor and is the mode people frequently get stuck in.</li>
+<li><strong>Visual mode</strong>: Commonly used for highlighting, selecting blocks of text to yank or delete, and more.</li>
+<li><strong>Command mode</strong>: Accessed through Normal mode. Enabled the ability to execute commons over files. Think of the ability to save files, search, replace text, execute shell commands, and more. Command mode must be accessed through Normal mode.</li>
+</ol>
+
+<h2 id="navigating-with-vim-motions">Navigating with Vim Motions</h2>
+
+<p>The rest of this article touches on a handful of common Vim motions frequently used within Vim. A firm understanding of these is a healthy starting point in one&rsquo;s Vim journey.</p>
+
+<p><Standout label="Normal Motions" color="teal"></p>
+
+<p>These simple keystrokes allow you to move around and navigate through a file.</p>
+
+<ul>
+<li><code>j</code> moves the cursor up.</li>
+<li><code>k</code> moves the cursor down.</li>
+<li><code>h</code> moves the cursor left.</li>
+<li><code>l</code> moves the cursor right.</li>
+<li><code>w</code> jumps forward by a word.</li>
+<li><code>b</code> jumps backward by a word.</li>
+</ul>
+
+<p></Standout></p>
+
+<p>You can compound the action of a single motion by utilizing relative line numbers within your IDE. This allows you to move with Vim motions quickly. i.e., <code>10j</code> takes you up 10 lines.</p>
+
+<p><Standout label="Visual Motions" color="blue"></p>
+
+<p>Visual mode provides commands that act on selected text.</p>
+
+<ul>
+<li><code>d</code> deletes the selected text.</li>
+<li><code>dd</code> deletes the current line.</li>
+<li><code>c</code> cuts the selected text.</li>
+<li><code>y</code> yanks (copies) the selected text.</li>
+<li><code>p</code> pastes the yanked or cut text.</li>
+<li><code>v</code> starts visual selection.</li>
+<li><code>u</code> undoes the last action.</li>
+</ul>
+
+<p></Standout></p>
+
+<p>Visual motions can be mixed with normal motions and relative line numbers.</p>
+
+<p><strong>Heads up!</strong> Yanking and deleting lines go to the same buffer, so if you yank a line and later delete a line in visual mode, you&rsquo;ll override the yank with whatever you had deleted.</p>
+
+<p><Standout label="Insert Motions" color="yellow">
+Most commands related to Insert mode will involve taking you into Insert mode because once you&rsquo;re inside Insert mode - it&rsquo;s a traditional editorial experience.</p>
+
+<p>There are various ways to enter insert mode. Here are two more commonly used approaches to enter insert mode from normal mode.</p>
+
+<ul>
+<li><code>i</code> takes you to the left of the cursor</li>
+<li><code>a</code> takes you to the right of the cursor</li>
+</ul>
+
+<h3 id="command-mode">Command mode</h3>
+
+<p>Let&rsquo;s dive a little deeper into this one; there&rsquo;s a lot you can do here, so consume the list at your own pace or use it as a defense if anything else.</p>
+
+<p><strong>Saving and Exiting</strong></p>
+
+<ul>
+<li><code>:w</code> saves the current file but keeps it open for further editing.</li>
+<li><code>:q</code> quits the current window. If there are unsaved changes, Vim will warn you.</li>
+<li><code>:wq</code> or <code>:x</code> saves the current file and exits.</li>
+<li><code>:q!</code> quits without saving, discarding any changes made since the last save.</li>
+</ul>
+
+<p><strong>Opening and Creating Files</strong></p>
+
+<ul>
+<li><code>:e filename</code> opens a file named &ldquo;filename&rdquo; in the current window, allowing you to edit a different file without leaving Vim.</li>
+<li><code>:tabe filename</code> opens a file in a new tab, enabling you to work with multiple files.</li>
+</ul>
+
+<p><strong>Searching and Replacing</strong></p>
+
+<ul>
+<li><code>:/pattern</code> searches for &ldquo;pattern&rdquo; in the document. You can navigate through occurrences with <code>n</code> (for next) and <code>N</code> (for previous).</li>
+<li><code>:%s/old/new/g</code> replaces all occurrences of &ldquo;old&rdquo; with &ldquo;new&rdquo; throughout the document. The <code>g</code> at the end specifies that the replacement should happen globally across the entire file. Without <code>g</code>, only the first occurrence in each line would be replaced.</li>
+</ul>
+
+<p><strong>Line Navigation</strong></p>
+
+<ul>
+<li><code>:number</code> jumps to the line number specified. For example, <code>:25</code> would take you directly to line 25.</li>
+<li><code>:$</code> moves the cursor to the last line of the document.</li>
+<li><code>:0</code> or <code>:1</code> takes you to the document&rsquo;s first line.</li>
+</ul>
+
+<p><strong>Setting Preferences</strong> (Typically managed in a dotfile but can be done on the fly)</p>
+
+<ul>
+<li><code>:set number</code> turns on line numbering. This can help you navigate through your document.</li>
+<li><code>:set relativenumber</code> enables relative line numbering, which is particularly useful with Vim&rsquo;s motion commands.</li>
+<li><code>:set norelativenumber</code> switches back to absolute line numbering.</li>
+<li><code>:set nowrap</code> disables text wrapping, which can be useful when editing code or configuration files.</li>
+</ul>
+
+<p></Standout></p>
+
+<h2 id="advanced-motions">Advanced Motions</h2>
+
+<p>Once you&rsquo;re comfortable with the basics, you can explore more advanced motions to enhance your productivity in Vim.</p>
+
+<p><Standout label="Moving Lines" color="fuchsia">
+Two common default options for moving lines in Vim are <code>dd</code> and <code>p</code>, and explicitly <em>moving</em> lines. Deleting a line with <code>dd</code> and pasting it with <code>p</code> works, because the deleted line is stored in a buffer.</p>
+
+<p>To explicitly move a single line, you can use the following commands:</p>
+
+<ul>
+<li><code>:m +1</code> moves the current line down by one.</li>
+<li><code>:m -2</code> moves the current line up by two. (Including the current line, this is a net movement of one line up.)</li>
+</ul>
+
+<p>For moving multiple lines, enter Visual mode with <code>V</code>, select the lines you want to move, and then choose your preferred movement command.
+</Standout></p>
+
+	</div>
+</body>
+</html>

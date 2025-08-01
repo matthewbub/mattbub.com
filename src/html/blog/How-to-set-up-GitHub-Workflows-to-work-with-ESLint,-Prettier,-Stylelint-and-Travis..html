@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>How to set up GitHub Workflows to work with ESLint, Prettier, Stylelint and Travis.</title>
+	<meta name="description" content="The best workflow is a consistent workflow. Let's walkthough how we can enfore ESLint, Prettier and Stylelint using GitHub Workflows in addition to our local environment.">
+</head>
+<body>
+	<h1 class="title">How to set up GitHub Workflows to work with ESLint, Prettier, Stylelint and Travis.</h1>
+	<p class="description">The best workflow is a consistent workflow. Let's walkthough how we can enfore ESLint, Prettier and Stylelint using GitHub Workflows in addition to our local environment.</p>
+	<p class="pubDate">August 31 2020</p>
+	<div class="content">
+		<p><em>The best workflow is a consistent workflow. Let&rsquo;s walkthough how we can enfore ESLint, Prettier and Stylelint using GitHub Workflows in addition to our local environment.</em></p>
+
+<p>In all honesty, GitHub has <em>a lot</em> of perks i&rsquo;m likely not benifiting from. Let&rsquo;s create a new React App with the Airbnb Style Guide and demonstrate how we can set this up.</p>
+
+<h2 id="prerequisites"><strong>Prerequisites</strong></h2>
+
+<p>Before we begin you will need to have a relatively recent version of node installed. We can check by running <code>node -v</code>. We should get see a response similar to the one below.</p>
+
+<p><img src="https://i.imgur.com/u0WPXie.png" alt="" /></p>
+
+<p>We will also need ESLint. We can install this locallay <em>or</em> globally <a href="https://eslint.org/docs/user-guide/getting-started" target="_blank">here</a>. To verify we have eslint we can run <code>eslint -v</code>.</p>
+
+<p><img src="https://i.imgur.com/gjMRP8U.png" alt="" /></p>
+
+<h2 id="step-1">Step 1</h2>
+
+<h3 id="create-a-new-directory-a-initialize-a-new-github-repo">Create a new directory &amp; a initialize a new GitHub Repo</h3>
+
+<p>We&rsquo;ll be using the terminal for the initialization process so lets begin by making a new directory and initialize Git.</p>
+
+<pre><code class="language-bash">$ mkdir workflow-demo
+$ cd $_
+$ git init
+</code></pre>
+
+<p><img src="https://i.imgur.com/nbpP7Gp.png" alt="" /></p>
+
+<h2 id="step-2">Step 2</h2>
+
+<h3 id="initialize-a-new-react-app">Initialize a new React App</h3>
+
+<p>A convient way to get up and running in React quick is by using the <code>create-react-app</code> command.</p>
+
+<pre><code class="language-bash">$ npx create-react-app .
+</code></pre>
+
+<p><img src="https://i.imgur.com/a7JuWRo.png" alt="" /></p>
+
+<h2 id="step-3">Step 3</h2>
+
+<h3 id="commit-push-and-switch-to-a-new-branch">Commit, Push and Switch to a New Branch</h3>
+
+<p>Let&rsquo;s add and commit what we have, then we can push our work to GitHub. From there we will switch to a new branch because our workflow <em>won&rsquo;t work if we are pushing directly to the master</em>. Read these commands carefully as they will be different than mine.</p>
+
+<pre><code class="language-bash">$ git add .
+$ git commit -m 'hello world'
+$ git remote add origin https://github.com/hi-matbub/workflow-demo.git
+$ git branch -M master
+$ git push -u origin master
+$ git checkout -b dev
+</code></pre>
+
+<h2 id="step-4">Step 4</h2>
+
+<h3 id="init-eslint-and-prettier">Init ESLint and Prettier</h3>
+
+<p>We&rsquo;ve already installed ESLint with our React App, (Go ahead and see for yourself!) So let&rsquo;s go ahead an initialize ESLint by running the following command.</p>
+
+<pre><code class="language-bash">$ eslint --init
+</code></pre>
+
+<p><img src="https://i.imgur.com/XU7ig3u.gif" alt="" /></p>
+
+<p>If you aren&rsquo;t familiar with Prettier, It&rsquo;s is an awesome tool that auto formats our code in an attempt to keep consistency amongst file types. Let&rsquo;s add Prettier to our dependencies real quick;</p>
+
+<pre><code class="language-bash">$ npm i prettier
+</code></pre>
+
+<p>Now we can create a <code>.prettierrc</code> file in our base directory and configure our rules accordingly. Here&rsquo;s a few I work with;</p>
+
+<pre><code class="language-json">{
+  &quot;tabWidth&quot;: 4,
+  &quot;semi&quot;: false,
+  &quot;singleQuote&quot;: true,
+  &quot;jsxSingleQuote&quot;: true,
+  &quot;bracketSpacing&quot;: true,
+  &quot;jsxBracketSameLine&quot;: false
+}
+</code></pre>
+
+<p>Let&rsquo;s run both of these one time,</p>
+
+<pre><code class="language-bash">$ npx prettier --config .prettierrc --write .
+$ npx eslint .
+</code></pre>
+
+<p><img src="https://imgur.com/Oz21m63.png" alt="" /></p>
+
+<p>Well well, it looks like we&rsquo;ve got a few errors. We can handle these the old fashion way or ignore them.. let&rsquo;s just ignore them for now. Create a <code>.eslintignore</code> file in the base directory and add the two files we see in the error.</p>
+
+<pre><code>src/serviceWorker.js
+src/App.test.js
+</code></pre>
+
+<p>run the eslint command again and we should be good to go!</p>
+
+<h2 id="step-5">Step 5</h2>
+
+<h3 id="add-a-workflow-to-your-base-directory">Add a Workflow to your Base Directory</h3>
+
+<p>From your base directory, create a nested file under the path <code>.github/workflows/lint.yml</code> and insert the following contents:</p>
+
+<pre><code class="language-yaml">name: Lint
+
+on: push
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      # ESLint and Prettier must be in `package.json`
+      - name: Install Node.js dependencies
+        run: yarn
+
+      - name: Run linters
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          # Enable linters
+          eslint: true
+          prettier: true
+</code></pre>
+
+<p><em>To explain the entire contents of this file would be out-of-scope for this article. If you want to learn more about GitHub Workflows, you can visit <a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-and-managing-workflow-files-and-runs" target="_blank">the offical documents here</a>.</em></p>
+
+<h2 id="step-6">Step 6</h2>
+
+<h3 id="commit-and-push-to-github">Commit and Push to GitHub</h3>
+
+<p>At this point we are ready to push our updates to GitHub, let&rsquo;s verify we are on any branch <em>but</em> the master branch.</p>
+
+<pre><code class="language-bash">$ git branch
+</code></pre>
+
+<p><img src="https://imgur.com/9M2Q8MC.png" alt="" /></p>
+
+<p>Once we are sure we are off our master branch, we can commit our changes and push to GitHub.</p>
+
+<pre><code class="language-bash">$ git add .
+$ git commit -m 'configuring workflow'
+$ git push origin dev
+</code></pre>
+
+<h2 id="step-7">Step 7</h2>
+
+<h3 id="create-a-pull-request-from-our-new-branch">Create a pull request from our new branch</h3>
+
+<p>Let&rsquo;s go to GitHub and navigate to our repo. You should see a prompt to open a new pull request but in the event you don&rsquo;t you can always check in the pull request section.</p>
+
+<p>If everything has been configure properly you should see some checks beging to run once you create your pull request.</p>
+
+<p><img src="https://imgur.com/ZbJ1kXn.png" alt="" /></p>
+
+<h2 id="step-8">Step 8</h2>
+
+<h3 id="automation">Automation</h3>
+
+<p>If you still have linting errors you might have noticed your build failed when you created your pull request.
+Let&rsquo;s see what we can do about automating this by using 2 addition packages.</p>
+
+<pre><code class="language-bash">$ npm i husky lint-staged -D
+</code></pre>
+
+<p>Now we can add a few more scripts to our <code>package.json</code>.</p>
+
+<pre><code class="language-json">&quot;scripts&quot;: {
+  ...,
+  &quot;prettier&quot;: &quot;prettier --config .prettierrc --write \&quot;**/*.{js,jsx}\&quot;&quot;,
+  &quot;prettier-docs&quot;: &quot;prettier --config .prettierrc --write \&quot;**/*.md\&quot;&quot;,
+  &quot;lint&quot;: &quot;eslint --cache \&quot;**/*.{js,jsx}\&quot;&quot;
+},
+&quot;lint-staged&quot;: {
+  &quot;*.{js,jsx}&quot;: [
+    &quot;eslint --fix&quot;,
+    &quot;npm run prettier&quot;,
+    &quot;eslint .&quot;
+  ],
+},
+  &quot;husky&quot;: {
+    &quot;hooks&quot;: {
+      &quot;pre-commit&quot;: &quot;lint-staged&quot;
+    }
+  }
+</code></pre>
+
+<p>That should do it. Now before every commit, ESLint and Prettier will run, if there happens to be any unresolvable errors in your code, eslint will throw them here.</p>
+
+<p>I hope this has been helpful!</p>
+
+	</div>
+</body>
+</html>

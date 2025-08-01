@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>How I Made My Blogs Content Feel More Immediate</title>
+	<meta name="description" content="We decided to introduce dates in the form of relative time to articles that were recently published on this blog. A particularly beneficial feature with time-sensitive content.">
+</head>
+<body>
+	<h1 class="title">How I Made My Blogs Content Feel More Immediate</h1>
+	<p class="description">We decided to introduce dates in the form of relative time to articles that were recently published on this blog. A particularly beneficial feature with time-sensitive content.</p>
+	<p class="pubDate">March 3 2024</p>
+	<div class="content">
+		<p>I decided to introduce dates in the form of relative time to articles that were recently published on <a href="https://www.matthewbub.com/" target="_blank">this blog</a>. A particularly beneficial feature with time-sensitive content.</p>
+
+<p>In introducing relative time, it was revealed that the blog&rsquo;s dates need to handle time-zone differences correctly. A pesky problem for content created on this blog, where &ldquo;breaking news&rdquo; is applicable.</p>
+
+<h2 id="the-practical-benefits-of-relative-time-formatting">The Practical Benefits of Relative Time Formatting</h2>
+
+<p>With <a href="https://en.wikipedia.org/wiki/Time_dilation" target="_blank">relative time</a>, you might see: &ldquo;My Post, published today at 5:51pm&rdquo; whereas without the relative time, the formatting would be less visually appealing and might display as &ldquo;My Post, published 03/01/2024 at 5:51pm&rdquo;.</p>
+
+<p>In addition to the latter option being less appealing, there needs to be a clear indication that 03/01/2024 is the current day. I&rsquo;m leaving it up to the reader to have background knowledge of the current date. Surely not hard to figure out, but surely not ideal when it comes to reading experiences either.</p>
+
+<p>This subtle change significantly enhances the reading experience by making the content feel more immediate and relevant.</p>
+
+<h2 id="understanding-time-zone-discrepancies">Understanding Time Zone Discrepancies</h2>
+
+<p>The timestamp I&rsquo;ll refer to is <code>2024-03-01T13:51:59.667Z</code>, which, in the development environment, is being formatted to display as <code>Today at 5:51AM</code> - an accurate representation of the current time.</p>
+
+<p>On the live site, however - the same timestamp is displaying as <code>Today at  1:51pm</code> - a 6-hour difference. Let&rsquo;s examine the code that formats the date. Then, break down <em>why</em> this is happening.</p>
+
+<pre><code class="language-ts">import { formatRelative } from &quot;date-fns&quot;;
+
+// i.e. &quot;today at 5:51 PM&quot;
+export function formatRelativeDate(dateString) {
+  return formatRelative(new Date(dateString), new Date());
+}
+</code></pre>
+
+<p><strong>No explicit time zone mentioned</strong>
+First and most obvious, there&rsquo;s no mention of explicit <a href="https://en.wikipedia.org/wiki/Time_zone" target="_blank">time zone</a> behavior here. The absence of explicit time zone handling in this code means that the <code>formatRelative</code> function from <code>date-fns</code> uses the local time zone of the environment where the code is running.</p>
+
+<p><strong>Zulu time stamping is as fair as it is inconvenient</strong>
+The second and not-so-obvious challenge is the &lsquo;Z&rsquo; at the end of the timestamp being provided (<code>2024-02-21T13:51:59.667Z</code>), which signifies <a href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank">UTC time</a>, the global standard for regulating clocks and time. I&rsquo;m not going to change the format of the date, so I won&rsquo;t be exploring any options there.</p>
+
+<p>All things considered, I&rsquo;m based out of Los Angeles and always will be. I know I&rsquo;ll always use the Los Angeles time zone for formatting. I&rsquo;ll have to make it explicit that time is formatted to PST.</p>
+
+<h2 id="the-rapidly-evolving-npm-ecosystem">The Rapidly Evolving NPM Ecosystem</h2>
+
+<p>Most of the date-related behavior needed can be managed via the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl</a> built-in object&rsquo;s in the browser. However, Relative time isn&rsquo;t a default functionality built into most browsers. Meaning this is typically outsourced to open-source libraries such as <a href="https://date-fns.org/" target="_blank"><code>date-fns</code></a>, <a href="https://day.js.org/" target="_blank"><code>dayjs</code></a>, or <a href="https://moment.github.io/luxon/#/" target="_blank"><code>luxon</code></a>.</p>
+
+<p>This would have been really easy to implement with the <code>date-fns-tz</code> package, a time zone helper library for <code>date-fns</code>, but at the time of this writing, the <code>date-fns-tz</code> package is not in sync with <code>date-fns</code>, and unfortunately, there are breaking changes that make the <code>date-fns-tz</code> package unusable out-of-the-box. It just straight-up doesn&rsquo;t work.</p>
+
+<p>There are a few open issues about this; this seems to be the most popular issue regarding the break: <a href="https://github.com/marnusw/date-fns-tz/issues/260" target="_blank">https://github.com/marnusw/date-fns-tz/issues/260</a>. Nevertheless, exploration into other options seems necessary.</p>
+
+<h3 id="exploring-alternative-options">Exploring Alternative Options</h3>
+
+<p>I began exploring <code>dayjs</code> as an alternative, but <code>dayjs</code> doesn&rsquo;t seem to have built-in functionality capable of replicating the specific formatting I had with <code>date-fns</code>, or at least I couldn&rsquo;t find a 1:1 replacement to the preferred method within the <code>dayjs</code> docs in a timely manner.</p>
+
+<p>Migrating to <code>dayjs</code> would require changing the functionality of a single function, the one in question above, which I explored. Here&rsquo;s the <code>dayjs</code> version, not fully accounting for days further than 2 days back</p>
+
+<pre><code class="language-js">import dayjs from 'dayjs';
+import isToday from 'dayjs/plugin/isToday';
+import isYesterday from 'dayjs/plugin/isYesterday';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import time-zone from 'dayjs/plugin/time-zone';
+import utc from 'dayjs/plugin/utc';
+
+// Extend dayjs with the necessary plugins
+dayjs.extend(relativeTime);
+dayjs.extend(timezone);
+dayjs.extend(utc);
+dayjs.extend(isToday);
+dayjs.extend(isYesterday);
+
+// Localized &quot;today at 1:51 PM&quot;
+export function formatRelativeDate(dateString) {
+  const dateInLATime = dayjs(dateString).tz('America/Los_Angeles');
+
+  let prefix = '';
+  if (dateInLATime.isToday()) {
+    prefix = 'Today';
+  } else if (dateInLATime.isYesterday()) {
+    prefix = 'Yesterday';
+  } else {
+    return dateInLATime.format('MMMM D, YYYY');
+  }
+
+  return `${prefix} at ${dateInLATime.format('h:mm A')}`;
+}
+</code></pre>
+
+<p>That code is pretty chunky compared to what <code>date-fns</code> provided with zero configuration and conditional logic. Back to <code>date-fns</code> because this isn&rsquo;t going to work.</p>
+
+<h2 id="ignoring-the-problem-version-locking">Ignoring The Problem (Version Locking)</h2>
+
+<p>There were some overly complicated workarounds presented in the GitHub issue that could provide possible solutions. But let&rsquo;s face it, my use case is simple.</p>
+
+<p>The easiest way to move forward here would be to downgrade <code>date-fns</code> to a specific point in time to make the <code>date-fns-tz</code> package work, then set a watcher on the <code>date-fns-tz</code> repository so I can bring both packages up-to-date when the maintainers can fix the breaking changes.</p>
+
+<p>Navigating to the <a href="https://github.com/date-fns/date-fns/releases" target="_blank"><code>date-fns</code> release history</a> to find a release before it became unsynchronized with the <code>date-fns-tz</code> library.</p>
+
+<p>The <a href="https://github.com/marnusw/date-fns-tz/issues/260" target="_blank">GitHub issue about the <code>date-fns</code> break</a> made it clear the breaking changes are due to the <a href="https://blog.date-fns.org/v3-is-out/" target="_blank">v3 release of the <code>date-fns</code> library</a>. This means my target version will be the last release in v2, which happens to be <a href="https://github.com/date-fns/date-fns/releases/tag/v2.30.0" target="_blank">v2.30.0</a>.</p>
+
+<p>In the blog&rsquo;s applicable <code>package.json</code> file, I version-locked the <code>date-fns</code> package to 2.30.0 and ran a clean install to bring the blog dependencies up to date.</p>
+
+<pre><code class="language-js">&quot;date-fns&quot;: &quot;2.30.0&quot;,
+&quot;date-fns-tz&quot;: &quot;^2.0.0&quot;
+</code></pre>
+
+<p>This patchwork allows the blog to work with these packages in harmony, with the <code>date-fns-tz</code> library not crashing, allowing for a safe merge to prod. This could finally wrap up and move forward.</p>
+
+<pre><code class="language-js">import { formatRelative } from &quot;date-fns&quot;;
+import { zonedTimeToUtc } from &quot;date-fns-tz&quot;;
+
+const laTimeZone = &quot;America/Los_Angeles&quot;;
+
+/**
+ * Format Relative Date in 'America/Los_Angeles'
+ * @param {string} dateString
+ * @returns {string}
+ */
+export function formatRelativeDate(dateString) {
+  // Convert the provided UTC date to Los Angeles time zone
+  const laDate = utcToZonedTime(new Date(dateString), laTimeZone);
+  // Get the current date and time in Los Angeles time zone
+  const nowInLa = utcToZonedTime(new Date(), laTimeZone);
+  // Format the relative difference
+  return formatRelative(laDate, nowInLa);
+}
+</code></pre>
+
+<p>That&rsquo;s the little adventure I went on to bring you the relative dates you see throughout this blog.</p>
+
+<p>I&rsquo;d like to hear what others might have done in the same scenario. Would you have migrated the single function to <code>dayjs</code> or stuck with <code>date-fns</code> like I did?</p>
+
+<p>Special thanks to the maintainers of these projects for making all of this discussion and possibility for exploration possible. I appreciate you all!</p>
+
+	</div>
+</body>
+</html>

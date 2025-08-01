@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>How to build a Gravatar Icon with Next.js</title>
+	<meta name="description" content="Learn how to implement and integrate Gravatar icons into your Next.js application. This tutorial shows you how to create a reusable Gravatar component for displaying user profile images.">
+</head>
+<body>
+	<h1 class="title">How to build a Gravatar Icon with Next.js</h1>
+	<p class="description">Learn how to implement and integrate Gravatar icons into your Next.js application. This tutorial shows you how to create a reusable Gravatar component for displaying user profile images.</p>
+	<p class="pubDate">November 25 2022</p>
+	<div class="content">
+		<p>Preview: <a href="https://with-nextjs-and-gravatar.vercel.app/" target="_blank">https://with-nextjs-and-gravatar.vercel.app/</a></p>
+
+<h2 id="building-the-app">Building the app</h2>
+
+<h3 id="initialize-a-nextjs-app">Initialize a Nextjs app</h3>
+
+<pre><code class="language-sh">npx create-next-app@latest --use-npm my-gravatar-app
+</code></pre>
+
+<p>Next, install the Node.js library for Gravatar.</p>
+
+<pre><code class="language-sh">npm install gravatar
+</code></pre>
+
+<h3 id="setup-an-api-endpoint">Setup an API Endpoint</h3>
+
+<p>Create a JavaScript file to handle the network request and send the data back to the client. <code>/pages/api/gravatar.js</code></p>
+
+<pre><code class="language-js">const gravatar = require(&quot;gravatar&quot;);
+
+/**
+ * @param {Object} req - Express request object
+ * @param {Object} req.body - Express request body
+ * @param {string} req.body.email - User email
+ * @returns {string} - Gravatar URL
+ */
+export default function handler(req, res) {
+  if (req.method === &quot;POST&quot;) {
+    const { email } = req.body;
+
+    try {
+      const avatar = gravatar.url(
+        email,
+        { s: &quot;100&quot;, r: &quot;x&quot;, d: &quot;retro&quot; },
+        true
+      );
+      res.status(200).json({ avatar });
+    } catch (error) {
+      res.status(500).json({ error });
+    }
+  } else {
+    res.status(405).json({ error: &quot;Method not allowed&quot; });
+  }
+}
+</code></pre>
+
+<h3 id="create-the-react-components">Create the React Components</h3>
+
+<p>In a new file, create a React component called Gravatar. This component won&rsquo;t do anything fancy, just render the avatar if a source is provided. <code>./components/Gravatar.jsx</code></p>
+
+<pre><code class="language-jsx">export default function Gravatar({ email = &quot;&quot;, avatar = &quot;&quot;, size = 80 }) {
+  return (
+    &lt;div&gt;
+      {avatar &amp;&amp; (
+        &lt;img
+          className=&quot;gravatar&quot;
+          src={avatar}
+          alt={email}
+          width={size}
+          height={size}
+        /&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+<p>(Optional) Create a Loading component to account for loading behavior. You could add a better loading icon that what has been present here, we&rsquo;re just foucsed on simplicity. <code>./components/Loading.jsx</code></p>
+
+<pre><code class="language-jsx">export default function Loading() {
+  return &lt;div&gt;Loading...&lt;/div&gt;;
+}
+</code></pre>
+
+<p>Now modify the <code>pages/index.js</code> to serve both of these components.</p>
+
+<pre><code class="language-jsx">import { useEffect, useState } from &quot;react&quot;;
+import Gravatar from &quot;../components/Gravatar&quot;;
+import Loading from &quot;../components/Loading&quot;;
+
+export default function Home() {
+  const [email, setEmail] = useState(&quot;your@email.here&quot;);
+  const [avatar, setAvatar] = useState(&quot;&quot;);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() =&gt; {
+    updateAvatar();
+  }, []);
+
+  const updateAvatar = async () =&gt; {
+    setLoading(true);
+    setAvatar(&quot;&quot;);
+
+    const response = await fetch(&quot;/api/gravatar&quot;, {
+      method: &quot;POST&quot;,
+      headers: {
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+      },
+      body: JSON.stringify({ email }),
+    });
+    const { avatar } = await response.json();
+
+    setLoading(false);
+    setAvatar(avatar);
+  };
+
+  return (
+    &lt;div className=&quot;container&quot;&gt;
+      &lt;main&gt;
+        {loading &amp;&amp; &lt;Loading /&gt;}
+        {avatar &amp;&amp; &lt;Gravatar email={email} avatar={avatar} size={100} /&gt;}
+      &lt;/main&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+<h2 id="launch-the-app">Launch the app</h2>
+
+<p>Back into the application&rsquo;s terminal, run the development script listed in the package.json. Open the browser to localhost:3000 and you should see the completed app.</p>
+
+<pre><code class="language-sh">npm run dev
+</code></pre>
+
+<h2 id="bonus-dynamically-update-the-gravatar-icon">Bonus: Dynamically update the Gravatar Icon</h2>
+
+<p>So far we&rsquo;ve covered how to set the Gravatar Icon on when the app loads. Let&rsquo;s go a step further an make create a form that will accept a user&rsquo;s email address as an input, and then update the Gravatar icon when the user submits the form. <code>./components/GravatarChanger.jsx</code></p>
+
+<pre><code class="language-jsx">export default function GravatarChanger({
+  email = &quot;&quot;,
+  disabled = false,
+  onChange,
+  onSubmit,
+}) {
+  return (
+    &lt;form onSubmit={onSubmit}&gt;
+      &lt;label&gt;Gravatar Tester&lt;/label&gt;
+      &lt;span&gt;Try your email address to see your Gravatar&lt;/span&gt;
+      &lt;input
+        type=&quot;email&quot;
+        value={email}
+        onChange={onChange}
+        placeholder=&quot;Enter your email address&quot;
+      /&gt;
+      &lt;button type=&quot;submit&quot; disabled={disabled}&gt;
+        Change Gravatar
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+</code></pre>
+
+<p>Then, modify the home page to accommodate this new component.</p>
+
+<pre><code class="language-diff">import { useEffect, useState } from 'react';
+import Gravatar from '../components/Gravatar';
+import Loading from '../components/Loading';
+import GravatarChanger from '../components/GravatarChanger';
+
+export default function Home() {
+  const [email, setEmail] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() =&gt; {
+    updateAvatar();
+  }, []);
+
+  const handleEmailChange = (event) =&gt; {
+    setEmail(event.target.value);
+  };
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    updateAvatar();
+  };
+
+  const updateAvatar = async () =&gt; {
+    setLoading(true);
+    setAvatar('');
+
+    const response = await fetch('/api/gravatar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email })
+    });
+    const { avatar } = await response.json();
+
+    setLoading(false);
+    setAvatar(avatar);
+  };
+
+  return (
+    &lt;div className='container'&gt;
+      &lt;main&gt;
+        {loading &amp;&amp; &lt;Loading /&gt;}
+        {avatar &amp;&amp; &lt;Gravatar email={email} avatar={avatar} size={100} /&gt;}
+        &lt;GravatarChanger
+          disabled={loading}
+          email={email}
+          onChange={handleEmailChange}
+          onSubmit={handleSubmit}
+        /&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+<p>At this point you have a Gravatar component that can be changed based on user input!</p>
+
+	</div>
+</body>
+</html>
