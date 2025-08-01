@@ -1,0 +1,9 @@
+---
+description: General rules to keep AI in line
+globs:
+alwaysApply: true
+---
+
+- Class names are always camelCase.
+- Never use Ternary operators.
+- No code comments unless I explicitly ask

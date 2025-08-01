@@ -1,0 +1,76 @@
+:root {
+  --app-maxWidth: 500px;
+
+  --font-serif: "Libertinus Serif", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: monospace;
+
+  --font-title: var(--font-serif);
+  --font-body: var(--font-sans);
+  --font-code: var(--font-mono);
+
+  --color-text: #cdc8c8;
+  --color-background: #181818;
+  --color-onTopOfBackground: #282828;
+  --color-link: #cdc8c8;
+
+  --space-1: 5px;
+  --space-2: 10px;
+  --space-3: 15px;
+  --space-4: 20px;
+  --space-5: 25px;
+  --space-6: 30px;
+  --space-7: 35px;
+  --space-8: 40px;
+  --space-9: 45px;
+  --space-10: 50px;
+}
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  font-style: normal;
+  font-family: var(--font-title);
+}
+
+p {
+  font-family: var(--font-body);
+}
+
+a {
+  color: var(--color-link);
+}
+
+code {
+  font-family: var(--font-code);
+  font-size: 0.8em;
+  background-color: var(--color-onTopOfBackground);
+  padding: 2px 4px;
+  border-radius: var(--space-1);
+  border: 1px solid #383838;
+}
+
+blockquote {
+  border-left: 2px solid #383838;
+  padding-left: var(--space-2);
+}
+
+main {
+  max-width: var(--app-maxWidth);
+  margin-left: var(--space-2);
+  margin-right: var(--space-2);
+
+  @media (min-width: 768px) {
+    margin-left: var(--space-8);
+    margin-right: var(--space-8);
+  }
+}

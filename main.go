@@ -3,10 +3,17 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func home(w http.ResponseWriter, req *http.Request) {
-	fmt.Fprintf(w, "<html><head><title>My Website</title></head><body><h1>Welcome to My Website</h1><p>This is my website.</p></body></html>")
+	html, err := os.ReadFile("./web/dist/index.html")
+	if err != nil {
+		fmt.Fprintf(w, "Error reading index.html: %v", err)
+		return
+	}
+
+	fmt.Fprintf(w, "%s", string(html))
 }
 
 func hello(w http.ResponseWriter, req *http.Request) {
@@ -26,6 +33,7 @@ func main() {
 	http.HandleFunc("/", home)
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/headers", headers)
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("web/dist/assets"))))
 
 	fmt.Println("listening on port 8090")
 	http.ListenAndServe(":8090", nil)
