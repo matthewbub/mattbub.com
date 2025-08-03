@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
@@ -13,11 +14,15 @@ export const Route = createRootRoute({
   },
 });
 
+const queryClient = new QueryClient();
+
 function RootComponent() {
   return (
     <div className="app">
       <main>
-        <Outlet />
+        <QueryClientProvider client={queryClient}>
+          <Outlet />
+        </QueryClientProvider>
       </main>
       {/* Start rendering router matches */}
       <TanStackRouterDevtools position="bottom-right" />

@@ -1,11 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
 export default function Home() {
+  const { data } = useQuery({
+    queryKey: ["stats"],
+    queryFn: () => fetch("/api/stats").then((res) => res.json()),
+  });
+
   return (
     <div className="app">
+      <p>Page views: {data?.page_views}</p>
       {/* <header>
         <nav className="headerNav">
           <ul className="headerNavList">

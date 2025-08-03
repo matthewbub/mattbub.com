@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS page_views (
     timestamp DATETIME NOT NULL,
     path TEXT NOT NULL,
     user_agent TEXT NOT NULL,
-    user_id TEXT NOT NULL,
     referrer TEXT NOT NULL
 );
 
