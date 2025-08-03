@@ -91,7 +91,7 @@ func versionHandler(w http.ResponseWriter, req *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "text/plain")
-	log.Printf("%s", version)
+	fmt.Fprintf(w, "%s", version)
 }
 
 func initDb() {
