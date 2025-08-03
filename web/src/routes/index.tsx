@@ -10,9 +10,10 @@ export default function Home() {
     queryFn: () => fetch("/api/stats").then((res) => res.json()),
   });
 
+  console.log(data);
   return (
     <div className="app">
-      <p>Page views: {data?.page_views}</p>
+      {/* <p>Page views: {data?.page_views}</p> */}
       {/* <header>
         <nav className="headerNav">
           <ul className="headerNavList">
