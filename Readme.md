@@ -1,6 +1,10 @@
 # mattbub.com
 
-my code casa
+My code casa
+
+## Versioning
+
+Currently, we're using the latest commit from `main` at the time of build. I currently don't have a need for the X.X.X format right now.
 
 ## Page Counter
 
