@@ -57,10 +57,12 @@ func home(w http.ResponseWriter, req *http.Request) {
 	html, err := os.ReadFile("./web/dist/index.html")
 	if err != nil {
 		log.Printf("Error reading index.html: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
-	log.Printf("%s", string(html))
+	w.Header().Set("Content-Type", "text/html")
+	w.Write(html)
 }
 
 func statsHandler(w http.ResponseWriter, _ *http.Request) {
