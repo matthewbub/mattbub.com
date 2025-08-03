@@ -12,7 +12,7 @@ WORKDIR /app
 COPY go.mod ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o matthewbub .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.GitCommit=$(git rev-parse HEAD)" -o matthewbub .
 
 # Stage 3: Final image
 FROM alpine:latest
