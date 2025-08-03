@@ -1,3 +1,4 @@
 .env
 mattbub.com
 data/
+.DS_Store
