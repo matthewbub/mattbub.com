@@ -126,19 +126,19 @@ func runMigrations() error {
 		referrer TEXT
 	);
 	`
-	
+
 	_, err := db.Exec(createTableSQL)
 	if err != nil {
 		return fmt.Errorf("failed to create page_views table: %v", err)
 	}
-	
+
 	// Create index on timestamp
 	createIndexSQL := `CREATE INDEX IF NOT EXISTS idx_page_views_timestamp ON page_views(timestamp);`
 	_, err = db.Exec(createIndexSQL)
 	if err != nil {
 		return fmt.Errorf("failed to create index on page_views: %v", err)
 	}
-	
+
 	return nil
 }
 
