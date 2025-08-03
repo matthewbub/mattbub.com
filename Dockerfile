@@ -8,6 +8,7 @@ RUN pnpm run build
 
 # Stage 2: Build Go app
 FROM golang:1.23-alpine AS backend-builder
+RUN apk add git
 WORKDIR /app
 COPY go.mod ./
 RUN go mod download
