@@ -7,10 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database/sqlite3"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 var db *sql.DB
@@ -98,7 +95,7 @@ func versionHandler(w http.ResponseWriter, req *http.Request) {
 func initDb() {
 	var err error
 
-	db, err = sql.Open("sqlite3", "./data/app.db")
+	db, err = sql.Open("sqlite", "./data/app.db")
 	if err != nil {
 		log.Println("Error opening database:", err)
 		os.Exit(1)
@@ -109,28 +106,40 @@ func initDb() {
 		os.Exit(1)
 	}
 
-	// run migrations
-	driver, err := sqlite3.WithInstance(db, &sqlite3.Config{})
-	if err != nil {
-		log.Println("Error creating driver:", err)
-		os.Exit(1)
-	}
-	m, err := migrate.NewWithDatabaseInstance(
-		"file://migrations",
-		"sqlite3",
-		driver,
-	)
-	if err != nil {
-		log.Println("Error creating migrator:", err)
-		os.Exit(1)
-	}
-
-	if err := m.Up(); err != nil && err != migrate.ErrNoChange {
+	// Run simple migration
+	if err := runMigrations(); err != nil {
 		log.Println("Error running migrations:", err)
 		os.Exit(1)
 	}
 
 	log.Println("Database initialized")
+}
+
+func runMigrations() error {
+	// Create page_views table if it doesn't exist
+	createTableSQL := `
+	CREATE TABLE IF NOT EXISTS page_views (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		timestamp DATETIME NOT NULL,
+		path TEXT NOT NULL,
+		user_agent TEXT,
+		referrer TEXT
+	);
+	`
+	
+	_, err := db.Exec(createTableSQL)
+	if err != nil {
+		return fmt.Errorf("failed to create page_views table: %v", err)
+	}
+	
+	// Create index on timestamp
+	createIndexSQL := `CREATE INDEX IF NOT EXISTS idx_page_views_timestamp ON page_views(timestamp);`
+	_, err = db.Exec(createIndexSQL)
+	if err != nil {
+		return fmt.Errorf("failed to create index on page_views: %v", err)
+	}
+	
+	return nil
 }
 
 func main() {

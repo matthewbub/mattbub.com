@@ -20,7 +20,6 @@ RUN apk add --no-cache sqlite
 WORKDIR /root/
 COPY --from=backend-builder /app/matthewbub .
 COPY --from=frontend-builder /web/dist ./web/dist
-COPY migrations ./migrations
 RUN mkdir -p data
 EXPOSE 8090
 CMD ["./matthewbub"]
