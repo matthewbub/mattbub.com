@@ -1,10 +1,10 @@
-## Docker steps
+# mattbub.com
 
-- Build: `docker build -t matthewbub .`
-- If you have a running container, stop it with `docker ps` to find the container ID, then `docker kill <container_id>`
-- Remove the old container if needed: `docker rm <container_id>`
-- Rebuild after changes: `docker build -t matthewbub .`
-- Run: `docker run -p 8090:8090 matthewbub`
+My code casa
+
+## Versioning
+
+Currently, we're using the latest commit from `main` at the time of build. I currently don't have a need for the X.X.X format right now.
 
 ## Page Counter
 

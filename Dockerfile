@@ -12,12 +12,15 @@ WORKDIR /app
 COPY go.mod ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o matthewbub .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.GitCommit=$(git rev-parse HEAD)" -o matthewbub .
 
 # Stage 3: Final image
 FROM alpine:latest
+RUN apk add --no-cache sqlite
 WORKDIR /root/
 COPY --from=backend-builder /app/matthewbub .
 COPY --from=frontend-builder /web/dist ./web/dist
+COPY migrations ./migrations
+RUN mkdir -p data
 EXPOSE 8090
 CMD ["./matthewbub"]
