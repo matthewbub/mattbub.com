@@ -1,0 +1,33 @@
+---
+description:
+globs:
+  - web/src/**/*.css
+  - web/src/**/*.tsx
+alwaysApply: true
+---
+
+@index.css @index.tsx I want this screen to use my style class names which require things to be extremely unique.
+
+- Colors and fonts are variablized
+- All CSS classes should be prefixed with zz-
+- All classes use camel case after the intial prefix
+- Classes should be generic. Atomic design
+- Classes with zz-- are alignment values specific to the element and alignment on page
+- Classes with zz- are defining characterisitcs
+- I would rather classes be unique, so that if I ever need to change one elemnts value, i don't wreck the whole app. An execption to this is when mapping through content.
+- I HATE cards, never use cards in design
+
+Example
+<a class="zz-button zz--contactFormButton">...
+
+.zz-button {
+/_ ..styles that make it look pretty by default _/
+}
+
+.zz-button:hover {
+/_ hover state _/
+}
+
+.zz-contactFormButton {
+align-self: end;
+}

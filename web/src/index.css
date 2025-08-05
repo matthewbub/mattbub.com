@@ -1,87 +1,254 @@
 :root {
-  --app-maxWidth: 500px;
-
-  --font-serif: "Libertinus Serif", serif;
-  --font-sans: "DM Sans", sans-serif;
-  --font-mono: monospace;
-
-  --font-title: var(--font-serif);
-  --font-body: var(--font-sans);
-  --font-code: var(--font-mono);
-
-  --color-text: #cdc8c8;
-  --color-background: #181818;
-  --color-onTopOfBackground: #282828;
-  --color-link: #cdc8c8;
-
-  --space-1: 5px;
-  --space-2: 10px;
-  --space-3: 15px;
-  --space-4: 20px;
-  --space-5: 25px;
-  --space-6: 30px;
-  --space-7: 35px;
-  --space-8: 40px;
-  --space-9: 45px;
-  --space-10: 50px;
+  --bg: #ffffff;
+  --ink: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --link: #1d4ed8;
+  --link-hover: #0f3bbd;
+  --underline: rgba(29, 78, 216, 0.25);
+  --maxw: 1080px;
+  --gutter: 18px;
+  --rule: #e5e7eb;
 }
 
-html {
-  background-color: var(--color-background);
-  color: var(--color-text);
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    15px/1.65 "Libertinus Serif",
+    ui-serif,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif;
 }
 
+/* Headings – sans per your preference */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  font-weight: 400;
-  font-style: normal;
-  font-family: var(--font-title);
+h6,
+.brand,
+nav a,
+.kicker,
+.byline,
+.section-head {
+  font-family:
+    "DM Sans",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
 }
 
-p {
-  font-family: var(--font-body);
-}
-
+/* Global links with hover state + external marker */
 a {
-  font-family: var(--font-body);
-  color: var(--color-link);
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--underline);
+  transition:
+    color 120ms ease,
+    text-decoration-color 120ms ease;
+}
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+  outline: none;
+}
+a[target="_blank"]:not(.no-ext)::after,
+a[rel~="external"]:not(.no-ext)::after,
+a.external::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.9em;
+  transform: translateY(-1px);
+  color: currentColor;
 }
 
-code {
-  font-family: var(--font-code);
-  font-size: 0.8em;
-  background-color: var(--color-onTopOfBackground);
-  padding: 2px 4px;
-  border-radius: var(--space-1);
-  border: 1px solid #383838;
+/* Top masthead */
+.masthead {
+  border-bottom: 2px solid var(--rule);
+  margin: 0 auto;
+  max-width: var(--maxw);
+  padding: 16px var(--gutter) 10px;
 }
-
-blockquote {
-  border-left: 2px solid #383838;
-  padding-left: var(--space-2);
-}
-
-.headerNavList {
+.masthead .topline {
   display: flex;
-  flex-direction: row;
-  list-style: none;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: 28px;
+  color: var(--ink);
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+nav a[aria-current="page"],
+nav a:hover {
+  border-bottom-color: var(--ink);
 }
 
-.headerNavList li {
-  margin-right: var(--space-4);
+/* Newspaper layout grid */
+.paper {
+  margin: 0 auto;
+  max-width: var(--maxw);
+  padding: 16px var(--gutter) 48px;
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* lead + sidebar */
+  gap: 24px;
 }
 
-main {
-  max-width: var(--app-maxWidth);
-  margin-left: var(--space-2);
-  margin-right: var(--space-2);
+/* Lead story block (hero) */
+.lead {
+  border-right: 1px solid var(--rule);
+  padding-right: 24px;
+}
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  color: var(--muted);
+}
+.headline {
+  font-size: clamp(24px, 4vw, 36px);
+  line-height: 1.15;
+  margin: 6px 0 6px;
+}
+.byline {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.deck {
+  font-size: 16px;
+  margin: 8px 0 12px;
+}
+.lead .meta {
+  color: var(--muted);
+  font-size: 12.5px;
+  border-top: 1px solid var(--rule);
+  padding-top: 8px;
+}
 
-  @media (min-width: 768px) {
-    margin-left: var(--space-8);
-    margin-right: var(--space-8);
+/* Multi-column text like a newspaper */
+.columns {
+  column-count: 2;
+  column-gap: 24px;
+}
+@media (max-width: 880px) {
+  .paper {
+    grid-template-columns: 1fr;
   }
+  .lead {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+  }
+  .columns {
+    column-count: 1;
+  }
+}
+
+/* Sidebar "sections" styled like small columns */
+.sidebar section + section {
+  border-top: 1px solid var(--rule);
+  margin-top: 14px;
+  padding-top: 14px;
+}
+.section-head {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.tease {
+  margin: 0 0 10px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.tease:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.tease h3 {
+  font-size: 14.5px;
+  margin: 0 0 4px;
+}
+.tease .meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Index lists (projects/experience) in two columns like article lists */
+.index {
+  margin: 22px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+.index article {
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+}
+.index h3 {
+  font-size: 14.5px;
+  margin: 0 0 4px;
+}
+.index p {
+  margin: 0;
+}
+@media (max-width: 680px) {
+  .index {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer */
+footer {
+  border-top: 2px solid var(--rule);
+  margin: 24px auto 0;
+  max-width: var(--maxw);
+  padding: 12px var(--gutter) 32px;
+  color: var(--muted);
+  font-size: 12.5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
 }

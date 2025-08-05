@@ -1,0 +1,317 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useMutation } from "@tanstack/react-query";
+import { useEffect, useId, useState } from "react";
+import Header from "../components/header";
+
+export const Route = createFileRoute("/contact")({
+  component: Contact,
+});
+
+type ContactPayload = {
+  name: string;
+  email: string;
+  subject?: string;
+  message: string;
+};
+
+export default function Contact() {
+  const [nowYear, setNowYear] = useState<number>(new Date().getFullYear());
+  useEffect(() => {
+    setNowYear(new Date().getFullYear());
+  }, []);
+
+  const mutation = useMutation({
+    mutationFn: async (payload: ContactPayload) => {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.message || "Failed to send message.");
+      }
+      return res.json();
+    },
+  });
+
+  const nameId = useId();
+  const emailId = useId();
+  const subjectId = useId();
+  const messageId = useId();
+  const statusId = useId();
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload: ContactPayload = {
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      subject: String(formData.get("subject") || ""),
+      message: String(formData.get("message") || ""),
+    };
+    mutation.mutate(payload, {
+      onSuccess: () => {
+        form.reset();
+      },
+    });
+  }
+
+  return (
+    <>
+      <Header />
+
+      {/* Newspaper layout */}
+      <main className="paper">
+        {/* Lead area: Contact form */}
+        <article className="lead" aria-labelledby="contact-headline">
+          <div className="kicker">Get in touch</div>
+          <h1 id="contact-headline" className="headline">
+            Contact Matt
+          </h1>
+          <div className="byline">
+            Prefer email?{" "}
+            <a href="mailto:6matbub@gmail.com" className="no-ext">
+              6matbub@gmail.com
+            </a>
+          </div>
+          <p className="deck">
+            Send a note about projects, collaboration, or anything interesting.
+            I read everything and typically reply within 1–2 business days.
+          </p>
+
+          {/* Form */}
+          <form
+            onSubmit={onSubmit}
+            aria-describedby={statusId}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "12px 16px",
+              borderTop: "1px solid var(--rule)",
+              paddingTop: 12,
+              marginTop: 8,
+            }}
+          >
+            {/* Name */}
+            <div style={{ gridColumn: "1 / 2" }}>
+              <label
+                htmlFor={nameId}
+                className="kicker"
+                style={{ display: "block", marginBottom: 6 }}
+              >
+                Name <span aria-hidden="true">*</span>
+              </label>
+              <input
+                id={nameId}
+                name="name"
+                required
+                type="text"
+                inputMode="text"
+                autoComplete="name"
+                placeholder="Ada Lovelace"
+                style={inputStyle}
+              />
+            </div>
+
+            {/* Email */}
+            <div style={{ gridColumn: "2 / 3" }}>
+              <label
+                htmlFor={emailId}
+                className="kicker"
+                style={{ display: "block", marginBottom: 6 }}
+              >
+                Email <span aria-hidden="true">*</span>
+              </label>
+              <input
+                id={emailId}
+                name="email"
+                required
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                placeholder="ada@example.com"
+                style={inputStyle}
+              />
+            </div>
+
+            {/* Subject */}
+            <div style={{ gridColumn: "1 / 3" }}>
+              <label
+                htmlFor={subjectId}
+                className="kicker"
+                style={{ display: "block", marginBottom: 6 }}
+              >
+                Subject
+              </label>
+              <input
+                id={subjectId}
+                name="subject"
+                type="text"
+                placeholder="Project idea, quick question, etc."
+                style={inputStyle}
+              />
+            </div>
+
+            {/* Message */}
+            <div style={{ gridColumn: "1 / 3" }}>
+              <label
+                htmlFor={messageId}
+                className="kicker"
+                style={{ display: "block", marginBottom: 6 }}
+              >
+                Message <span aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id={messageId}
+                name="message"
+                required
+                rows={8}
+                placeholder="Share details, links, timelines—whatever helps."
+                style={{
+                  ...inputStyle,
+                  resize: "vertical",
+                  lineHeight: 1.5,
+                }}
+              />
+              <div className="byline" style={{ marginTop: 6 }}>
+                I won’t share your info. Fields marked with * are required.
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div
+              style={{
+                gridColumn: "1 / 3",
+                display: "flex",
+                gap: 10,
+                alignItems: "center",
+                borderTop: "1px solid var(--rule)",
+                paddingTop: 10,
+                marginTop: 4,
+              }}
+            >
+              <button
+                type="submit"
+                disabled={mutation.isPending}
+                style={buttonStyle}
+              >
+                {mutation.isPending ? "Sending…" : "Send message"}
+              </button>
+              <div
+                id={statusId}
+                role="status"
+                aria-live="polite"
+                className="byline"
+                style={{ minHeight: 18 }}
+              >
+                {mutation.isSuccess && "Thanks — your message was sent."}
+                {mutation.isError && (
+                  <span style={{ color: "crimson" }}>
+                    {(mutation.error as Error)?.message ||
+                      "Something went wrong. Please try again."}
+                  </span>
+                )}
+              </div>
+            </div>
+          </form>
+
+          {/* Optional: additional info in columns */}
+          <div className="columns" style={{ marginTop: 16 }}>
+            <p>
+              I’m especially interested in focused web products, performance
+              work, and pragmatic tooling. Short briefs or rough ideas welcome.
+            </p>
+            <p>
+              If you prefer async email, include any constraints (timeline,
+              budget range, stack) to speed things up.
+            </p>
+          </div>
+        </article>
+
+        {/* Sidebar */}
+        <aside className="sidebar" aria-label="Contact sidebar">
+          <section>
+            <div className="section-head">Direct</div>
+            <p className="tease">
+              <a href="mailto:6matbub@gmail.com" className="no-ext">
+                Email
+              </a>{" "}
+              — Best way to reach me.
+            </p>
+            <p className="tease">
+              <a
+                href="https://github.com/yourname"
+                target="_blank"
+                rel="noopener noreferrer external"
+              >
+                GitHub
+              </a>{" "}
+              — Projects and notes.
+            </p>
+          </section>
+          <section>
+            <div className="section-head">Response window</div>
+            <p className="tease">
+              I aim to reply within 1–2 business days. If urgent, mention your
+              deadline.
+            </p>
+          </section>
+          <section>
+            <div className="section-head">What helps</div>
+            <div className="tease">
+              <h3>Context</h3>
+              <div className="meta">
+                Links, goals, constraints, and timelines are useful.
+              </div>
+            </div>
+            <div className="tease">
+              <h3>Scope</h3>
+              <div className="meta">
+                Features, outcomes, and any must‑have integrations.
+              </div>
+            </div>
+          </section>
+        </aside>
+      </main>
+
+      <footer>
+        <div>
+          © <span id="y">{nowYear}</span> Matt
+        </div>
+        <div>hand rolled</div>
+      </footer>
+    </>
+  );
+}
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  boxSizing: "border-box",
+  background: "var(--bg)",
+  color: "var(--ink)",
+  border: "1px solid var(--border)",
+  borderRadius: 4,
+  padding: "10px 12px",
+  font: '15px/1.5 "Libertinus Serif", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+  outline: "none",
+};
+
+const buttonStyle: React.CSSProperties = {
+  appearance: "none",
+  background: "var(--ink)",
+  color: "var(--bg)",
+  border: "2px solid var(--ink)",
+  borderRadius: 4,
+  fontFamily:
+    '"DM Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial',
+  fontSize: 14,
+  fontWeight: 700,
+  letterSpacing: "0.02em",
+  padding: "10px 14px",
+  cursor: "pointer",
+  transition: "background 120ms ease, color 120ms ease",
+} as const;

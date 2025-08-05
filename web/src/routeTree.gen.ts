@@ -9,12 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as GameRouteImport } from './routes/game'
+import { Route as EditRouteImport } from './routes/edit'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AppTimelineRouteImport } from './routes/app-timeline'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsFiveWhysRouteImport } from './routes/tools/five-whys'
+import { Route as ToolsContentRouteImport } from './routes/tools/content'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const GameRoute = GameRouteImport.update({
+  id: '/game',
+  path: '/game',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditRoute = EditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppTimelineRoute = AppTimelineRouteImport.update({
+  id: '/app-timeline',
+  path: '/app-timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,40 +48,127 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsFiveWhysRoute = ToolsFiveWhysRouteImport.update({
+  id: '/tools/five-whys',
+  path: '/tools/five-whys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsContentRoute = ToolsContentRouteImport.update({
+  id: '/tools/content',
+  path: '/tools/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/app-timeline': typeof AppTimelineRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/edit': typeof EditRoute
+  '/game': typeof GameRoute
+  '/tools/content': typeof ToolsContentRoute
+  '/tools/five-whys': typeof ToolsFiveWhysRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/app-timeline': typeof AppTimelineRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/edit': typeof EditRoute
+  '/game': typeof GameRoute
+  '/tools/content': typeof ToolsContentRoute
+  '/tools/five-whys': typeof ToolsFiveWhysRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/app-timeline': typeof AppTimelineRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/edit': typeof EditRoute
+  '/game': typeof GameRoute
+  '/tools/content': typeof ToolsContentRoute
+  '/tools/five-whys': typeof ToolsFiveWhysRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/app-timeline'
+    | '/blog'
+    | '/contact'
+    | '/edit'
+    | '/game'
+    | '/tools/content'
+    | '/tools/five-whys'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/app-timeline'
+    | '/blog'
+    | '/contact'
+    | '/edit'
+    | '/game'
+    | '/tools/content'
+    | '/tools/five-whys'
+  id:
+    | '__root__'
+    | '/'
+    | '/app-timeline'
+    | '/blog'
+    | '/contact'
+    | '/edit'
+    | '/game'
+    | '/tools/content'
+    | '/tools/five-whys'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  AppTimelineRoute: typeof AppTimelineRoute
+  BlogRoute: typeof BlogRoute
+  ContactRoute: typeof ContactRoute
+  EditRoute: typeof EditRoute
+  GameRoute: typeof GameRoute
+  ToolsContentRoute: typeof ToolsContentRoute
+  ToolsFiveWhysRoute: typeof ToolsFiveWhysRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/game': {
+      id: '/game'
+      path: '/game'
+      fullPath: '/game'
+      preLoaderRoute: typeof GameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/edit': {
+      id: '/edit'
+      path: '/edit'
+      fullPath: '/edit'
+      preLoaderRoute: typeof EditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app-timeline': {
+      id: '/app-timeline'
+      path: '/app-timeline'
+      fullPath: '/app-timeline'
+      preLoaderRoute: typeof AppTimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -65,12 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/five-whys': {
+      id: '/tools/five-whys'
+      path: '/tools/five-whys'
+      fullPath: '/tools/five-whys'
+      preLoaderRoute: typeof ToolsFiveWhysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/content': {
+      id: '/tools/content'
+      path: '/tools/content'
+      fullPath: '/tools/content'
+      preLoaderRoute: typeof ToolsContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  AppTimelineRoute: AppTimelineRoute,
+  BlogRoute: BlogRoute,
+  ContactRoute: ContactRoute,
+  EditRoute: EditRoute,
+  GameRoute: GameRoute,
+  ToolsContentRoute: ToolsContentRoute,
+  ToolsFiveWhysRoute: ToolsFiveWhysRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
