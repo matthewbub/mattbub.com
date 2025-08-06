@@ -35,9 +35,6 @@ dependencies:
   three:
     specifier: ^0.179.1
     version: 0.179.1
-  vite-plugin-raw:
-    specifier: ^1.0.3
-    version: 1.0.3
 
 devDependencies:
   '@eslint/js':
@@ -3429,10 +3426,6 @@ packages:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
-    dev: false
-
-  /vite-plugin-raw@1.0.3:
-    resolution: {integrity: sha512-9jWSN6RUlSiM7sd5tr/x9R7vQUs54K+FtNm1EpaAXTtu9mg7DbvEqtMSudIC432y4ZXIM8tMAtb3jw3dVHSOUQ==}
     dev: false
 
   /vite@7.0.6:
