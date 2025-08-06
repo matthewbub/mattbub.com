@@ -9,33 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as GameRouteImport } from './routes/game'
-import { Route as EditRouteImport } from './routes/edit'
+import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AppTimelineRouteImport } from './routes/app-timeline'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ToolsFiveWhysRouteImport } from './routes/tools/five-whys'
-import { Route as ToolsContentRouteImport } from './routes/tools/content'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
-const GameRoute = GameRouteImport.update({
-  id: '/game',
-  path: '/game',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EditRoute = EditRouteImport.update({
-  id: '/edit',
-  path: '/edit',
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppTimelineRoute = AppTimelineRouteImport.update({
@@ -48,106 +36,79 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ToolsFiveWhysRoute = ToolsFiveWhysRouteImport.update({
-  id: '/tools/five-whys',
-  path: '/tools/five-whys',
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ToolsContentRoute = ToolsContentRouteImport.update({
-  id: '/tools/content',
-  path: '/tools/content',
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app-timeline': typeof AppTimelineRoute
-  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
-  '/edit': typeof EditRoute
-  '/game': typeof GameRoute
-  '/tools/content': typeof ToolsContentRoute
-  '/tools/five-whys': typeof ToolsFiveWhysRoute
+  '/quiz': typeof QuizRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app-timeline': typeof AppTimelineRoute
-  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
-  '/edit': typeof EditRoute
-  '/game': typeof GameRoute
-  '/tools/content': typeof ToolsContentRoute
-  '/tools/five-whys': typeof ToolsFiveWhysRoute
+  '/quiz': typeof QuizRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app-timeline': typeof AppTimelineRoute
-  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
-  '/edit': typeof EditRoute
-  '/game': typeof GameRoute
-  '/tools/content': typeof ToolsContentRoute
-  '/tools/five-whys': typeof ToolsFiveWhysRoute
+  '/quiz': typeof QuizRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/app-timeline'
-    | '/blog'
     | '/contact'
-    | '/edit'
-    | '/game'
-    | '/tools/content'
-    | '/tools/five-whys'
+    | '/quiz'
+    | '/blog/$slug'
+    | '/blog'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/app-timeline'
-    | '/blog'
-    | '/contact'
-    | '/edit'
-    | '/game'
-    | '/tools/content'
-    | '/tools/five-whys'
+  to: '/' | '/app-timeline' | '/contact' | '/quiz' | '/blog/$slug' | '/blog'
   id:
     | '__root__'
     | '/'
     | '/app-timeline'
-    | '/blog'
     | '/contact'
-    | '/edit'
-    | '/game'
-    | '/tools/content'
-    | '/tools/five-whys'
+    | '/quiz'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppTimelineRoute: typeof AppTimelineRoute
-  BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
-  EditRoute: typeof EditRoute
-  GameRoute: typeof GameRoute
-  ToolsContentRoute: typeof ToolsContentRoute
-  ToolsFiveWhysRoute: typeof ToolsFiveWhysRoute
+  QuizRoute: typeof QuizRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/game': {
-      id: '/game'
-      path: '/game'
-      fullPath: '/game'
-      preLoaderRoute: typeof GameRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/edit': {
-      id: '/edit'
-      path: '/edit'
-      fullPath: '/edit'
-      preLoaderRoute: typeof EditRouteImport
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -155,13 +116,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app-timeline': {
@@ -178,18 +132,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tools/five-whys': {
-      id: '/tools/five-whys'
-      path: '/tools/five-whys'
-      fullPath: '/tools/five-whys'
-      preLoaderRoute: typeof ToolsFiveWhysRouteImport
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tools/content': {
-      id: '/tools/content'
-      path: '/tools/content'
-      fullPath: '/tools/content'
-      preLoaderRoute: typeof ToolsContentRouteImport
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -198,12 +152,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppTimelineRoute: AppTimelineRoute,
-  BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
-  EditRoute: EditRoute,
-  GameRoute: GameRoute,
-  ToolsContentRoute: ToolsContentRoute,
-  ToolsFiveWhysRoute: ToolsFiveWhysRoute,
+  QuizRoute: QuizRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

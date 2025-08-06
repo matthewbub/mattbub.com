@@ -1,97 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Header from "../components/header";
+import Header from "../../components/header";
+import { loadAllBlogPosts } from "../../utils/blogLoader";
+import Footer from "../../components/footer";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/" as any)({
   component: Blog,
 });
 
-type Post = {
-  id: string;
-  title: string;
-  slug: string;
-  deck?: string;
-  date: string; // ISO string
-  tags?: string[];
-  readTime?: string; // e.g., "5 min"
-};
-
-const mockPosts: Post[] = [
-  {
-    id: "1",
-    title: "Zed's Intuitive IDE is Reshaping Coding",
-    slug: "zeds-intuitive-ide-is-reshaping-coding",
-    deck: "Exploring how Zed's approach to editor design focuses on simplicity and performance over feature bloat.",
-    date: "2024-12-15T00:00:00Z",
-    tags: ["Tools", "IDE", "Performance"],
-    readTime: "4 min",
-  },
-  {
-    id: "2",
-    title: "Hand Rolling Drop-Zone Components in React",
-    slug: "hand-rolling-drop-zone-components-in-react",
-    deck: "A step-by-step guide to building custom drag-and-drop file upload components without third-party libraries.",
-    date: "2024-12-10T00:00:00Z",
-    tags: ["React", "JavaScript", "UI/UX"],
-    readTime: "8 min",
-  },
-  {
-    id: "3",
-    title: "How I Made My Blog's Content Feel More Immediate",
-    slug: "how-i-made-my-blogs-content-feel-more-immediate",
-    deck: "Techniques for reducing perceived load times and creating more engaging content experiences.",
-    date: "2024-12-05T00:00:00Z",
-    tags: ["Performance", "UI/UX", "Web"],
-    readTime: "6 min",
-  },
-  {
-    id: "4",
-    title: "Vim Motions: A Generalist's Guide",
-    slug: "vim-motions-a-generalists-guide",
-    deck: "Essential Vim movements and commands for developers who want efficiency without the steep learning curve.",
-    date: "2024-11-28T00:00:00Z",
-    tags: ["Tools", "Productivity", "Vim"],
-    readTime: "7 min",
-  },
-  {
-    id: "5",
-    title: "Connect to PostgreSQL with Golang",
-    slug: "connect-to-postgresql-with-golang",
-    deck: "Setting up database connections, handling migrations, and implementing common patterns in Go applications.",
-    date: "2024-11-20T00:00:00Z",
-    tags: ["Go", "Database", "PostgreSQL"],
-    readTime: "5 min",
-  },
-  {
-    id: "6",
-    title: "TailwindCSS Is Good For Us",
-    slug: "tailwindcss-is-good-for-us",
-    deck: "Why utility-first CSS frameworks lead to more maintainable and scalable styling approaches.",
-    date: "2024-11-15T00:00:00Z",
-    tags: ["CSS", "TailwindCSS", "Web"],
-    readTime: "4 min",
-  },
-  {
-    id: "7",
-    title: "Biome: A Next-Gen Code Formatter and Linter",
-    slug: "biome-a-next-gen-code-formatter-and-linter",
-    deck: "Exploring Biome as a faster, unified alternative to ESLint and Prettier for JavaScript projects.",
-    date: "2024-11-08T00:00:00Z",
-    tags: ["Tools", "JavaScript", "DevOps"],
-    readTime: "5 min",
-  },
-  {
-    id: "8",
-    title: "Serving Static Content with Go and Gin",
-    slug: "serving-static-content-with-go-and-gin",
-    deck: "How to efficiently serve static files and assets in Go web applications using the Gin framework.",
-    date: "2024-10-30T00:00:00Z",
-    tags: ["Go", "Gin", "Web"],
-    readTime: "4 min",
-  },
-];
-
 export default function Blog() {
-  const posts = mockPosts;
+  const posts = loadAllBlogPosts();
 
   return (
     <>
@@ -132,7 +49,7 @@ export default function Blog() {
                 </h3>
                 {p.deck && <p>{p.deck}</p>}
                 <div className="meta" style={{ marginTop: 6 }}>
-                  {formatDate(p.date)}
+                  {formatDate(p.date || new Date().toISOString())}
                   {p.readTime ? ` · Read time ~${p.readTime}` : null}
                   {p.tags && p.tags.length > 0 ? (
                     <>
@@ -227,12 +144,7 @@ export default function Blog() {
         </aside>
       </main>
 
-      <footer>
-        <div>
-          © <span id="y" /> Matt
-        </div>
-        <div>hand rolled</div>
-      </footer>
+      <Footer />
     </>
   );
 }

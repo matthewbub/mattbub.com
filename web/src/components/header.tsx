@@ -14,18 +14,20 @@ export default function Header() {
   ];
 
   return (
-    <header className="masthead">
-      <div className="topline">
-        <Link to="/" className="brand">
+    <header className="zz-masthead">
+      <div className="zz-topline">
+        <Link to="/" className="zz-brand zz-sansFont">
           Matt
         </Link>
-        <nav>
+        <nav className="zz-navigation">
           {navItems.map(({ path, label }) => (
             <Link
               key={path}
               to={path}
               className={
-                isActive(path) ? "zz-navLink zz-navLinkActive" : "zz-navLink"
+                isActive(path)
+                  ? "zz-navLink zz-sansFont zz-navLinkActive"
+                  : "zz-navLink zz-sansFont"
               }
               aria-current={isActive(path) ? "page" : undefined}
             >

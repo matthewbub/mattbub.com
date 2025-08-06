@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect, useId, useState } from "react";
+import { useId } from "react";
 import Header from "../components/header";
+import Footer from "../components/footer";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -15,11 +16,6 @@ type ContactPayload = {
 };
 
 export default function Contact() {
-  const [nowYear, setNowYear] = useState<number>(new Date().getFullYear());
-  useEffect(() => {
-    setNowYear(new Date().getFullYear());
-  }, []);
-
   const mutation = useMutation({
     mutationFn: async (payload: ContactPayload) => {
       const res = await fetch("/api/contact", {
@@ -65,20 +61,20 @@ export default function Contact() {
       <Header />
 
       {/* Newspaper layout */}
-      <main className="paper">
+      <main className="zz-paper">
         {/* Lead area: Contact form */}
-        <article className="lead" aria-labelledby="contact-headline">
-          <div className="kicker">Get in touch</div>
-          <h1 id="contact-headline" className="headline">
+        <article className="zz-leadStory" aria-labelledby="contact-headline">
+          <div className="zz-kicker zz-sansFont">Get in touch</div>
+          <h1 id="contact-headline" className="zz-headline">
             Contact Matt
           </h1>
-          <div className="byline">
+          <div className="zz-byline zz-sansFont">
             Prefer email?{" "}
             <a href="mailto:6matbub@gmail.com" className="no-ext">
               6matbub@gmail.com
             </a>
           </div>
-          <p className="deck">
+          <p className="zz-deck">
             Send a note about projects, collaboration, or anything interesting.
             I read everything and typically reply within 1–2 business days.
           </p>
@@ -100,7 +96,7 @@ export default function Contact() {
             <div style={{ gridColumn: "1 / 2" }}>
               <label
                 htmlFor={nameId}
-                className="kicker"
+                className="zz-kicker zz-sansFont"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Name <span aria-hidden="true">*</span>
@@ -121,7 +117,7 @@ export default function Contact() {
             <div style={{ gridColumn: "2 / 3" }}>
               <label
                 htmlFor={emailId}
-                className="kicker"
+                className="zz-kicker zz-sansFont"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Email <span aria-hidden="true">*</span>
@@ -142,7 +138,7 @@ export default function Contact() {
             <div style={{ gridColumn: "1 / 3" }}>
               <label
                 htmlFor={subjectId}
-                className="kicker"
+                className="zz-kicker zz-sansFont"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Subject
@@ -160,7 +156,7 @@ export default function Contact() {
             <div style={{ gridColumn: "1 / 3" }}>
               <label
                 htmlFor={messageId}
-                className="kicker"
+                className="zz-kicker zz-sansFont"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Message <span aria-hidden="true">*</span>
@@ -177,7 +173,7 @@ export default function Contact() {
                   lineHeight: 1.5,
                 }}
               />
-              <div className="byline" style={{ marginTop: 6 }}>
+              <div className="zz-byline zz-sansFont" style={{ marginTop: 6 }}>
                 I won’t share your info. Fields marked with * are required.
               </div>
             </div>
@@ -205,7 +201,7 @@ export default function Contact() {
                 id={statusId}
                 role="status"
                 aria-live="polite"
-                className="byline"
+                className="zz-byline zz-sansFont"
                 style={{ minHeight: 18 }}
               >
                 {mutation.isSuccess && "Thanks — your message was sent."}
@@ -220,7 +216,7 @@ export default function Contact() {
           </form>
 
           {/* Optional: additional info in columns */}
-          <div className="columns" style={{ marginTop: 16 }}>
+          <div className="zz-columns" style={{ marginTop: 16 }}>
             <p>
               I’m especially interested in focused web products, performance
               work, and pragmatic tooling. Short briefs or rough ideas welcome.
@@ -233,16 +229,16 @@ export default function Contact() {
         </article>
 
         {/* Sidebar */}
-        <aside className="sidebar" aria-label="Contact sidebar">
-          <section>
-            <div className="section-head">Direct</div>
-            <p className="tease">
+        <aside className="zz-sidebar" aria-label="Contact sidebar">
+          <section className="zz-sidebarSection">
+            <div className="zz-sectionHead zz-sansFont">Direct</div>
+            <p className="zz-tease">
               <a href="mailto:6matbub@gmail.com" className="no-ext">
                 Email
               </a>{" "}
               — Best way to reach me.
             </p>
-            <p className="tease">
+            <p className="zz-tease">
               <a
                 href="https://github.com/yourname"
                 target="_blank"
@@ -253,24 +249,24 @@ export default function Contact() {
               — Projects and notes.
             </p>
           </section>
-          <section>
-            <div className="section-head">Response window</div>
-            <p className="tease">
+          <section className="zz-sidebarSection">
+            <div className="zz-sectionHead zz-sansFont">Response window</div>
+            <p className="zz-tease">
               I aim to reply within 1–2 business days. If urgent, mention your
               deadline.
             </p>
           </section>
-          <section>
-            <div className="section-head">What helps</div>
-            <div className="tease">
-              <h3>Context</h3>
-              <div className="meta">
+          <section className="zz-sidebarSection">
+            <div className="zz-sectionHead zz-sansFont">What helps</div>
+            <div className="zz-tease">
+              <h3 className="zz-teaseHeading">Context</h3>
+              <div className="zz-teaseMeta">
                 Links, goals, constraints, and timelines are useful.
               </div>
             </div>
-            <div className="tease">
-              <h3>Scope</h3>
-              <div className="meta">
+            <div className="zz-tease">
+              <h3 className="zz-teaseHeading">Scope</h3>
+              <div className="zz-teaseMeta">
                 Features, outcomes, and any must‑have integrations.
               </div>
             </div>
@@ -278,12 +274,7 @@ export default function Contact() {
         </aside>
       </main>
 
-      <footer>
-        <div>
-          © <span id="y">{nowYear}</span> Matt
-        </div>
-        <div>hand rolled</div>
-      </footer>
+      <Footer />
     </>
   );
 }

@@ -24,8 +24,6 @@ function RootComponent() {
           <Outlet />
         </QueryClientProvider>
       </main>
-      {/* Start rendering router matches */}
-      <TanStackRouterDevtools position="bottom-right" />
     </div>
   );
 }

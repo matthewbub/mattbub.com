@@ -1,0 +1,175 @@
+/* Markdown Content Styling - zz- prefixed atomic classes */
+.zz-markdownContent {
+  min-width: 0;
+}
+
+/* Headings */
+.zz-heading {
+  font-family:
+    "DM Sans",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
+  color: var(--ink);
+}
+
+/* Match blog header/article scales */
+.zz--primaryHeading {
+  font-size: 28px;
+  margin: 24px 0 12px 0;
+}
+
+.zz--secondaryHeading {
+  font-size: 20px;
+  margin: 24px 0 8px;
+}
+
+.zz--tertiaryHeading {
+  font-size: 16px;
+  margin: 18px 0 6px;
+}
+
+/* Text elements */
+.zz-paragraph {
+  margin: 10px 0;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.zz--bodyText {
+  /* inherits from zz-paragraph */
+}
+
+.zz-text {
+  /* base text styling */
+  color: var(--ink);
+}
+
+.zz--boldText {
+  font-weight: 600;
+}
+
+.zz--italicText {
+  font-style: italic;
+}
+
+/* Lists */
+.zz-list {
+  padding-left: 20px;
+  margin: 10px 0;
+  color: var(--ink);
+}
+
+.zz--unorderedList {
+  /* inherits from zz-list */
+  list-style: disc;
+}
+
+.zz--orderedList {
+  /* inherits from zz-list */
+  list-style: decimal;
+}
+
+.zz-listItem,
+.zz--bulletPoint {
+  margin: 6px 0;
+}
+
+/* Code styling (light, to match inline code and overall style) */
+.zz-code,
+.zz-codeBlock {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.zz--inlineCode {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+/* Light code block to replace dark style */
+.zz--syntaxHighlight {
+  background: #f8fafc;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  overflow: auto;
+  margin: 12px 0;
+}
+
+.zz--syntaxHighlight > code {
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Optional soft token colors for light bg (kept subtle) */
+.t-kw {
+  color: #1d4ed8;
+}
+.t-fn {
+  color: #065f46;
+}
+.t-ty {
+  color: #92400e;
+}
+.t-str {
+  color: #0657a6;
+}
+.t-cmt {
+  color: #6b7280;
+}
+.t-num {
+  color: #b45309;
+}
+
+/* Quotes (match .callout light style) */
+.zz-quote,
+.zz--blockQuote {
+  border-left: 3px solid #cbd5e1;
+  padding: 8px 12px;
+  margin: 12px 0;
+  background: #f8fafc;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* Links (match global link behavior) */
+.zz-link,
+.zz--externalLink {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--underline);
+  transition:
+    color 120ms ease,
+    text-decoration-color 120ms ease;
+}
+
+.zz-link:hover,
+.zz-link:focus,
+.zz--externalLink:hover,
+.zz--externalLink:focus {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+  outline: none;
+}
+
+/* Layout positioning */
+.zz--blogPost {
+  /* allow content to fit the same rhythm as article */
+  min-width: 0;
+}
