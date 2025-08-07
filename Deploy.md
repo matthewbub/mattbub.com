@@ -26,6 +26,19 @@ Read all the steps before you start.
 - Rebuild after changes: `docker build -t mattbub .`
 - Run: `docker run -d -p 8090:8090 -v app-data:/root/data mattbub`
 
+### Quick commands
+
+```
+## query
+docker exec -it mattbub sqlite3 /root/data/app.db "SELECT * FROM contact_form_submissions LIMIT 10;"
+
+## backup
+docker run --rm -v app-data:/data -v $(pwd):/backup alpine cp /data/app.db /backup/backup-$(date +%Y%m%d).db
+
+## get backup onto local machine (run this outside of SSH)
+scp root@remote-server:/root/backup-20241219.db ./
+```
+
 ## Firewall rules
 
 1. Vultr Firewall: Block unwanted traffic early (major ports/protocols)
