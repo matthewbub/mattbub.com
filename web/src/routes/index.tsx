@@ -23,11 +23,11 @@ export default function Home() {
       <main id="front" className="zz-paper">
         {/* Lead story */}
         <article className="zz-leadStory" aria-labelledby="lead-headline">
-          <div className="zz-kicker zz-sansFont">Profile</div>
+          <div className="zz-kicker">Profile</div>
           <h1 id="lead-headline" className="zz-headline">
             Hey, I'm Matt — software engineer building for the web
           </h1>
-          <div className="zz-byline zz-sansFont">
+          <div className="zz-byline">
             Full‑stack engineer, specializing in Go + TypeScript, Docker, and
             cloud infrastructure
           </div>
@@ -69,10 +69,7 @@ export default function Home() {
             <article className="zz-indexArticle">
               <h3 className="zz-indexHeading">
                 Portfolio Platform
-                <span
-                  className="zz-kicker zz-sansFont"
-                  style={{ marginLeft: 6 }}
-                >
+                <span className="zz-kicker" style={{ marginLeft: 6 }}>
                   in progress
                 </span>
               </h3>
@@ -98,7 +95,7 @@ export default function Home() {
         </article>
         <aside className="zz-sidebar" aria-label="Sidebar">
           <section id="blog" className="zz-sidebarSection">
-            <div className="zz-sectionHead zz-sansFont">Latest</div>
+            <div className="zz-sectionHead">Latest</div>
             {posts.slice(0, 3).map((post) => (
               <div className="zz-tease">
                 <h3 className="zz-teaseHeading">
@@ -115,7 +112,7 @@ export default function Home() {
 
           {/* Quick links */}
           <section className="zz-sidebarSection">
-            <div className="zz-sectionHead zz-sansFont">Elsewhere</div>
+            <div className="zz-sectionHead">Elsewhere</div>
             <p className="zz-tease">
               <a
                 href="https://github.com/matthewbub"
@@ -145,7 +142,7 @@ export default function Home() {
           </section>
           {/* Contact snippet */}
           <section id="contact" className="zz-sidebarSection">
-            <div className="zz-sectionHead zz-sansFont">Contact</div>
+            <div className="zz-sectionHead">Contact</div>
             <p>
               Prefer a form? Use{" "}
               <a href="/contact" className="no-ext">

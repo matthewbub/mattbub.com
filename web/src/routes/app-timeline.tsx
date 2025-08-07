@@ -142,7 +142,7 @@ const timelineConfig = {
               "ssh -i ~/.ssh/key user@host<br />git clone git@github.com:me/portfolio.git",
             isCode: true,
           },
-        ] as ModalSection[] as ModalSection[],
+        ] as ModalSection[],
       },
     },
     {

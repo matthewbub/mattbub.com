@@ -4,8 +4,7 @@ import { useMemo } from "react";
 import { getBlogPost } from "../../utils/blogLoader";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import "../../blog.css";
-import "../../blog-post.css";
+import "../../styles.css";
 import Footer from "../../components/footer";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -30,11 +29,11 @@ export default function BlogPost() {
     return (
       <>
         <Header />
-        <main className="paper">
-          <article className="lead">
+        <main className="zz-blogPostPaper">
+          <article className="zz-blogPostLead">
             <h1>Post not found</h1>
             <p>The requested blog post could not be found.</p>
-            <a href="/blog" className="zz-button zz--backButton">
+            <a href="/blog" className="zz-blogPostButton zz--backButton">
               ← Back to blog
             </a>
           </article>
@@ -47,22 +46,22 @@ export default function BlogPost() {
   return (
     <>
       <Header />
-      <main className="paper">
-        <article className="lead" aria-labelledby="post-headline">
-          <div className="kicker">{post.tags?.[0] || "Blog"}</div>
-          <h1 id="post-headline" className="headline">
+      <main className="zz-blogPostPaper">
+        <article className="zz-blogPostLead" aria-labelledby="post-headline">
+          <div className="zz-blogPostKicker">{post.tags?.[0] || "Blog"}</div>
+          <h1 id="post-headline" className="zz-blogPostHeadline">
             {post.title}
           </h1>
-          <div className="byline">
+          <div className="zz-blogPostByline">
             {formatDate(post.date!)} · {post.readTime}
           </div>
-          <p className="deck">{post.deck}</p>
+          <p className="zz-blogPostDeck">{post.deck}</p>
 
           {/* Markdown content */}
           <section
             className="zz-markdownContent zz--blogPost"
             style={{
-              borderTop: "1px solid var(--rule)",
+              borderTop: "1px solid var(--border)",
               paddingTop: 20,
               marginTop: 16,
             }}
@@ -79,9 +78,7 @@ export default function BlogPost() {
                 h3: (props) => (
                   <h3 className="zz-heading zz--tertiaryHeading" {...props} />
                 ),
-                p: (props) => (
-                  <p className="zz-paragraph zz--bodyText" {...props} />
-                ),
+                p: (props) => <p className="zz-paragraph" {...props} />,
                 ul: (props) => (
                   <ul className="zz-list zz--unorderedList" {...props} />
                 ),
@@ -119,16 +116,16 @@ export default function BlogPost() {
           </section>
         </article>
 
-        <aside className="sidebar" aria-label="Sidebar">
-          <section>
-            <div className="section-head">Related</div>
-            <div className="tease">
-              <h3>
+        <aside className="zz-blogPostSidebar" aria-label="Sidebar">
+          <section className="zz-blogPostSidebarSection">
+            <div className="zz-blogPostSectionHead">Related</div>
+            <div className="zz-blogPostTease">
+              <h3 className="zz-blogPostTeaseHeading">
                 <a href="/blog" className="no-ext">
                   ← Back to all posts
                 </a>
               </h3>
-              <div className="meta">Browse more articles</div>
+              <div className="zz-blogPostMeta">Browse more articles</div>
             </div>
           </section>
         </aside>

@@ -215,7 +215,6 @@ export default function Contact() {
             </div>
           </form>
 
-          {/* Optional: additional info in columns */}
           <div className="zz-columns" style={{ marginTop: 16 }}>
             <p>
               I’m especially interested in focused web products, performance
@@ -240,7 +239,7 @@ export default function Contact() {
             </p>
             <p className="zz-tease">
               <a
-                href="https://github.com/yourname"
+                href="https://github.com/matthewbub"
                 target="_blank"
                 rel="noopener noreferrer external"
               >
@@ -278,7 +277,6 @@ export default function Contact() {
     </>
   );
 }
-
 const inputStyle: React.CSSProperties = {
   width: "100%",
   boxSizing: "border-box",

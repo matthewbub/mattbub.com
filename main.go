@@ -2,7 +2,9 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -76,6 +78,61 @@ func statsHandler(w http.ResponseWriter, _ *http.Request) {
 	fmt.Fprintf(w, `{"page_views": %d}`, count)
 }
 
+// func maliciousContent(message string) bool {
+// 	// check for malicious content
+
+// 	// check for spam
+// 	// TODO: implement
+// 	return false
+// }
+
+type ContactPayload struct {
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Subject string `json:"subject"`
+	Message string `json:"message"`
+}
+
+func contactHandler(w http.ResponseWriter, req *http.Request) {
+	body, err := io.ReadAll(req.Body)
+	if err != nil {
+		log.Printf("Error reading request body: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
+	var payload ContactPayload
+	if err := json.Unmarshal(body, &payload); err != nil {
+		log.Printf("Error unmarshalling request body: %v", err)
+		http.Error(w, "Bad Request", http.StatusBadRequest)
+		return
+	}
+
+	// Validate field lengths to prevent abuse and ensure reasonable message sizes
+	if len(payload.Name) > 100 || len(payload.Email) > 100 || len(payload.Subject) > 200 || len(payload.Message) > 2000 {
+		http.Error(w, "Bad Request", http.StatusBadRequest)
+		return
+	}
+
+	// if maliciousContent(payload.Message) {
+	// 	http.Error(w, "Bad Request", http.StatusBadRequest)
+	// 	return
+	// }
+
+	db.Exec(
+		`INSERT INTO contact_form_submissions (timestamp, name, email, subject, message) VALUES (datetime('now'), ?, ?, ?, ?)`,
+		payload.Name, payload.Email, payload.Subject, payload.Message,
+	)
+
+	w.Header().Set("Content-Type", "application/json")
+	fmt.Fprintf(w, `{"message": "Collected contact form submission"}`)
+}
+
+func healthHandler(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	fmt.Fprintf(w, `{"message": "OK"}`)
+}
+
 // this variable gets set at buildtime
 // search `-X main.GitCommit=${GIT_COMMIT}` in codebase to learn more
 var GitCommit string
@@ -127,6 +184,15 @@ func runMigrations() error {
 		user_agent TEXT,
 		referrer TEXT
 	);
+
+	CREATE TABLE IF NOT EXISTS contact_form_submissions (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		timestamp DATETIME NOT NULL,
+		name TEXT NOT NULL,
+		email TEXT NOT NULL,
+		subject TEXT,
+		message TEXT NOT NULL
+	);
 	`
 
 	_, err := db.Exec(createTableSQL)
@@ -156,6 +222,8 @@ func main() {
 	http.HandleFunc("/version.txt", versionHandler)
 
 	http.HandleFunc("/api/stats", statsHandler)
+	http.HandleFunc("/api/contact", contactHandler)
+	http.HandleFunc("/api/health", healthHandler)
 
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("web/dist/assets"))))
 	log.Println("listening on port 8090")

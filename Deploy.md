@@ -12,7 +12,7 @@ Read all the steps before you start.
 
 1. SSH into the server
 2. Install git https://git-scm.com/downloads/linux
-3. Clone this repo `git clone https://github.com/matthewbub/matthewbub.com.git`
+3. Clone this repo `git clone https://github.com/mattbub/mattbub.com.git`
 4. Follow the [Docker steps](#docker-steps) below
 5. Configure the [Cloud-level Firewall](#vultr) rules in Vultr
 6. Configure the [Host-level Firewall](#ufw) rules via UFW
@@ -20,11 +20,11 @@ Read all the steps before you start.
 
 ## Docker steps
 
-- Build: `docker build -t matthewbub .`
+- Build: `docker build -t mattbub .`
 - If you have a running container, stop it with `docker ps` to find the container ID, then `docker kill <container_id>`
 - Remove the old container if needed: `docker rm <container_id>`
-- Rebuild after changes: `docker build -t matthewbub .`
-- Run: `docker run -p 8090:8090 matthewbub`
+- Rebuild after changes: `docker build -t mattbub .`
+- Run: `docker run -d -p 8090:8090 -v app-data:/root/data mattbub`
 
 ## Firewall rules
 

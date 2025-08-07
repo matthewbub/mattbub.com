@@ -1,6 +1,13 @@
 # mattbub.com
 
-My code casa
+## Local dev
+
+- Go server can be ran via `go run main.go`
+- Web server can be run from web with `pnpm run dev`
+
+## Prod
+
+See [Deploy](/Deploy.md) docs for prod
 
 ## Versioning
 
