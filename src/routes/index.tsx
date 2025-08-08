@@ -69,9 +69,9 @@ export default function Home() {
             <article className="zz-indexArticle">
               <h3 className="zz-indexHeading">
                 Portfolio Platform
-                <span className="zz-kicker" style={{ marginLeft: 6 }}>
+                {/* <span className="zz-kicker" style={{ marginLeft: 6 }}>
                   in progress
-                </span>
+                </span> */}
               </h3>
               <p className="zz-indexParagraph">
                 Go backend, Dockerized runtime, and a markdown based blog.{" "}

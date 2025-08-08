@@ -2,3 +2,5 @@
 mattbub.com
 data/
 .DS_Store
+node_modules/
+dist

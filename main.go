@@ -225,7 +225,9 @@ func main() {
 	http.HandleFunc("/api/contact", contactHandler)
 	http.HandleFunc("/api/health", healthHandler)
 
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("web/dist/assets"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("dist/assets"))))
+	http.Handle("/favicon.ico", http.FileServer(http.Dir("dist/favicon.ico")))
+
 	log.Println("listening on port 8090")
 	http.ListenAndServe(":8090", nil)
 }
