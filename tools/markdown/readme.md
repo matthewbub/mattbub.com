@@ -1,3 +1,0 @@
-- [x] convert .md to .html
-- [ ] create table of contents .js file
-- [ ] create sitemap , rss

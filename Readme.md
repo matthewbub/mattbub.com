@@ -2,14 +2,16 @@
 
 ## Local dev
 
-- Go server can be ran via `go run main.go`
-- Web server can be run from web with `pnpm run dev`
+- Run Go server - `go run main.go`
+- Run Web server - `pnpm run dev`
 
 ## Prod
 
 See [Deploy](/Deploy.md) docs for prod
 
 ## Versioning
+
+Visit https://mattbub.com/version.txt to get the latest version in prod
 
 Currently, we're using the latest commit from `main` at the time of build. I currently don't have a need for the X.X.X format right now.
 

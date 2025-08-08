@@ -56,7 +56,7 @@ func home(w http.ResponseWriter, req *http.Request) {
 		})
 	}
 
-	html, err := os.ReadFile("./web/dist/index.html")
+	html, err := os.ReadFile("./dist/index.html")
 	if err != nil {
 		log.Printf("Error reading index.html: %v", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
