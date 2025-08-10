@@ -2,6 +2,17 @@
 title: "How to set up GitHub Workflows to work with ESLint, Prettier, Stylelint and Travis."
 description: "The best workflow is a consistent workflow. Let's walkthough how we can enfore ESLint, Prettier and Stylelint using GitHub Workflows in addition to our local environment."
 pubDate: "August 31 2020"
+tags:
+  [
+    "github-actions",
+    "ci-cd",
+    "eslint",
+    "prettier",
+    "stylelint",
+    "travis-ci",
+    "automation",
+    "javascript",
+  ]
 ---
 
 _The best workflow is a consistent workflow. Let's walkthough how we can enfore ESLint, Prettier and Stylelint using GitHub Workflows in addition to our local environment._

@@ -2,6 +2,7 @@
 title: "Reducing Friction in the User Experience When Rolling Out Big UI/UX Updates"
 description: "Introducing a new UX to your site or application can be risky. Historically, this has yet to go down well. A good example of new UX equaling unhappy users is the Reddit user interface, which continuously gets shat on."
 pubDate: "March 8 2024"
+tags: ["ux", "ui", "product", "change-management", "communication", "design"]
 ---
 
 Depending on the status of your business, introducing a new UX to your site or application can be risky. Historically, this has yet to go down well. A good example of new UX equaling unhappy users is the Reddit user interface, which continuously gets shat on. Where most users recommend reverting to the still accessible https://old.reddit.com/.

@@ -2,6 +2,14 @@
 title: "6 Types of Readers Consuming Technical Content"
 description: "A commonly overlooked and possibly neglected faucet of software development is the end user's manual. For the purposes of simplicity, we should assume everyone that can use our product or service is also going to have a question that can be answered in some sort of technical documentation. When..."
 pubDate: "February 14 2024"
+tags:
+  [
+    "documentation",
+    "technical-writing",
+    "developer-experience",
+    "content-strategy",
+    "product",
+  ]
 ---
 
 An aspect of software development that is often overlooked and possibly neglected is creating an end user's manual. We should assume that everyone who uses our product or service will have a question that can be answered in technical documentation. So, for simplicity, it's important to create clear and concise documentation for our users.

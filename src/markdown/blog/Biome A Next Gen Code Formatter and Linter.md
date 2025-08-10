@@ -2,6 +2,17 @@
 title: "Biome - A Next-Gen Code Formatter and Linter"
 description: "An exploration of Biome, a Rust-based all-in-one replacement for ESLint and Prettier, discussing its benefits, community engagement, and adoption in the JavaScript ecosystem."
 pubDate: "February 13 2024"
+tags:
+  [
+    "biome",
+    "eslint",
+    "prettier",
+    "linting",
+    "formatting",
+    "rust",
+    "javascript",
+    "tooling",
+  ]
 ---
 
 Developers that work in repositories containing some sort of server-side JavaScript have likely encountered ESLint or Prettier at some point in their career. Both packages can be amazing to work with; and when combine, a powerful combination is formed. It's getting that combination working together, across _all environments_ is where the challenges begin.

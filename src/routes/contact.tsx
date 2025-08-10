@@ -108,7 +108,7 @@ export default function Contact() {
                 type="text"
                 inputMode="text"
                 autoComplete="name"
-                placeholder="Ada Lovelace"
+                placeholder="Enter your name"
                 style={inputStyle}
               />
             </div>
@@ -129,7 +129,7 @@ export default function Contact() {
                 type="email"
                 inputMode="email"
                 autoComplete="email"
-                placeholder="ada@example.com"
+                placeholder="Enter your email"
                 style={inputStyle}
               />
             </div>

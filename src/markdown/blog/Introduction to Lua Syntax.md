@@ -2,6 +2,7 @@
 title: "Introduction to Lua Syntax"
 description: "A general syntax guide intended to introduce the basics of Lua programming."
 pubDate: "February 27 2024"
+tags: ["lua", "programming", "syntax", "scripting", "neovim", "language"]
 ---
 
 export const article = {

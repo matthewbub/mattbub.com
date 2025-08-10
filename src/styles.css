@@ -382,9 +382,6 @@ kbd {
 
 .zz-blogIndex {
   margin: 22px 0 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
 }
 
 .zz-blogIndexArticle {
@@ -695,15 +692,10 @@ kbd {
   .zz-columns {
     column-count: 1;
   }
-
-  .zz-blogIndex {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 680px) {
-  .zz-index,
-  .zz-blogIndex {
+  .zz-index {
     grid-template-columns: 1fr;
   }
 }

@@ -2,6 +2,7 @@
 title: "My Favorite Productivity Tools of 2023"
 description: "It's hard to find a tool I like working with. Maybe it's because I spend all day online, or it's more that I'm a minimalist by nature. Interestingly enough, each of these services tends to specialize in one thing, and they serve that thing to their audience extremely well."
 pubDate: November 27 2023
+tags: ["productivity", "tools", "macos", "apps", "workflow"]
 ---
 
 It's hard to find a tool I like working with. Maybe it's because I spend all day online, or it's more that I'm a minimalist by nature. Interestingly enough, each of these services tends to specialize in one thing, and they serve that thing to their audience extremely well. Another interesting observation is that I've unintentionally compiled a list of one-time-purchase products. I love that. 💚

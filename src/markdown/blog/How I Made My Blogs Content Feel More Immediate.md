@@ -2,6 +2,16 @@
 pubDate: "March 3 2024"
 title: "How I Made My Blogs Content Feel More Immediate"
 description: "We decided to introduce dates in the form of relative time to articles that were recently published on this blog. A particularly beneficial feature with time-sensitive content."
+tags:
+  [
+    "javascript",
+    "dates",
+    "timezones",
+    "date-fns",
+    "dayjs",
+    "frontend",
+    "formatting",
+  ]
 ---
 
 I decided to introduce dates in the form of relative time to articles that were recently published on [this blog](https://www.matthewbub.com/). A particularly beneficial feature with time-sensitive content.

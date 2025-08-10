@@ -30,7 +30,6 @@ Read all the steps before you start.
 
 ```
 ## query
-docker exec -it mattbub sqlite3 /root/data/app.db "SELECT * FROM contact_form_submissions LIMIT 10;"
 
 ## backup
 docker run --rm -v app-data:/data -v $(pwd):/backup alpine cp /data/app.db /backup/backup-$(date +%Y%m%d).db

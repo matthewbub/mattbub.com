@@ -1,157 +1,102 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 import Header from "../components/header";
 import { loadAllBlogPosts } from "../utils/blogLoader";
 import Footer from "../components/footer";
+import Sidebar from "../components/sidebar";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
 export default function Home() {
-  const { data } = useQuery({
-    queryKey: ["stats"],
-    queryFn: () => fetch("/api/stats").then((res) => res.json()),
-  });
   const posts = loadAllBlogPosts();
-
-  console.log(data);
+  const projects = [
+    {
+      title: "Yulissa and Matthew's Wedding",
+      url: "https://yulissaandmatthew.com",
+      description:
+        "A wedding website for Yulissa and Matthew with a custom registry and RSVP system.",
+      stack: "Next.js · Tailwind CSS",
+      year: "2025",
+    },
+    // {
+    //   title: "Static Blog Engine",
+    //   url: "https://github.com/matthewbub/mattbub.com",
+    //   description:
+    //     "Markdown-first publishing with hand-rolled routing, fast builds, and pragmatic DX.",
+    //   stack: "React · TanStack Router · Vite",
+    //   year: "2025",
+    // },
+    // {
+    //   title: "Go Micro API",
+    //   url: "https://github.com/matthewbub/go-micro-api",
+    //   description:
+    //     "Golang service template focused on small surface area, observability, and easy deployment.",
+    //   stack: "Go · Chi · Docker",
+    //   year: "2024",
+    // },
+    // {
+    //   title: "Content Tools",
+    //   url: "https://github.com/matthewbub/content-tools",
+    //   description:
+    //     "CLI helpers that turn notes into publishable artifacts with predictable structure.",
+    //   stack: "Node · TypeScript",
+    //   year: "2023",
+    // },
+    // {
+    //   title: "Drop‑Zone",
+    //   url: "https://github.com/matthewbub/react-drop-zone",
+    //   description:
+    //     "A small drag-and-drop utility focused on accessibility and frictionless uploads.",
+    //   stack: "React · TS",
+    //   year: "2023",
+    // },
+    // {
+    //   title: "Gravatar Helper",
+    //   url: "https://github.com/matthewbub/next-gravatar",
+    //   description:
+    //     "Micro utility to generate consistent avatar URLs with caching in mind.",
+    //   stack: "Next.js · TS",
+    //   year: "2022",
+    // },
+  ];
   return (
     <>
-      {/* Masthead */}
       <Header />
-      {/* Newspaper layout */}
       <main id="front" className="zz-paper">
-        {/* Lead story */}
-        <article className="zz-leadStory" aria-labelledby="lead-headline">
-          <div className="zz-kicker">Profile</div>
-          <h1 id="lead-headline" className="zz-headline">
-            Hey, I'm Matt — software engineer building for the web
-          </h1>
-          <div className="zz-byline">
-            Full‑stack engineer, specializing in Go + TypeScript, Docker, and
-            cloud infrastructure
-          </div>
+        <section className="zz-leadStory">
+          <div className="zz-kicker">Work</div>
+          <h1 className="zz-headline">Web Design and Development</h1>
           <p className="zz-deck">
-            Currently at mPulse (formerly HealthTrio LLC.), developing and
-            maintaining web portal services for healthcare systems used by
-            millions of patients.
+            I move fast and build beautiful things. Check out my work, or{" "}
+            <a href="/contact">hmu</a> for custom work.
           </p>
-          <div className="zz-columns">
-            <p>
-              My focus is pragmatic engineering: clear boundaries, simple data
-              flows, and predictable deployments. I prefer minimal tooling with
-              strong defaults. The result is software that feels fast and gets
-              out of your way.
-            </p>
-            <p>
-              I work across the stack: Go services, TypeScript/React interfaces,
-              PostgreSQL, and a bias toward Dockerized runtimes behind Nginx and
-              Cloudflare. Accessibility and performance are non‑negotiable.
-            </p>
-            <p>
-              You'll find me iterating on small details: latency budgets, tidy
-              schemas, and production‑ready observability. I enjoy working with
-              good folks to build great software.
-            </p>
-          </div>
-          <p className="zz-meta">
-            Based online · Open to interesting problems ·{" "}
-            <a href="mailto:6matbub@gmail.com" className="no-ext">
-              Email me
-            </a>
-          </p>
-          {/* Indexes like a front page */}
-          <section
-            id="projects"
-            className="zz-index"
-            aria-label="Projects index"
-          >
-            <article className="zz-indexArticle">
-              <h3 className="zz-indexHeading">
-                Portfolio Platform
-                {/* <span className="zz-kicker" style={{ marginLeft: 6 }}>
-                  in progress
-                </span> */}
-              </h3>
-              <p className="zz-indexParagraph">
-                Go backend, Dockerized runtime, and a markdown based blog.{" "}
-                <a
-                  href="https://github.com/matthewbub/mattbub.com"
-                  target="_blank"
-                  rel="noopener noreferrer external"
-                >
-                  Repo
-                </a>
-              </p>
-            </article>
-            <article className="zz-indexArticle">
-              <h3 className="zz-indexHeading">New Project</h3>
-              <p className="zz-indexParagraph">
-                Placeholder for the next experiment.{" "}
-                <a href="#contact">Say hi</a> if you'd like to collaborate.
-              </p>
-            </article>
-          </section>
-        </article>
-        <aside className="zz-sidebar" aria-label="Sidebar">
-          <section id="blog" className="zz-sidebarSection">
-            <div className="zz-sectionHead">Latest</div>
-            {posts.slice(0, 3).map((post) => (
-              <div className="zz-tease">
-                <h3 className="zz-teaseHeading">
-                  <a href={`/blog/${post.slug}`} className="no-ext">
-                    {post.title}
-                  </a>
-                </h3>
-                <div className="zz-teaseMeta">
-                  {new Date(post.date!).toLocaleDateString()} · {post.readTime}
-                </div>
-              </div>
-            ))}
-          </section>
 
-          {/* Quick links */}
-          <section className="zz-sidebarSection">
-            <div className="zz-sectionHead">Elsewhere</div>
-            <p className="zz-tease">
-              <a
-                href="https://github.com/matthewbub"
-                target="_blank"
-                rel="noopener noreferrer external"
-              >
-                GitHub
-              </a>
-              — Projects, notes, and experiments.
-            </p>
-            <p className="zz-tease">
-              <a
-                href="https://www.x.com/matthewbub"
-                target="_blank"
-                rel="noopener noreferrer external"
-              >
-                Twitter
-              </a>
-              — Random thoughts.
-            </p>
-            <p className="zz-tease">
-              <a href="mailto:6matbub@gmail.com" className="no-ext">
-                Email
-              </a>{" "}
-              — Best way to reach me.
-            </p>
+          <section aria-labelledby="projects-head">
+            <h2 id="projects-head" className="zz-sectionHead zz-sansFont">
+              Selected Projects
+            </h2>
+            <div className="zz-index">
+              {projects.map((p) => (
+                <article key={p.title} className="zz-indexArticle">
+                  <h3 className="zz-indexHeading">
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer external"
+                    >
+                      {p.title}
+                    </a>
+                  </h3>
+                  <p className="zz-indexParagraph">{p.description}</p>
+                  <div className="zz-meta">
+                    {p.stack} · {p.year}
+                  </div>
+                </article>
+              ))}
+            </div>
           </section>
-          {/* Contact snippet */}
-          <section id="contact" className="zz-sidebarSection">
-            <div className="zz-sectionHead">Contact</div>
-            <p>
-              Prefer a form? Use{" "}
-              <a href="/contact" className="no-ext">
-                the contact section
-              </a>{" "}
-              — goes to my database — or send an email.
-            </p>
-          </section>
-        </aside>
+        </section>
+        <Sidebar posts={posts} />
       </main>
       <Footer />
     </>

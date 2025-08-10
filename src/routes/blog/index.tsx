@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import Header from "../../components/header";
 import { loadAllBlogPosts } from "../../utils/blogLoader";
 import Footer from "../../components/footer";
+import Sidebar from "../../components/sidebar";
 
 export const Route = createFileRoute("/blog/")({
   component: Blog,
@@ -15,7 +16,6 @@ export default function Blog() {
       <Header />
 
       <main className="zz-blogPaper">
-        {/* Lead: Blog index */}
         <article className="zz-blogLead" aria-labelledby="blog-headline">
           <div className="zz-blogKicker">Blog</div>
           <h1 id="blog-headline" className="zz-blogHeadline">
@@ -63,79 +63,8 @@ export default function Blog() {
               </article>
             ))}
           </div>
-
-          {/* <div className="zz-blogPagination">
-            <a href="/blog?page=2" className="no-ext">
-              Older posts →
-            </a>
-          </div> */}
         </article>
-
-        {/* Sidebar */}
-        <aside className="zz-blogSidebar" aria-label="Sidebar">
-          <section className="zz-blogSidebarSection">
-            <div className="zz-blogSectionHead">Latest</div>
-            <div className="zz-blogTease">
-              <h3 className="zz-blogTeaseHeading">
-                <a href="/blog/compact-ui" className="no-ext">
-                  Designing compact UIs without bloat
-                </a>
-              </h3>
-              <div className="zz-blogMeta">
-                Jul 2025 · UI/UX · Read time ~5 min
-              </div>
-            </div>
-            <div className="zz-blogTease">
-              <h3 className="zz-blogTeaseHeading">
-                <a href="/blog/dockerizing-go" className="no-ext">
-                  Dockerizing small Go services
-                </a>
-              </h3>
-              <div className="zz-blogMeta">Jun 2025 · DevOps</div>
-            </div>
-            <div className="zz-blogTease">
-              <h3 className="zz-blogTeaseHeading">
-                <a href="/blog/postgres-notes" className="no-ext">
-                  PostgreSQL notes: simple patterns
-                </a>
-              </h3>
-              <div className="zz-blogMeta">May 2025 · Database</div>
-            </div>
-          </section>
-
-          {/* <section className="zz-blogSidebarSection">
-            <div className="zz-blogSectionHead">Topics</div>
-            <p className="zz-blogTease">
-              <a href="/blog/tag/ui-ux" className="no-ext">
-                UI/UX
-              </a>{" "}
-              — Interaction and layout.
-            </p>
-            <p className="zz-blogTease">
-              <a href="/blog/tag/devops" className="no-ext">
-                DevOps
-              </a>{" "}
-              — Docker, CI, ops notes.
-            </p>
-            <p className="zz-blogTease">
-              <a href="/blog/tag/database" className="no-ext">
-                Database
-              </a>{" "}
-              — Postgres and patterns.
-            </p>
-          </section> */}
-
-          <section className="zz-blogSidebarSection">
-            <div className="zz-blogSectionHead">Contact</div>
-            <p className="zz-blogTease">
-              Prefer a form?{" "}
-              <a href="/contact" className="no-ext">
-                Get in touch
-              </a>{" "}
-              — goes to my database — or send an email.
-            </p>
-          </section>
-        </aside>
+        <Sidebar posts={posts} />
       </main>
 
       <Footer />

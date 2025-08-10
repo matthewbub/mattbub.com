@@ -2,6 +2,7 @@
 title: "Serving Static Content with Go and Gin"
 description: "A straightforward guide to serving static content using Go and the Gin web framework."
 pubDate: "March 19 2024"
+tags: ["go", "gin", "web", "static-files", "server", "http", "backend"]
 ---
 
 To build a web app you've got to be able to serve static content somehow. This article aims to do just that with HTML, CSS and JavaScript.

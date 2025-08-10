@@ -2,6 +2,7 @@
 title: "Hand rolling drop-zone components in React"
 description: "Tired of that old 'Choose file' button? Yeah, me too. Let's build a proper drag-and-drop file uploader in React because it's 2024 and we deserve better UX than clicking tiny buttons like savages."
 pubDate: "August 2 2024"
+tags: ["react", "drag-and-drop", "file-upload", "nextjs", "components", "ux"]
 ---
 
 Alright so like when's the last time you had to actually select that old HTML "Choose file" button? I usually don't like to pull this card but _it is 2024 after all_, and since most of us are using React anyway, I figure we might as well cover what a file uploader with drag and dropping capabilities might look like.
@@ -163,32 +164,32 @@ const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
   event.preventDefault();
   event.stopPropagation();
   setIsDragging(false);
-  
+
   const droppedFiles = Array.from(event.dataTransfer.files);
   const validFiles: File[] = [];
   const errors: string[] = [];
-  
-  droppedFiles.forEach(file => {
+
+  droppedFiles.forEach((file) => {
     // Check file type
-    if (!file.type.startsWith('image/')) {
+    if (!file.type.startsWith("image/")) {
       errors.push(`${file.name} is not an image file`);
       return;
     }
-    
+
     // Check file size (5MB limit)
     if (file.size > 5 * 1024 * 1024) {
       errors.push(`${file.name} is too large (max 5MB)`);
       return;
     }
-    
+
     validFiles.push(file);
   });
-  
+
   if (errors.length > 0) {
-    console.error('File validation errors:', errors);
+    console.error("File validation errors:", errors);
     // You'd probably want to show these errors to the user
   }
-  
+
   setFiles(validFiles);
 };
 ```
@@ -228,7 +229,7 @@ return (
         onChange={handleFileInputChange}
         multiple
         accept="image/*"
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
       />
     </div>
     <ul>
@@ -246,25 +247,25 @@ Now for the actual upload part. This is where you'd typically send the files to 
 ```tsx
 const uploadFiles = async (filesToUpload: File[]) => {
   const formData = new FormData();
-  
+
   filesToUpload.forEach((file, index) => {
     formData.append(`file-${index}`, file);
   });
-  
+
   try {
-    const response = await fetch('/api/upload', {
-      method: 'POST',
+    const response = await fetch("/api/upload", {
+      method: "POST",
       body: formData,
     });
-    
+
     if (response.ok) {
-      console.log('Files uploaded successfully');
+      console.log("Files uploaded successfully");
       setFiles([]); // Clear the files after successful upload
     } else {
-      console.error('Upload failed');
+      console.error("Upload failed");
     }
   } catch (error) {
-    console.error('Upload error:', error);
+    console.error("Upload error:", error);
   }
 };
 ```
@@ -272,4 +273,3 @@ const uploadFiles = async (filesToUpload: File[]) => {
 ## Wrapping Up
 
 personally, i find joy in understanding what's happening under the hood. However in many production instances you'd probably just want to reach for an open source alternative :)
-
