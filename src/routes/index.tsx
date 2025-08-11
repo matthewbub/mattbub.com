@@ -3,11 +3,17 @@ import Header from "../components/header";
 import { loadAllBlogPosts } from "../utils/blogLoader";
 import Footer from "../components/footer";
 import Sidebar from "../components/sidebar";
+import { useQuery } from "@tanstack/react-query";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
 export default function Home() {
+  const { data } = useQuery({
+    queryKey: ["stats"],
+    queryFn: () => fetch("/api/stats").then((res) => res.json()),
+  });
+  console.log(data);
   const posts = loadAllBlogPosts();
   const projects = [
     {
