@@ -4,7 +4,7 @@ export default function Sidebar({ posts }: { posts: BlogPost[] }) {
   return (
     <aside className="zz-sidebar" aria-label="Sidebar">
       <section id="blog" className="zz-sidebarSection">
-        <div className="zz-sectionHead">Latest</div>
+        <div className="zz-sectionHead">Latest posts</div>
         {posts.slice(0, 3).map((post) => (
           <div className="zz-tease">
             <h3 className="zz-teaseHeading">

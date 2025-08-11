@@ -9,10 +9,11 @@ RUN pnpm run build
 # Stage 2: Build Go app
 FROM golang:1.23-alpine AS backend-builder
 WORKDIR /app
+ARG GIT_COMMIT=unknown
 COPY go.mod ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.GitCommit=$(git rev-parse HEAD)" -o matthewbub .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.GitCommit=${GIT_COMMIT}" -o matthewbub .
 
 # Stage 3: Final image
 FROM alpine:3.20

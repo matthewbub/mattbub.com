@@ -64,11 +64,11 @@ export default function Contact() {
       <main className="zz-paper">
         {/* Lead area: Contact form */}
         <article className="zz-leadStory" aria-labelledby="contact-headline">
-          <div className="zz-kicker zz-sansFont">Get in touch</div>
+          <div className="zz-kicker">Get in touch</div>
           <h1 id="contact-headline" className="zz-headline">
             Contact Matt
           </h1>
-          <div className="zz-byline zz-sansFont">
+          <div className="zz-byline">
             Prefer email?{" "}
             <a href="mailto:6matbub@gmail.com" className="no-ext">
               6matbub@gmail.com
@@ -92,11 +92,10 @@ export default function Contact() {
               marginTop: 8,
             }}
           >
-            {/* Name */}
             <div style={{ gridColumn: "1 / 2" }}>
               <label
                 htmlFor={nameId}
-                className="zz-kicker zz-sansFont"
+                className="zz-kicker"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Name <span aria-hidden="true">*</span>
@@ -109,15 +108,15 @@ export default function Contact() {
                 inputMode="text"
                 autoComplete="name"
                 placeholder="Enter your name"
+                maxLength={100}
                 style={inputStyle}
               />
             </div>
 
-            {/* Email */}
             <div style={{ gridColumn: "2 / 3" }}>
               <label
                 htmlFor={emailId}
-                className="zz-kicker zz-sansFont"
+                className="zz-kicker"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Email <span aria-hidden="true">*</span>
@@ -130,15 +129,15 @@ export default function Contact() {
                 inputMode="email"
                 autoComplete="email"
                 placeholder="Enter your email"
+                maxLength={100}
                 style={inputStyle}
               />
             </div>
 
-            {/* Subject */}
             <div style={{ gridColumn: "1 / 3" }}>
               <label
                 htmlFor={subjectId}
-                className="zz-kicker zz-sansFont"
+                className="zz-kicker"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Subject
@@ -148,15 +147,15 @@ export default function Contact() {
                 name="subject"
                 type="text"
                 placeholder="Project idea, quick question, etc."
+                maxLength={200}
                 style={inputStyle}
               />
             </div>
 
-            {/* Message */}
             <div style={{ gridColumn: "1 / 3" }}>
               <label
                 htmlFor={messageId}
-                className="zz-kicker zz-sansFont"
+                className="zz-kicker"
                 style={{ display: "block", marginBottom: 6 }}
               >
                 Message <span aria-hidden="true">*</span>
@@ -167,18 +166,18 @@ export default function Contact() {
                 required
                 rows={8}
                 placeholder="Share details, links, timelines—whatever helps."
+                maxLength={2000}
                 style={{
                   ...inputStyle,
                   resize: "vertical",
                   lineHeight: 1.5,
                 }}
               />
-              <div className="zz-byline zz-sansFont" style={{ marginTop: 6 }}>
+              <div className="zz-byline" style={{ marginTop: 6 }}>
                 I won’t share your info. Fields marked with * are required.
               </div>
             </div>
 
-            {/* Actions */}
             <div
               style={{
                 gridColumn: "1 / 3",
@@ -201,7 +200,7 @@ export default function Contact() {
                 id={statusId}
                 role="status"
                 aria-live="polite"
-                className="zz-byline zz-sansFont"
+                className="zz-byline"
                 style={{ minHeight: 18 }}
               >
                 {mutation.isSuccess && "Thanks — your message was sent."}
@@ -230,7 +229,7 @@ export default function Contact() {
         {/* Sidebar */}
         <aside className="zz-sidebar" aria-label="Contact sidebar">
           <section className="zz-sidebarSection">
-            <div className="zz-sectionHead zz-sansFont">Direct</div>
+            <div className="zz-sectionHead">Direct</div>
             <p className="zz-tease">
               <a href="mailto:6matbub@gmail.com" className="no-ext">
                 Email
@@ -249,14 +248,14 @@ export default function Contact() {
             </p>
           </section>
           <section className="zz-sidebarSection">
-            <div className="zz-sectionHead zz-sansFont">Response window</div>
+            <div className="zz-sectionHead">Response window</div>
             <p className="zz-tease">
               I aim to reply within 1–2 business days. If urgent, mention your
               deadline.
             </p>
           </section>
           <section className="zz-sidebarSection">
-            <div className="zz-sectionHead zz-sansFont">What helps</div>
+            <div className="zz-sectionHead">What helps</div>
             <div className="zz-tease">
               <h3 className="zz-teaseHeading">Context</h3>
               <div className="zz-teaseMeta">
