@@ -248,7 +248,12 @@ kbd {
   color: var(--muted);
   font-size: 12.5px;
   border-top: 1px solid var(--rule);
-  padding-top: 8px;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+.zz-projectsHead {
+  margin-top: 40px;
 }
 
 /* Content layout utilities */
@@ -301,7 +306,6 @@ kbd {
 
 /* Index layouts */
 .zz-index {
-  margin: 22px 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px 24px;

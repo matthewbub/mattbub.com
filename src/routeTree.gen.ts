@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AppTimelineRouteImport } from './routes/app-timeline'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
@@ -18,11 +17,6 @@ import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppTimelineRoute = AppTimelineRouteImport.update({
-  id: '/app-timeline',
-  path: '/app-timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,14 +37,12 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/app-timeline': typeof AppTimelineRoute
   '/contact': typeof ContactRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app-timeline': typeof AppTimelineRoute
   '/contact': typeof ContactRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -58,22 +50,20 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/app-timeline': typeof AppTimelineRoute
   '/contact': typeof ContactRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app-timeline' | '/contact' | '/blog/$slug' | '/blog'
+  fullPaths: '/' | '/contact' | '/blog/$slug' | '/blog'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app-timeline' | '/contact' | '/blog/$slug' | '/blog'
-  id: '__root__' | '/' | '/app-timeline' | '/contact' | '/blog/$slug' | '/blog/'
+  to: '/' | '/contact' | '/blog/$slug' | '/blog'
+  id: '__root__' | '/' | '/contact' | '/blog/$slug' | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppTimelineRoute: typeof AppTimelineRoute
   ContactRoute: typeof ContactRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -86,13 +76,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/app-timeline': {
-      id: '/app-timeline'
-      path: '/app-timeline'
-      fullPath: '/app-timeline'
-      preLoaderRoute: typeof AppTimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -121,7 +104,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppTimelineRoute: AppTimelineRoute,
   ContactRoute: ContactRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,

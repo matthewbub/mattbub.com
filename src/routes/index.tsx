@@ -73,12 +73,15 @@ export default function Home() {
           <div className="zz-kicker">Work</div>
           <h1 className="zz-headline">Web Design and Development</h1>
           <p className="zz-deck">
-            I move fast and build beautiful things. Check out my work, or{" "}
-            <a href="/contact">hmu</a> for custom work.
+            I move fast and occasionally build beautiful things.{" "}
+            <a href="/contact">Hmu</a> for custom work.
           </p>
 
           <section aria-labelledby="projects-head">
-            <h2 id="projects-head" className="zz-sectionHead zz-sansFont">
+            <h2
+              id="projects-head"
+              className="zz-sectionHead zz-sansFont zz-projectsHead"
+            >
               Selected Projects
             </h2>
             <div className="zz-index">
