@@ -74,7 +74,10 @@ export default function Home() {
           <h1 className="zz-headline">Web Design and Development</h1>
           <p className="zz-deck">
             I move fast and occasionally build beautiful things.{" "}
-            <a href="/contact">Hmu</a> for custom work.
+            <a href="/contact" className="zz-link">
+              Hmu
+            </a>{" "}
+            for custom work.
           </p>
 
           <section aria-labelledby="projects-head">

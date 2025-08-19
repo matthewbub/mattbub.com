@@ -1,30 +1,3 @@
-/* Unified Stylesheet - Merged from index.css, blog.css, and blog-post.css */
-
-/* CSS Variables */
-:root {
-  --bg: #ffffff;
-  --ink: #111827;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --rule: #e5e7eb;
-  --link: #1d4ed8;
-  --link-hover: #0f3bbd;
-  --underline: rgba(29, 78, 216, 0.25);
-  --maxw: 1080px;
-  --gutter: 18px;
-  --code-bg: #0b1020;
-  --code-fg: #e6ecff;
-  --code-border: #1e2a4a;
-  --kbd-bg: #111827;
-  --kbd-fg: #e5e7eb;
-  --font-sans:
-    "DM Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-serif:
-    "Libertinus Serif", ui-serif, Georgia, Cambria, "Times New Roman", Times,
-    serif;
-}
-
 /* Base HTML Elements */
 html,
 body,
@@ -56,65 +29,6 @@ h6,
   font-family: var(--font-sans);
 }
 
-/* Links - Global styling with external indicators */
-a {
-  color: var(--link);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-color: var(--underline);
-  transition:
-    color 120ms ease,
-    text-decoration-color 120ms ease;
-}
-
-a:hover,
-a:focus {
-  color: var(--link-hover);
-  text-decoration-color: currentColor;
-  outline: none;
-}
-
-a[target="_blank"]:not(.no-ext)::after,
-a[rel~="external"]:not(.no-ext)::after,
-a.external::after {
-  content: "↗";
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 0.9em;
-  transform: translateY(-1px);
-  color: currentColor;
-}
-
-/* Article typography - ensure Libertinus Serif for body text */
-article {
-  min-width: 0;
-  font-family: var(--font-serif);
-}
-
-article h2 {
-  font-size: 20px;
-  margin: 24px 0 8px;
-}
-
-article h3 {
-  font-size: 16px;
-  margin: 18px 0 6px;
-}
-
-article p {
-  margin: 10px 0;
-  line-height: 1.65;
-}
-
-article ul,
-article ol {
-  padding-left: 20px;
-}
-
-article li {
-  margin: 6px 0;
-}
-
 /* Code styling */
 pre,
 code,
@@ -139,24 +53,6 @@ kbd {
 
 .zz-sansFont {
   font-family: var(--font-sans);
-}
-
-/* Links */
-.zz-link {
-  color: var(--link);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-color: var(--underline);
-  transition:
-    color 120ms ease,
-    text-decoration-color 120ms ease;
-}
-
-.zz-link:hover,
-.zz-link:focus {
-  color: var(--link-hover);
-  text-decoration-color: currentColor;
-  outline: none;
 }
 
 /* Header/Masthead */

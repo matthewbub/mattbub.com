@@ -70,7 +70,7 @@ export default function Contact() {
           </h1>
           <div className="zz-byline">
             Prefer email?{" "}
-            <a href="mailto:6matbub@gmail.com" className="no-ext">
+            <a href="mailto:6matbub@gmail.com" className="no-ext zz-link">
               6matbub@gmail.com
             </a>
           </div>
@@ -231,7 +231,7 @@ export default function Contact() {
           <section className="zz-sidebarSection">
             <div className="zz-sectionHead">Direct</div>
             <p className="zz-tease">
-              <a href="mailto:6matbub@gmail.com" className="no-ext">
+              <a href="mailto:6matbub@gmail.com" className="no-ext zz-link">
                 Email
               </a>{" "}
               — Best way to reach me.

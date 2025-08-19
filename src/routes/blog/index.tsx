@@ -43,7 +43,7 @@ export default function Blog() {
             {posts.map((p) => (
               <article key={p.id} className="zz-blogIndexArticle">
                 <h3 className="zz-blogIndexHeading">
-                  <a href={`/blog/${p.slug}`} className="no-ext">
+                  <a href={`/blog/${p.slug}`} className="no-ext zz-link">
                     {p.title}
                   </a>
                 </h3>

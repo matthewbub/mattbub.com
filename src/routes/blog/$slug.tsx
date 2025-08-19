@@ -121,7 +121,7 @@ export default function BlogPost() {
             <div className="zz-blogPostSectionHead">Related</div>
             <div className="zz-blogPostTease">
               <h3 className="zz-blogPostTeaseHeading">
-                <a href="/blog" className="no-ext">
+                <a href="/blog" className="no-ext zz-link">
                   ← Back to all posts
                 </a>
               </h3>

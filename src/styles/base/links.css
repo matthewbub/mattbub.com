@@ -1,0 +1,27 @@
+.zz-link {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--underline);
+  transition:
+    color 120ms ease,
+    text-decoration-color 120ms ease;
+}
+
+.zz-link:hover,
+.zz-link:focus {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+  outline: none;
+}
+
+.zz-link[target="_blank"]:not(.no-ext)::after,
+.zz-link[rel~="external"]:not(.no-ext)::after,
+.zz-link.external::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.9em;
+  transform: translateY(-1px);
+  color: currentColor;
+}

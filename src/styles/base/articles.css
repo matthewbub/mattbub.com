@@ -1,0 +1,28 @@
+article {
+  min-width: 0;
+  font-family: var(--font-serif);
+}
+
+article h2 {
+  font-size: 20px;
+  margin: 24px 0 8px;
+}
+
+article h3 {
+  font-size: 16px;
+  margin: 18px 0 6px;
+}
+
+article p {
+  margin: 10px 0;
+  line-height: 1.65;
+}
+
+article ul,
+article ol {
+  padding-left: 20px;
+}
+
+article li {
+  margin: 6px 0;
+}
