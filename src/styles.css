@@ -12,94 +12,6 @@ body {
   font: 15px/1.65 var(--font-serif);
 }
 
-/* Headings use sans-serif across all contexts */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.brand,
-.nav a,
-.meta,
-.pill,
-.btn,
-.toc,
-.caption {
-  font-family: var(--font-sans);
-}
-
-/* Code styling */
-pre,
-code,
-kbd {
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  font-size: 13px;
-}
-
-/* KBD styling */
-kbd {
-  background: var(--kbd-bg);
-  color: var(--kbd-fg);
-  border: 1px solid #222;
-  border-bottom-width: 2px;
-  border-radius: 6px;
-  padding: 2px 6px;
-}
-
-/* === ZZ-PREFIXED ATOMIC CLASSES === */
-
-.zz-sansFont {
-  font-family: var(--font-sans);
-}
-
-/* Header/Masthead */
-.zz-masthead {
-  border-bottom: 2px solid var(--rule);
-  margin: 0 auto;
-  max-width: var(--maxw);
-  padding: 16px var(--gutter) 10px;
-}
-
-.zz-topline {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.zz-brand {
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  font-size: 28px;
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.zz-navigation {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.zz-navLink {
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 13px;
-  padding: 4px 0;
-  border-bottom: 2px solid transparent;
-}
-
-.zz-navLink[aria-current="page"],
-.zz-navLink:hover,
-.zz-navLinkActive {
-  border-bottom-color: var(--ink);
-}
-
 /* Main Layout - Paper system */
 .zz-paper {
   margin: 0 auto;
@@ -113,39 +25,6 @@ kbd {
 .zz-leadStory {
   border-right: 1px solid var(--rule);
   padding-right: 24px;
-}
-
-/* Typography components */
-.zz-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.zz-headline {
-  font-size: clamp(24px, 4vw, 36px);
-  line-height: 1.15;
-  margin: 6px 0 6px;
-}
-
-.zz-byline {
-  font-size: 12.5px;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.zz-deck {
-  font-size: 16px;
-  margin: 8px 0 12px;
-}
-
-.zz-meta {
-  color: var(--muted);
-  font-size: 12.5px;
-  border-top: 1px solid var(--rule);
-  padding-top: 10px;
-  margin-top: 20px;
 }
 
 .zz-projectsHead {
@@ -169,14 +48,6 @@ kbd {
   padding-top: 14px;
 }
 
-.zz-sectionHead {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-
 /* Teaser components */
 .zz-tease {
   margin: 0 0 10px;
@@ -190,16 +61,6 @@ kbd {
   margin-bottom: 0;
 }
 
-.zz-teaseHeading {
-  font-size: 14.5px;
-  margin: 0 0 4px;
-}
-
-.zz-teaseMeta {
-  color: var(--muted);
-  font-size: 12px;
-}
-
 /* Index layouts */
 .zz-index {
   display: grid;
@@ -209,29 +70,6 @@ kbd {
 
 .zz-indexArticle {
   padding-top: 10px;
-}
-
-.zz-indexHeading {
-  font-size: 14.5px;
-  margin: 0 0 4px;
-}
-
-.zz-indexParagraph {
-  margin: 0;
-}
-
-/* Footer */
-.zz-footer {
-  border-top: 2px solid var(--rule);
-  margin: 24px auto 0;
-  max-width: var(--maxw);
-  padding: 12px var(--gutter) 32px;
-  color: var(--muted);
-  font-size: 12.5px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
 }
 
 /* === BLOG-SPECIFIC CLASSES === */
@@ -251,46 +89,12 @@ kbd {
   padding-right: 24px;
 }
 
-.zz-blogKicker {
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.zz-blogHeadline {
-  font-size: clamp(24px, 4vw, 36px);
-  line-height: 1.15;
-  margin: 6px 0 6px;
-}
-
-.zz-blogByline {
-  font-size: 12.5px;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.zz-blogDeck {
-  font-size: 16px;
-  margin: 8px 0 12px;
-}
-
-.zz-blogMeta {
-  color: var(--muted);
-  font-size: 12.5px;
-}
-
 .zz-blogIndex {
   margin: 22px 0 0;
 }
 
 .zz-blogIndexArticle {
   padding-top: 10px;
-}
-
-.zz-blogIndexHeading {
-  font-size: 14.5px;
-  margin: 0 0 4px;
 }
 
 .zz-blogSidebar {
@@ -301,14 +105,6 @@ kbd {
   border-top: 1px solid var(--border);
   margin-top: 14px;
   padding-top: 14px;
-}
-
-.zz-blogSectionHead {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  margin-bottom: 6px;
 }
 
 .zz-blogTease {
@@ -323,148 +119,7 @@ kbd {
   margin-bottom: 0;
 }
 
-.zz-blogTeaseHeading {
-  font-size: 14.5px;
-  margin: 0 0 4px;
-}
-
 /* === BLOG POST SPECIFIC CLASSES === */
-
-/* Markdown Content Styling */
-.zz-markdownContent {
-  min-width: 0;
-  font-family: var(--font-serif);
-}
-
-/* Headings */
-.zz-heading {
-  font-family: var(--font-sans);
-  color: var(--ink);
-}
-
-.zz--primaryHeading {
-  font-size: 28px;
-  margin: 24px 0 12px 0;
-}
-
-.zz--secondaryHeading {
-  font-size: 20px;
-  margin: 24px 0 8px;
-}
-
-.zz--tertiaryHeading {
-  font-size: 16px;
-  margin: 18px 0 6px;
-}
-
-/* Text elements - ensure Libertinus Serif */
-.zz-paragraph {
-  margin: 10px 0;
-  line-height: 1.65;
-  color: var(--ink);
-  font-family: var(--font-serif);
-}
-
-.zz-text {
-  color: var(--ink);
-  font-family: var(--font-serif);
-}
-
-.zz--boldText {
-  font-weight: 600;
-}
-
-.zz--italicText {
-  font-style: italic;
-}
-
-/* Lists */
-.zz-list {
-  padding-left: 20px;
-  margin: 10px 0;
-  color: var(--ink);
-  font-family: var(--font-serif);
-}
-
-.zz--unorderedList {
-  list-style: disc;
-}
-
-.zz--orderedList {
-  list-style: decimal;
-}
-
-.zz-listItem,
-.zz--bulletPoint {
-  margin: 6px 0;
-}
-
-/* Code styling */
-.zz-code,
-.zz-codeBlock {
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  font-size: 13px;
-  color: var(--ink);
-}
-
-.zz--inlineCode {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: 4px;
-  padding: 1px 4px;
-}
-
-/* Light code block styling */
-.zz--syntaxHighlight {
-  background: #f8fafc;
-  color: var(--ink);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 14px;
-  overflow: auto;
-  margin: 12px 0;
-}
-
-.zz--syntaxHighlight > code {
-  color: inherit;
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-/* Light theme token colors for blog posts */
-.zz--syntaxHighlight .t-kw {
-  color: #1d4ed8;
-}
-.zz--syntaxHighlight .t-fn {
-  color: #065f46;
-}
-.zz--syntaxHighlight .t-ty {
-  color: #92400e;
-}
-.zz--syntaxHighlight .t-str {
-  color: #0657a6;
-}
-.zz--syntaxHighlight .t-cmt {
-  color: #6b7280;
-}
-.zz--syntaxHighlight .t-num {
-  color: #b45309;
-}
-
-/* Quotes */
-.zz-quote,
-.zz--blockQuote {
-  border-left: 3px solid #cbd5e1;
-  padding: 8px 12px;
-  margin: 12px 0;
-  background: #f8fafc;
-  font-style: italic;
-  color: var(--ink);
-  font-family: var(--font-serif);
-}
 
 /* Blog Post Layout */
 .zz--blogPost {
@@ -485,30 +140,6 @@ kbd {
   padding-right: 24px;
 }
 
-.zz-blogPostKicker {
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.zz-blogPostHeadline {
-  font-size: clamp(24px, 4vw, 36px);
-  line-height: 1.15;
-  margin: 6px 0 6px;
-}
-
-.zz-blogPostByline {
-  font-size: 12.5px;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.zz-blogPostDeck {
-  font-size: 16px;
-  margin: 8px 0 12px;
-}
-
 .zz-blogPostSidebar {
   min-width: 0;
 }
@@ -517,14 +148,6 @@ kbd {
   border-top: 1px solid var(--border);
   margin-top: 14px;
   padding-top: 14px;
-}
-
-.zz-blogPostSectionHead {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  margin-bottom: 6px;
 }
 
 .zz-blogPostTease {
@@ -537,16 +160,6 @@ kbd {
   border-bottom: none;
   padding-bottom: 0;
   margin-bottom: 0;
-}
-
-.zz-blogPostTeaseHeading {
-  font-size: 14.5px;
-  margin: 0 0 4px;
-}
-
-.zz-blogPostMeta {
-  color: var(--muted);
-  font-size: 12.5px;
 }
 
 .zz-blogPostButton {

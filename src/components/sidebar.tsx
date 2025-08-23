@@ -35,7 +35,7 @@ export default function Sidebar({ posts }: { posts: BlogPost[] }) {
         </p>
         <p className="zz-tease">
           <a
-            href="https://www.x.com/matthewbub"
+            href="https://www.x.com/matthew_bub"
             target="_blank"
             rel="noopener noreferrer external"
             className="zz-link"
