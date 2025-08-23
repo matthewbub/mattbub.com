@@ -1,0 +1,43 @@
+.zz-masthead {
+  border-bottom: 2px solid var(--rule);
+  margin: 0 auto;
+  max-width: var(--maxw);
+  padding: 16px var(--gutter) 10px;
+}
+
+.zz-topline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.zz-brand {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: 28px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.zz-navigation {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.zz-navLink {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.zz-navLink[aria-current="page"],
+.zz-navLink:hover,
+.zz-navLinkActive {
+  border-bottom-color: var(--ink);
+}

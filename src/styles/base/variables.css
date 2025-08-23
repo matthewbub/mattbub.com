@@ -1,0 +1,19 @@
+:root {
+  --bg: #ffffff;
+  --ink: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --rule: #e5e7eb;
+  --link: #1d4ed8;
+  --link-hover: #0f3bbd;
+  --underline: rgba(29, 78, 216, 0.25);
+  --maxw: 1080px;
+  --gutter: 18px;
+  --code-bg: #0b1020;
+  --code-fg: #e6ecff;
+  --code-border: #1e2a4a;
+  --kbd-bg: #111827;
+  --kbd-fg: #e5e7eb;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system;
+  --font-serif: "Libertinus Serif", ui-serif, Georgia, "Times New Roman";
+}

@@ -1,0 +1,318 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand,
+.nav a,
+.meta,
+.pill,
+.btn,
+.toc,
+.caption {
+  font-family: var(--font-sans);
+}
+
+pre,
+code,
+kbd {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 13px;
+}
+
+kbd {
+  background: var(--kbd-bg);
+  color: var(--kbd-fg);
+  border: 1px solid #222;
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.zz-sansFont {
+  font-family: var(--font-sans);
+}
+
+.zz-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.zz-headline {
+  font-size: clamp(24px, 4vw, 36px);
+  line-height: 1.15;
+  margin: 6px 0 6px;
+}
+
+.zz-byline {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.zz-deck {
+  font-size: 16px;
+  margin: 8px 0 12px;
+}
+
+.zz-meta {
+  color: var(--muted);
+  font-size: 12.5px;
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+.zz-sectionHead {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.zz-teaseHeading {
+  font-size: 14.5px;
+  margin: 0 0 4px;
+}
+
+.zz-teaseMeta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.zz-indexHeading {
+  font-size: 14.5px;
+  margin: 0 0 4px;
+}
+
+.zz-indexParagraph {
+  margin: 0;
+}
+
+.zz-blogKicker {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.zz-blogHeadline {
+  font-size: clamp(24px, 4vw, 36px);
+  line-height: 1.15;
+  margin: 6px 0 6px;
+}
+
+.zz-blogByline {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.zz-blogDeck {
+  font-size: 16px;
+  margin: 8px 0 12px;
+}
+
+.zz-blogMeta {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.zz-blogIndexHeading {
+  font-size: 14.5px;
+  margin: 0 0 4px;
+}
+
+.zz-blogSectionHead {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.zz-blogTeaseHeading {
+  font-size: 14.5px;
+  margin: 0 0 4px;
+}
+
+.zz-markdownContent {
+  min-width: 0;
+  font-family: var(--font-serif);
+}
+
+.zz-heading {
+  font-family: var(--font-sans);
+  color: var(--ink);
+}
+
+.zz--primaryHeading {
+  font-size: 28px;
+  margin: 24px 0 12px 0;
+}
+
+.zz--secondaryHeading {
+  font-size: 20px;
+  margin: 24px 0 8px;
+}
+
+.zz--tertiaryHeading {
+  font-size: 16px;
+  margin: 18px 0 6px;
+}
+
+.zz-paragraph {
+  margin: 10px 0;
+  line-height: 1.65;
+  color: var(--ink);
+  font-family: var(--font-serif);
+}
+
+.zz-text {
+  color: var(--ink);
+  font-family: var(--font-serif);
+}
+
+.zz--boldText {
+  font-weight: 600;
+}
+
+.zz--italicText {
+  font-style: italic;
+}
+
+.zz-list {
+  padding-left: 20px;
+  margin: 10px 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+}
+
+.zz--unorderedList {
+  list-style: disc;
+}
+
+.zz--orderedList {
+  list-style: decimal;
+}
+
+.zz-listItem,
+.zz--bulletPoint {
+  margin: 6px 0;
+}
+
+.zz-code,
+.zz-codeBlock {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.zz--inlineCode {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+.zz--syntaxHighlight {
+  background: #f8fafc;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  overflow: auto;
+  margin: 12px 0;
+}
+
+.zz--syntaxHighlight > code {
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.zz--syntaxHighlight .t-kw {
+  color: #1d4ed8;
+}
+
+.zz--syntaxHighlight .t-fn {
+  color: #065f46;
+}
+
+.zz--syntaxHighlight .t-ty {
+  color: #92400e;
+}
+
+.zz--syntaxHighlight .t-str {
+  color: #0657a6;
+}
+
+.zz--syntaxHighlight .t-cmt {
+  color: #6b7280;
+}
+
+.zz--syntaxHighlight .t-num {
+  color: #b45309;
+}
+
+.zz-quote,
+.zz--blockQuote {
+  border-left: 3px solid #cbd5e1;
+  padding: 8px 12px;
+  margin: 12px 0;
+  background: #f8fafc;
+  font-style: italic;
+  color: var(--ink);
+  font-family: var(--font-serif);
+}
+
+.zz-blogPostKicker {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.zz-blogPostHeadline {
+  font-size: clamp(24px, 4vw, 36px);
+  line-height: 1.15;
+  margin: 6px 0 6px;
+}
+
+.zz-blogPostByline {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.zz-blogPostDeck {
+  font-size: 16px;
+  margin: 8px 0 12px;
+}
+
+.zz-blogPostSectionHead {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.zz-blogPostTeaseHeading {
+  font-size: 14.5px;
+  margin: 0 0 4px;
+}
+
+.zz-blogPostMeta {
+  color: var(--muted);
+  font-size: 12.5px;
+}

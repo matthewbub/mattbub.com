@@ -27,6 +27,7 @@ export default function Sidebar({ posts }: { posts: BlogPost[] }) {
             href="https://github.com/matthewbub"
             target="_blank"
             rel="noopener noreferrer external"
+            className="zz-link"
           >
             GitHub
           </a>
@@ -34,16 +35,17 @@ export default function Sidebar({ posts }: { posts: BlogPost[] }) {
         </p>
         <p className="zz-tease">
           <a
-            href="https://www.x.com/matthewbub"
+            href="https://www.x.com/matthew_bub"
             target="_blank"
             rel="noopener noreferrer external"
+            className="zz-link"
           >
             Twitter
           </a>
           — Random thoughts.
         </p>
         <p className="zz-tease">
-          <a href="mailto:6matbub@gmail.com" className="no-ext">
+          <a href="mailto:6matbub@gmail.com" className="no-ext zz-link">
             Email
           </a>{" "}
           — Best way to reach me.
@@ -54,7 +56,7 @@ export default function Sidebar({ posts }: { posts: BlogPost[] }) {
         <div className="zz-sectionHead">Contact</div>
         <p>
           Prefer a form? Use{" "}
-          <a href="/contact" className="no-ext">
+          <a href="/contact" className="no-ext zz-link">
             the contact section
           </a>{" "}
           — goes to my database — or send an email.
