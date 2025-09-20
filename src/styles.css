@@ -63,9 +63,6 @@ body {
 
 /* Index layouts */
 .zz-index {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
 }
 
 .zz-indexArticle {
@@ -73,6 +70,13 @@ body {
 }
 
 /* === BLOG-SPECIFIC CLASSES === */
+
+.zz-indexImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
 
 /* Blog Paper Layout - unified with main paper */
 .zz-blogPaper {

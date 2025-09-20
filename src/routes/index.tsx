@@ -18,10 +18,12 @@ export default function Home() {
   const projects = [
     {
       title: "Yulissa and Matthew's Wedding",
+      img: "/yulissaandmatthewwebsite.gif",
       url: "https://yulissaandmatthew.com",
-      description:
-        "A wedding website for Yulissa and Matthew with a custom registry and RSVP system.",
-      stack: "Next.js · Tailwind CSS",
+      description: `A carefully crafted wedding website for Yulissa and Matthew (me) with a custom registry and RSVP system. This thing is super fast. Since 99% of the traffic is on mobile, there's intuitive features such as swiping left / right to navigation the 
+      app as well as a mobile first design. It has to support multiple languages (Spanish and English).`,
+      stack:
+        "Next.js · Tailwind CSS · Clerk · Neon · Drizzle · Stripe · Vercel · Cloudflare · Sentry · Posthog",
       year: "2025",
     },
     // {
@@ -71,9 +73,10 @@ export default function Home() {
       <main id="front" className="zz-paper">
         <section className="zz-leadStory">
           <div className="zz-kicker">Work</div>
-          <h1 className="zz-headline">Web Design and Development</h1>
+          <h1 className="zz-headline">Developing for the web</h1>
           <p className="zz-deck">
-            I move fast and occasionally build beautiful things.{" "}
+            Enterprise engineer by day, indie hacker by night. I move fast but
+            thoughtfully first.{" "}
             <a href="/contact" className="zz-link">
               Hmu
             </a>{" "}
@@ -90,11 +93,13 @@ export default function Home() {
             <div className="zz-index">
               {projects.map((p) => (
                 <article key={p.title} className="zz-indexArticle">
+                  <img src={p.img} alt={p.title} className="zz-indexImage" />
                   <h3 className="zz-indexHeading">
                     <a
                       href={p.url}
                       target="_blank"
                       rel="noopener noreferrer external"
+                      className="zz-link"
                     >
                       {p.title}
                     </a>
