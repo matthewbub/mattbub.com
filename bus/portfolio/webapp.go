@@ -16,7 +16,14 @@ func WebappHandler(w http.ResponseWriter, req *http.Request) {
 		}
 
 		// No cookie = new session, count the view
-		if err := incrementPageView(path, req.UserAgent(), req.Referer()); err != nil {
+		if err := incrementPageView(
+			path,
+			req.UserAgent(),
+			req.Referer(),
+			getClientIP(req),
+			req.Header.Get("Accept-Language"),
+			req.Method,
+		); err != nil {
 			log.Printf("Failed to increment page view: %v", err)
 		}
 
