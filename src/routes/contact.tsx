@@ -66,7 +66,7 @@ export default function Contact() {
         <article className="zz-leadStory" aria-labelledby="contact-headline">
           <div className="zz-kicker">Get in touch</div>
           <h1 id="contact-headline" className="zz-headline">
-            Contact Matt
+            Contact Mat
           </h1>
           <div className="zz-byline">
             Prefer email?{" "}
