@@ -25,7 +25,7 @@ func main() {
 	http.HandleFunc("/api/health", portfolio.HealthHandler)
 
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("dist/assets"))))
-	http.Handle("/favicon.ico", http.FileServer(http.Dir("dist/favicon.ico")))
+	http.Handle("/", http.FileServer(http.Dir("dist")))
 
 	log.Println("listening on port 8090")
 	if err := http.ListenAndServe(":8090", nil); err != nil {
