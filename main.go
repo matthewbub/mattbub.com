@@ -28,6 +28,7 @@ func main() {
 
 	portfolio.Init()
 
+	log.Println("Initializing portfolio")
 	http.HandleFunc("/", portfolio.WebappHandler)
 	http.HandleFunc("/version.txt", portfolio.VersionHandler)
 	http.HandleFunc("/api/stats", portfolio.StatsHandler)
@@ -35,10 +36,10 @@ func main() {
 	http.HandleFunc("/api/health", portfolio.HealthHandler)
 
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("dist/assets"))))
-	http.Handle("/", http.FileServer(http.Dir("dist")))
 
 	log.Printf("Server starting on port 8090 (Git commit: %s)", portfolio.GitCommit)
 	if err := http.ListenAndServe(":8090", nil); err != nil {
+		log.Println("Server error: " + err.Error())
 		portfolio.LogError("Server error: " + err.Error())
 		os.Exit(1)
 	}

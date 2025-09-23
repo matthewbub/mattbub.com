@@ -23,11 +23,11 @@ func Init() {
 		os.Exit(1)
 	}
 
-	// run migrations
-	if err := runPortfolioMigrations(db); err != nil {
-		log.Println("Error running migrations:", err)
-		os.Exit(1)
-	}
+	// // run migrations
+	// if err := runPortfolioMigrations(db); err != nil {
+	// 	log.Println("Error running migrations:", err)
+	// 	os.Exit(1)
+	// }
 
 	// expose singleton
 	setPortfolioDb(db)
