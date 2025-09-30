@@ -15,7 +15,7 @@ export default function Header() {
     <header className="zz-masthead">
       <div className="zz-topline">
         <Link to="/" className="zz-brand zz-sansFont">
-          Mat
+          Matt
         </Link>
         <nav className="zz-navigation">
           {navItems.map(({ path, label }) => (
