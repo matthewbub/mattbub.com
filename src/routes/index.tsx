@@ -20,7 +20,7 @@ export default function Home() {
       title: "Yulissa and Matthew's Wedding",
       img: "https://q8a0jhjw1u.ufs.sh/f/3POoQHRcbaUOCGU4BfK0vj6I1AQHq32EOlobpw9t8yKmJXBD",
       url: "https://yulissaandmatthew.com",
-      description: `A carefully crafted wedding website for Yulissa and Matthew (me) with a custom registry and RSVP system. This thing is super fast. Since 99% of the traffic is on mobile, there's intuitive features such as swiping left / right to navigation the 
+      description: `A wedding website for Yulissa and Matthew (me) with a custom registry and RSVP system. This thing is super fast. Since 99% of the traffic is on mobile, there's intuitive features such as swiping left / right to navigation the 
       app as well as a mobile first design. It has to support multiple languages (Spanish and English).`,
       stack:
         "Next.js · Tailwind CSS · Clerk · Neon · Drizzle · Stripe · Vercel · Cloudflare · Sentry · Posthog",
