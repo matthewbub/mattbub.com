@@ -144,6 +144,13 @@ body {
   letter-spacing: 0.02em;
 }
 
+.zz-authorshipNote {
+  margin: 8px 0 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--muted);
+}
+
 /* Blog hub page */
 .zz-blogHubPaper {
   margin: 0 auto;
@@ -226,6 +233,86 @@ body {
   color: var(--muted);
   font-family: var(--font-sans);
   font-size: 13px;
+}
+
+/* === SECOND BRAIN SCREEN === */
+
+.zz-secondBrainPaper {
+  margin: 0 auto;
+  max-width: var(--maxw);
+  padding: 24px var(--gutter) 64px;
+}
+
+.zz-secondBrainKicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.zz-secondBrainTitle {
+  margin: 10px 0 12px;
+  max-width: 26ch;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.zz-secondBrainNote {
+  background: linear-gradient(150deg, #faf6ed 0%, #f2ecdf 100%);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  padding: clamp(20px, 3vw, 36px);
+}
+
+.zz-secondBrainLead {
+  margin: 0;
+  max-width: 66ch;
+  font-size: clamp(20px, 2.2vw, 23px);
+  line-height: 1.55;
+}
+
+.zz-secondBrainSection {
+  margin-top: 24px;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+}
+
+.zz-secondBrainSection h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.zz-secondBrainSection p {
+  margin: 0;
+  max-width: 72ch;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.zz-secondBrainList {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.zz-secondBrainList li {
+  margin: 8px 0;
+  font-size: 18px;
+  line-height: 1.58;
+}
+
+.zz-secondBrainMeta {
+  margin: 24px 0 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--muted);
 }
 
 /* === BLOG POST SPECIFIC CLASSES === */
@@ -331,8 +418,15 @@ body {
   .zz-blogHubIntro,
   .zz-blogIndexArticle,
   .zz-blogHubCard,
-  .zz-blogPostLead {
+  .zz-blogPostLead,
+  .zz-secondBrainNote {
     border-radius: 16px;
+  }
+
+  .zz-secondBrainLead,
+  .zz-secondBrainSection p,
+  .zz-secondBrainList li {
+    font-size: 17px;
   }
 
   .zz-blogPostPaper {
