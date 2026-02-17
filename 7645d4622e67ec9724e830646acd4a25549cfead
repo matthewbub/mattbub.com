@@ -1,0 +1,54 @@
+src/styles/base/footer.css
+  ec9055e788299115 7
+Readme.md
+  ec9055e788299115 3,5,7-8,10,12-13,15,17
+src/routes/__root.tsx
+  ec9055e788299115 19
+"src/markdown/blog/Basic Git Commands You Actually Need Every Day.md"
+  ec9055e788299115 1-168
+index.html
+  ec9055e788299115 11
+src/components/header.tsx
+  ec9055e788299115 1,8,11-16
+src/components/footer.tsx
+  ec9055e788299115 5
+src/styles/base/articles.css
+  ec9055e788299115 7,12,17
+src/styles/base/header.css
+  ec9055e788299115 14,20,34
+src/routeTree.gen.ts
+  ec9055e788299115 50,52-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.3",
+  "base_commit_sha": "7645d4622e67ec9724e830646acd4a25549cfead",
+  "prompts": {
+    "c454b884fa422ceb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c6a94-43b6-7ad3-99cd-bb6673b4b223",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "ec9055e788299115": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c6a94-7871-7991-8638-293f60880d7f",
+        "model": "unknown"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 198,
+      "overriden_lines": 0
+    }
+  }
+}
