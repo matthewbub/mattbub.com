@@ -1,12 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@500;600;700;800&display=swap");
+
 :root {
-  --bg: #ffffff;
-  --ink: #111827;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --rule: #e5e7eb;
-  --link: #1d4ed8;
-  --link-hover: #0f3bbd;
-  --underline: rgba(29, 78, 216, 0.25);
+  --bg: #fbf7f0;
+  --ink: #1f241d;
+  --muted: #6d705f;
+  --border: #d8d7c9;
+  --rule: #ddd7cb;
+  --link: #0f766e;
+  --link-hover: #0b5b55;
+  --underline: rgba(15, 118, 110, 0.28);
+  --surface: #fffdf9;
+  --surface-accent: #f5f1e8;
+  --shadow-soft: 0 18px 36px rgba(49, 46, 35, 0.1);
   --maxw: 1080px;
   --gutter: 18px;
   --code-bg: #0b1020;
@@ -14,6 +19,6 @@
   --code-border: #1e2a4a;
   --kbd-bg: #111827;
   --kbd-fg: #e5e7eb;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system;
-  --font-serif: "Libertinus Serif", ui-serif, Georgia, "Times New Roman";
+  --font-sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  --font-serif: "Fraunces", "Baskerville", "Iowan Old Style", serif;
 }

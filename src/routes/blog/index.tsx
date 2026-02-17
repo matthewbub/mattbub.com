@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "../../components/header";
-import { loadAllBlogPosts } from "../../utils/blogLoader";
 import Footer from "../../components/footer";
-import Sidebar from "../../components/sidebar";
+import { loadAllBlogPosts } from "../../utils/blogLoader";
 
 export const Route = createFileRoute("/blog/")({
   component: Blog,
@@ -14,59 +13,38 @@ export default function Blog() {
   return (
     <>
       <Header />
-
-      <main className="zz-blogPaper">
-        <article className="zz-blogLead" aria-labelledby="blog-headline">
-          <div className="zz-blogKicker">Blog</div>
-          <h1 id="blog-headline" className="zz-blogHeadline">
-            Posts and notes
+      <main className="zz-blogHubPaper">
+        <section className="zz-blogHubIntro" aria-labelledby="blog-hub-title">
+          <p className="zz-blogHubKicker">Archive</p>
+          <h1 id="blog-hub-title" className="zz-blogHubTitle">
+            Writing on engineering, product, and creative process
           </h1>
-          <div className="zz-blogByline">
-            Thoughts on engineering, performance, and pragmatic product work.
-          </div>
-          <p className="zz-blogDeck">
-            Essays and shorter notes. New items appear at the top. RSS soon.
+          <p className="zz-blogHubDeck">
+            Notes from building software quickly, fixing messy systems, and
+            figuring things out in public.
           </p>
+        </section>
 
-          <div
-            className="zz-blogIndex"
-            aria-label="Blog posts"
-            style={{ borderTop: "1px solid var(--border)", paddingTop: 10 }}
-          >
-            {posts.length === 0 && (
-              <article>
-                <h3>No posts yet</h3>
-                <p className="zz-blogByline">Check back soon.</p>
-              </article>
-            )}
-
-            {posts.map((p) => (
-              <article key={p.id} className="zz-blogIndexArticle">
-                <h3 className="zz-blogIndexHeading">
-                  <a href={`/blog/${p.slug}`} className="no-ext zz-link">
-                    {p.title}
-                  </a>
-                </h3>
-                {p.deck && <p>{p.deck}</p>}
-                <div className="zz-blogMeta" style={{ marginTop: 6 }}>
-                  {formatDate(p.date || new Date().toISOString())}
-                  {p.readTime ? ` · Read time ~${p.readTime}` : null}
-                  {p.tags && p.tags.length > 0 ? (
-                    <>
-                      {" · "}
-                      <span className="zz-blogByline">
-                        {p.tags.join(" · ")}
-                      </span>
-                    </>
-                  ) : null}
-                </div>
-              </article>
-            ))}
-          </div>
-        </article>
-        <Sidebar posts={posts} />
+        <section className="zz-blogHubGrid" aria-label="All blog posts">
+          {posts.map((post) => (
+            <article key={post.id} className="zz-blogHubCard">
+              <p className="zz-blogHubMeta">
+                {formatDate(post.date || new Date().toISOString())}
+                {post.readTime ? ` · ${post.readTime}` : ""}
+              </p>
+              <h2 className="zz-blogHubCardTitle">
+                <a href={`/blog/${post.slug}`} className="no-ext zz-link">
+                  {post.title}
+                </a>
+              </h2>
+              {post.deck && <p className="zz-blogHubCardDeck">{post.deck}</p>}
+              {post.tags && post.tags.length > 0 && (
+                <p className="zz-blogHubTags">{post.tags.join(" · ")}</p>
+              )}
+            </article>
+          ))}
+        </section>
       </main>
-
       <Footer />
     </>
   );

@@ -1,72 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "../components/header";
-import { loadAllBlogPosts } from "../utils/blogLoader";
 import Footer from "../components/footer";
-import Sidebar from "../components/sidebar";
-import { useQuery } from "@tanstack/react-query";
+import { loadAllBlogPosts } from "../utils/blogLoader";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
+
 export default function Home() {
-  const { data } = useQuery({
-    queryKey: ["stats"],
-    queryFn: () => fetch("/api/stats").then((res) => res.json()),
-  });
-  console.log(data);
   const posts = loadAllBlogPosts();
+  const latestPosts = posts.slice(0, 4);
+
   const projects = [
     {
       title: "Yulissa and Matthew's Wedding",
       img: "https://q8a0jhjw1u.ufs.sh/f/3POoQHRcbaUOCGU4BfK0vj6I1AQHq32EOlobpw9t8yKmJXBD",
       url: "https://yulissaandmatthew.com",
-      description: `A wedding website for Yulissa and Matthew (me) with a custom registry and RSVP system. This thing is super fast. Since 99% of the traffic is on mobile, there's intuitive features such as swiping left / right to navigation the 
+      description: `A wedding website for Yulissa and Matthew (me) with a custom registry and RSVP system. This thing is super fast. Since 99% of the traffic is on mobile, there's intuitive features such as swiping left / right to navigation the
       app as well as a mobile first design. It has to support multiple languages (Spanish and English).`,
       stack:
         "Next.js · Tailwind CSS · Clerk · Neon · Drizzle · Stripe · Vercel · Cloudflare · Sentry · Posthog",
       year: "2025",
     },
-    // {
-    //   title: "Static Blog Engine",
-    //   url: "https://github.com/matthewbub/mattbub.com",
-    //   description:
-    //     "Markdown-first publishing with hand-rolled routing, fast builds, and pragmatic DX.",
-    //   stack: "React · TanStack Router · Vite",
-    //   year: "2025",
-    // },
-    // {
-    //   title: "Go Micro API",
-    //   url: "https://github.com/matthewbub/go-micro-api",
-    //   description:
-    //     "Golang service template focused on small surface area, observability, and easy deployment.",
-    //   stack: "Go · Chi · Docker",
-    //   year: "2024",
-    // },
-    // {
-    //   title: "Content Tools",
-    //   url: "https://github.com/matthewbub/content-tools",
-    //   description:
-    //     "CLI helpers that turn notes into publishable artifacts with predictable structure.",
-    //   stack: "Node · TypeScript",
-    //   year: "2023",
-    // },
-    // {
-    //   title: "Drop‑Zone",
-    //   url: "https://github.com/matthewbub/react-drop-zone",
-    //   description:
-    //     "A small drag-and-drop utility focused on accessibility and frictionless uploads.",
-    //   stack: "React · TS",
-    //   year: "2023",
-    // },
-    // {
-    //   title: "Gravatar Helper",
-    //   url: "https://github.com/matthewbub/next-gravatar",
-    //   description:
-    //     "Micro utility to generate consistent avatar URLs with caching in mind.",
-    //   stack: "Next.js · TS",
-    //   year: "2022",
-    // },
   ];
+
   return (
     <>
       <Header />
@@ -75,15 +32,17 @@ export default function Home() {
           <div className="zz-kicker">Work</div>
           <h1 className="zz-headline">Developing for the web</h1>
           <p className="zz-deck">
-            Enterprise engineer by day, indie hacker by night. I move fast but
-            thoughtfully first.{" "}
-            <a href="/contact" className="zz-link">
-              Hmu
+            Software engineer by day, indie hacker by night. I move fast &
+            thoughtfully. I can be reached on X{" "}
+            <a href="https://x.com/matthew_bub">@matthew_bub</a> or via
+            {" "}
+            <a href="mailto:6matbub@gmail.com" className="no-ext zz-link">
+              Email
             </a>{" "}
-            for custom work.
+            for all things.
           </p>
 
-          <section aria-labelledby="projects-head">
+          <section id="projects" aria-labelledby="projects-head">
             <h2
               id="projects-head"
               className="zz-sectionHead zz-sansFont zz-projectsHead"
@@ -93,29 +52,90 @@ export default function Home() {
             <div className="zz-index">
               {projects.map((p) => (
                 <article key={p.title} className="zz-indexArticle">
-                  <img src={p.img} alt={p.title} className="zz-indexImage" />
-                  <h3 className="zz-indexHeading">
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer external"
-                      className="zz-link"
-                    >
-                      {p.title}
-                    </a>
-                  </h3>
-                  <p className="zz-indexParagraph">{p.description}</p>
-                  <div className="zz-meta">
-                    {p.stack} · {p.year}
+                  <div className="zz-indexContent">
+                    <p className="zz-indexEyebrow">Featured Build</p>
+                    <h3 className="zz-indexHeading">
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer external"
+                        className="zz-link"
+                      >
+                        {p.title}
+                      </a>
+                    </h3>
+                    <p className="zz-indexParagraph">{p.description}</p>
+                    <div className="zz-indexMetaRow">
+                      <span className="zz-indexYear">{p.year}</span>
+                      <p className="zz-meta">{p.stack}</p>
+                    </div>
                   </div>
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer external"
+                    className="zz-indexMedia"
+                    aria-label={`Open ${p.title}`}
+                  >
+                    <img src={p.img} alt={p.title} className="zz-indexImage" />
+                  </a>
                 </article>
               ))}
             </div>
           </section>
+
+          <section id="blog" aria-labelledby="blog-head" className="zz-homeBlog">
+            <h2 id="blog-head" className="zz-sectionHead zz-sansFont zz-projectsHead">
+              Latest Posts
+            </h2>
+            <div className="zz-blogIndex" aria-label="Blog posts">
+              {latestPosts.length === 0 && (
+                <article>
+                  <h3>No posts yet</h3>
+                  <p className="zz-blogByline">Check back soon.</p>
+                </article>
+              )}
+
+              {latestPosts.map((p) => (
+                <article key={p.id} className="zz-blogIndexArticle">
+                  <p className="zz-blogMeta">
+                    {formatDate(p.date || new Date().toISOString())}
+                    {p.readTime ? ` · ${p.readTime}` : null}
+                  </p>
+                  <h3 className="zz-blogIndexHeading zz-blogCardHeading">
+                    <a href={`/blog/${p.slug}`} className="no-ext zz-link">
+                      {p.title}
+                    </a>
+                  </h3>
+                  {p.deck && <p className="zz-blogCardDeck">{p.deck}</p>}
+                  {p.tags && p.tags.length > 0 && (
+                    <p className="zz-blogByline">{p.tags.join(" · ")}</p>
+                  )}
+                </article>
+              ))}
+            </div>
+            <p className="zz-blogViewAllWrap">
+              <a href="/blog" className="zz-link zz-blogViewAll">
+                View all posts
+              </a>
+            </p>
+          </section>
         </section>
-        <Sidebar posts={posts} />
       </main>
       <Footer />
     </>
   );
+}
+
+function formatDate(iso: string) {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    });
+  } catch {
+    return iso;
+  }
 }

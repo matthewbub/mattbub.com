@@ -152,9 +152,5 @@ export function loadAllBlogPosts(): BlogPost[] {
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   const posts = loadAllBlogPosts();
-  console.log({
-    posts,
-    slug,
-  });
   return posts.find((post) => post.slug === slug);
 }

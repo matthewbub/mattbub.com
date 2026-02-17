@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "../../components/header";
-import { useMemo } from "react";
 import { getBlogPost } from "../../utils/blogLoader";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -13,10 +12,7 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 export default function BlogPost() {
-  const { slug } = Route.useParams();
-  const post = useMemo(() => getBlogPost(slug), [slug]);
-
-  console.log(post);
+  const post = Route.useLoaderData();
   function formatDate(dateString: string): string {
     return new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
@@ -29,12 +25,12 @@ export default function BlogPost() {
     return (
       <>
         <Header />
-        <main className="zz-blogPostPaper">
+        <main className="zz-blogPostPaper zz-blogPostPaper--notFound">
           <article className="zz-blogPostLead">
             <h1>Post not found</h1>
             <p>The requested blog post could not be found.</p>
             <a href="/blog" className="zz-blogPostButton zz--backButton">
-              ← Back to blog
+              Back to archive
             </a>
           </article>
         </main>
@@ -48,6 +44,9 @@ export default function BlogPost() {
       <Header />
       <main className="zz-blogPostPaper">
         <article className="zz-blogPostLead" aria-labelledby="post-headline">
+          <a href="/blog" className="zz-blogPostBackLink">
+            Back to archive
+          </a>
           <div className="zz-blogPostKicker">{post.tags?.[0] || "Blog"}</div>
           <h1 id="post-headline" className="zz-blogPostHeadline">
             {post.title}
@@ -57,15 +56,7 @@ export default function BlogPost() {
           </div>
           <p className="zz-blogPostDeck">{post.deck}</p>
 
-          {/* Markdown content */}
-          <section
-            className="zz-markdownContent zz--blogPost"
-            style={{
-              borderTop: "1px solid var(--border)",
-              paddingTop: 20,
-              marginTop: 16,
-            }}
-          >
+          <section className="zz-markdownContent zz--blogPost">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -115,20 +106,6 @@ export default function BlogPost() {
             </ReactMarkdown>
           </section>
         </article>
-
-        <aside className="zz-blogPostSidebar" aria-label="Sidebar">
-          <section className="zz-blogPostSidebarSection">
-            <div className="zz-blogPostSectionHead">Related</div>
-            <div className="zz-blogPostTease">
-              <h3 className="zz-blogPostTeaseHeading">
-                <a href="/blog" className="no-ext zz-link">
-                  ← Back to all posts
-                </a>
-              </h3>
-              <div className="zz-blogPostMeta">Browse more articles</div>
-            </div>
-          </section>
-        </aside>
       </main>
       <Footer />
     </>
