@@ -1,0 +1,27 @@
+src/styles/base/variables.css
+  7205a0a483d5d5ac 4-19,27-39,43-79
+src/styles/base/typography.css
+  7205a0a483d5d5ac 29,268-269,275,292,296,300,304,308,312,317,320
+src/styles.css
+  7205a0a483d5d5ac 84,109,113,162,200,210-211,264,334
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.3",
+  "base_commit_sha": "008a45ce6c5bdc836946b9aa189d51ab671b7046",
+  "prompts": {
+    "7205a0a483d5d5ac": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c6c94-85f9-77d2-b2a3-a1bcbefdcdad",
+        "model": "gpt-5.3-codex-spark"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 88,
+      "total_deletions": 32,
+      "accepted_lines": 88,
+      "overriden_lines": 0
+    }
+  }
+}
