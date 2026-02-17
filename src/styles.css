@@ -81,7 +81,7 @@ body {
 
 .zz-indexMedia:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(46, 43, 32, 0.14);
+  box-shadow: var(--shadow-soft-hover);
 }
 
 .zz-indexImage {
@@ -106,11 +106,11 @@ body {
 }
 
 .zz-blogIndexArticle {
-  background: linear-gradient(145deg, #fdfbf6, #f7f2e9);
+  background: linear-gradient(145deg, var(--panel-from), var(--panel-to));
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 18px 18px 16px;
-  box-shadow: 0 8px 20px rgba(43, 40, 29, 0.06);
+  box-shadow: var(--shadow-soft);
   animation: zz-riseFade 400ms ease both;
 }
 
@@ -159,7 +159,7 @@ body {
 }
 
 .zz-blogHubIntro {
-  background: linear-gradient(150deg, #faf6ed 0%, #f2ecdf 100%);
+  background: linear-gradient(150deg, var(--panel-from) 0%, var(--panel-to) 100%);
   border: 1px solid var(--border);
   border-radius: 24px;
   box-shadow: var(--shadow-soft);
@@ -197,7 +197,7 @@ body {
   border-radius: 18px;
   background: var(--surface);
   padding: 16px 16px 14px;
-  box-shadow: 0 8px 20px rgba(46, 43, 32, 0.07);
+  box-shadow: var(--shadow-soft);
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
@@ -207,8 +207,8 @@ body {
 
 .zz-blogHubCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(46, 43, 32, 0.14);
-  border-color: #c5c3b0;
+  box-shadow: var(--shadow-soft-hover);
+  border-color: var(--surface-hover-border);
 }
 
 .zz-blogHubCard:nth-child(2n) {
@@ -261,7 +261,7 @@ body {
 }
 
 .zz-secondBrainNote {
-  background: linear-gradient(150deg, #faf6ed 0%, #f2ecdf 100%);
+  background: linear-gradient(150deg, var(--panel-from) 0%, var(--panel-to) 100%);
   border: 1px solid var(--border);
   border-radius: 22px;
   box-shadow: var(--shadow-soft);
@@ -331,7 +331,7 @@ body {
 }
 
 .zz-blogPostLead {
-  background: linear-gradient(145deg, #fffdf9, #f7f1e7);
+  background: linear-gradient(145deg, var(--panel-from), var(--panel-to));
   border: 1px solid var(--border);
   border-radius: 24px;
   box-shadow: var(--shadow-soft);

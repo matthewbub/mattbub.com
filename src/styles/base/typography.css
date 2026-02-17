@@ -26,7 +26,7 @@ kbd {
 kbd {
   background: var(--kbd-bg);
   color: var(--kbd-fg);
-  border: 1px solid #222;
+  border: 1px solid var(--kbd-border);
   border-bottom-width: 2px;
   border-radius: 6px;
   padding: 2px 6px;
@@ -265,14 +265,14 @@ p {
 }
 
 .zz--inlineCode {
-  background: #ede8db;
-  border: 1px solid #d7d1c4;
+  background: var(--inline-code-bg);
+  border: 1px solid var(--inline-code-border);
   border-radius: 6px;
   padding: 1px 6px;
 }
 
 .zz--syntaxHighlight {
-  background: #f5efe3;
+  background: var(--syntax-bg);
   color: var(--ink);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -289,35 +289,35 @@ p {
 }
 
 .zz--syntaxHighlight .t-kw {
-  color: #1d4ed8;
+  color: var(--syntax-kw);
 }
 
 .zz--syntaxHighlight .t-fn {
-  color: #065f46;
+  color: var(--syntax-fn);
 }
 
 .zz--syntaxHighlight .t-ty {
-  color: #92400e;
+  color: var(--syntax-ty);
 }
 
 .zz--syntaxHighlight .t-str {
-  color: #0657a6;
+  color: var(--syntax-str);
 }
 
 .zz--syntaxHighlight .t-cmt {
-  color: #6b7280;
+  color: var(--syntax-cmt);
 }
 
 .zz--syntaxHighlight .t-num {
-  color: #b45309;
+  color: var(--syntax-num);
 }
 
 .zz-quote,
 .zz--blockQuote {
-  border-left: 3px solid #b6c2af;
+  border-left: 3px solid var(--quote-border);
   padding: 10px 14px;
   margin: 14px 0;
-  background: #f3f5ee;
+  background: var(--quote-bg);
   font-style: italic;
   color: var(--ink);
   font-family: var(--font-serif);

@@ -1,17 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@500;600;700;800&display=swap");
 
 :root {
-  --bg: #fbf7f0;
-  --ink: #1f241d;
-  --muted: #6d705f;
-  --border: #d8d7c9;
-  --rule: #ddd7cb;
-  --link: #0f766e;
-  --link-hover: #0b5b55;
-  --underline: rgba(15, 118, 110, 0.28);
-  --surface: #fffdf9;
-  --surface-accent: #f5f1e8;
-  --shadow-soft: 0 18px 36px rgba(49, 46, 35, 0.1);
+  --primary: #a04668;
+  --bg: #fbf8fb;
+  --ink: #241924;
+  --muted: #6f5562;
+  --border: #dfcdd8;
+  --rule: #eadbe3;
+  --link: var(--primary);
+  --link-hover: #7a3550;
+  --underline: rgba(160, 70, 104, 0.32);
+  --surface: #fffcff;
+  --surface-accent: #f5edf2;
+  --surface-hover-border: #caa6ba;
+  --panel-from: #fffdf9;
+  --panel-to: #f5edf4;
+  --shadow-soft: 0 8px 20px rgba(58, 48, 58, 0.07);
+  --shadow-soft-hover: 0 14px 26px rgba(58, 48, 58, 0.16);
   --maxw: 1080px;
   --gutter: 18px;
   --code-bg: #0b1020;
@@ -19,6 +24,57 @@
   --code-border: #1e2a4a;
   --kbd-bg: #111827;
   --kbd-fg: #e5e7eb;
+  --kbd-border: #252525;
+  --inline-code-bg: #efe6ef;
+  --inline-code-border: #dfd0db;
+  --syntax-bg: #f6edf5;
+  --syntax-kw: #7d3d5f;
+  --syntax-fn: #3a7f72;
+  --syntax-ty: #8d6236;
+  --syntax-str: #3d72a8;
+  --syntax-cmt: #7a6873;
+  --syntax-num: #a04668;
+  --quote-border: #b9a0ad;
+  --quote-bg: #f2edf2;
+  color-scheme: light;
   --font-sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
   --font-serif: "Fraunces", "Baskerville", "Iowan Old Style", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #150d14;
+    --ink: #f3eaef;
+    --muted: #c2a8b5;
+    --border: #4e3246;
+    --rule: #5f3f56;
+    --link: #d88fa7;
+    --link-hover: #efb8cd;
+    --underline: rgba(216, 143, 167, 0.4);
+    --surface: #201620;
+    --surface-accent: #2a1f2a;
+    --surface-hover-border: #71566a;
+    --panel-from: #221822;
+    --panel-to: #2a1f2a;
+    --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.55);
+    --shadow-soft-hover: 0 14px 28px rgba(0, 0, 0, 0.7);
+    --code-bg: #0d111f;
+    --code-fg: #e2edff;
+    --code-border: #263359;
+    --kbd-bg: #111827;
+    --kbd-fg: #e5e7eb;
+    --kbd-border: #3d4454;
+    --inline-code-bg: #2b1f2b;
+    --inline-code-border: #433343;
+    --syntax-bg: #241925;
+    --syntax-kw: #f0a2c1;
+    --syntax-fn: #7db3a7;
+    --syntax-ty: #d5af7a;
+    --syntax-str: #7db2e9;
+    --syntax-cmt: #92818f;
+    --syntax-num: #eda0be;
+    --quote-border: #6e5167;
+    --quote-bg: #201723;
+    color-scheme: dark;
+  }
 }
