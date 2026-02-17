@@ -11,13 +11,13 @@
   justify-content: space-between;
   gap: 12px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .zz-brand {
   font-weight: 800;
   letter-spacing: 0.02em;
-  font-size: 28px;
+  font-size: 32px;
   color: var(--ink);
   text-decoration: none;
 }
@@ -31,7 +31,7 @@
 .zz-navLink {
   color: var(--ink);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 15px;
   padding: 4px 0;
   border-bottom: 2px solid transparent;
 }

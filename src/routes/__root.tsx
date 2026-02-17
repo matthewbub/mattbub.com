@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
@@ -13,15 +12,11 @@ export const Route = createRootRoute({
   },
 });
 
-const queryClient = new QueryClient();
-
 function RootComponent() {
   return (
     <div className="app">
       <main>
-        <QueryClientProvider client={queryClient}>
-          <Outlet />
-        </QueryClientProvider>
+        <Outlet />
       </main>
     </div>
   );
