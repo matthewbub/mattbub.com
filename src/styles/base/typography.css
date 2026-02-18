@@ -271,6 +271,16 @@ p {
   padding: 1px 6px;
 }
 
+/* Let inline code inside headings scale with the heading instead of fixed 14px. */
+.zz-heading .zz-code.zz--inlineCode,
+.zz-heading code.zz-code.zz--inlineCode {
+  font-size: 0.72em;
+  line-height: 1;
+  vertical-align: baseline;
+  padding: 0.1em 0.35em;
+  border-radius: 0.35em;
+}
+
 .zz--syntaxHighlight {
   background: var(--syntax-bg);
   color: var(--ink);
