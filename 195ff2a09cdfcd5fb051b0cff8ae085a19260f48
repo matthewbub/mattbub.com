@@ -1,0 +1,21 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "195ff2a09cdfcd5fb051b0cff8ae085a19260f48",
+  "prompts": {
+    "ae722adee917183d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c6f2d-dafd-7613-9bc3-a806153755b1",
+        "model": "unknown"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 10,
+      "overriden_lines": 0
+    }
+  }
+}
