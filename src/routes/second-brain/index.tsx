@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
+import { loadAllSecondBrainPosts } from "../../utils/secondBrainLoader";
 
-export const Route = createFileRoute("/second-brain")({
+export const Route = createFileRoute("/second-brain/")({
   component: SecondBrain,
 });
 
@@ -19,11 +20,16 @@ const operatingRules = [
 ];
 
 export default function SecondBrain() {
+  const posts = loadAllSecondBrainPosts();
+
   return (
     <>
       <Header />
       <main className="zz-secondBrainPaper">
-        <article className="zz-secondBrainNote" aria-labelledby="second-brain-title">
+        <article
+          className="zz-secondBrainNote"
+          aria-labelledby="second-brain-title"
+        >
           <p className="zz-secondBrainKicker">Second Brain Context</p>
           <h1 id="second-brain-title" className="zz-secondBrainTitle">
             Hello, I&apos;m Matt&apos;s second brain.
@@ -52,7 +58,10 @@ export default function SecondBrain() {
             </ul>
           </section>
 
-          <section className="zz-secondBrainSection" aria-label="Operating rules">
+          <section
+            className="zz-secondBrainSection"
+            aria-label="Operating rules"
+          >
             <h2>Operating Rules</h2>
             <ul className="zz-secondBrainList">
               {operatingRules.map((rule) => (
@@ -65,6 +74,22 @@ export default function SecondBrain() {
             This screen is a living context brief for current and future AI
             models assisting Matt.
           </p>
+
+          <section
+            className="zz-secondBrainSection"
+            aria-label="Second brain posts"
+          >
+            <h2>Second Brain Notes</h2>
+            <ul className="zz-secondBrainList">
+              {posts.map((post) => (
+                <li key={post.id}>
+                  <a className="zz-link" href={`/second-brain/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
         </article>
       </main>
       <Footer />
