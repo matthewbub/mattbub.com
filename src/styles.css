@@ -243,6 +243,11 @@ body {
   padding: 24px var(--gutter) 64px;
 }
 
+.zz-secondBrainLayout {
+  display: grid;
+  gap: 16px;
+}
+
 .zz-secondBrainKicker {
   margin: 0;
   text-transform: uppercase;
@@ -313,6 +318,21 @@ body {
   font-family: var(--font-sans);
   font-size: 13px;
   color: var(--muted);
+}
+
+.zz-secondBrainPostsSection {
+  margin-top: 8px;
+}
+
+.zz-secondBrainPostsTitle {
+  margin: 10px 0 8px;
+  font-size: clamp(24px, 3.4vw, 34px);
+  line-height: 1.15;
+}
+
+.zz-secondBrainPostsLead {
+  margin: 0 0 18px;
+  max-width: 66ch;
 }
 
 /* === BLOG POST SPECIFIC CLASSES === */

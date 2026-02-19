@@ -26,6 +26,7 @@ export default function SecondBrain() {
     <>
       <Header />
       <main className="zz-secondBrainPaper">
+        <div className="zz-secondBrainLayout">
         <article
           className="zz-secondBrainNote"
           aria-labelledby="second-brain-title"
@@ -74,25 +75,55 @@ export default function SecondBrain() {
             This screen is a living context brief for current and future AI
             models assisting Matt.
           </p>
+        </article>
 
-          <section
-            className="zz-secondBrainSection"
-            aria-label="Second brain posts"
-          >
-            <h2>Second Brain Notes</h2>
-            <ul className="zz-secondBrainList">
-              {posts.map((post) => (
-                <li key={post.id}>
-                  <a className="zz-link" href={`/second-brain/${post.slug}`}>
+        <section
+          className="zz-secondBrainPostsSection"
+          aria-label="Second brain posts"
+        >
+          <p className="zz-secondBrainKicker">Secondary Notes</p>
+          <h2 className="zz-secondBrainPostsTitle">Second Brain Notes</h2>
+          <p className="zz-secondBrainPostsLead">
+            These are the supporting posts mapped to the second brain, separate
+            from the primary context document above.
+          </p>
+
+          <div className="zz-blogHubGrid">
+            {posts.map((post) => (
+              <article key={post.id} className="zz-blogHubCard">
+                <p className="zz-blogHubMeta">
+                  {formatDate(post.date || new Date().toISOString())}
+                  {post.readTime ? ` · ${post.readTime}` : ""}
+                </p>
+                <h3 className="zz-blogHubCardTitle">
+                  <a href={`/second-brain/${post.slug}`} className="no-ext zz-link">
                     {post.title}
                   </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </article>
+                </h3>
+                {post.deck && <p className="zz-blogHubCardDeck">{post.deck}</p>}
+                {post.tags && post.tags.length > 0 && (
+                  <p className="zz-blogHubTags">{post.tags.join(" · ")}</p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+        </div>
       </main>
       <Footer />
     </>
   );
+}
+
+function formatDate(iso: string) {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    });
+  } catch {
+    return iso;
+  }
 }
