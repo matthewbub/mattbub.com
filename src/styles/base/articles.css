@@ -4,26 +4,30 @@ article {
 }
 
 article h2 {
-  font-size: 24px;
-  margin: 24px 0 8px;
+  font-size: 30px;
+  margin: 26px 0 10px;
+  line-height: 1.16;
 }
 
 article h3 {
-  font-size: 19px;
-  margin: 18px 0 6px;
+  font-size: 24px;
+  margin: 22px 0 8px;
+  line-height: 1.22;
 }
 
 article p {
-  font-size: 20px;
-  margin: 10px 0;
-  line-height: 1.65;
+  font-size: 18px;
+  margin: 0 0 0.95em;
+  line-height: 1.62;
 }
 
 article ul,
 article ol {
-  padding-left: 20px;
+  padding-left: 22px;
+  margin: 1em 0 1.15em;
 }
 
 article li {
-  margin: 6px 0;
+  margin: 0.45em 0;
+  line-height: 1.58;
 }
