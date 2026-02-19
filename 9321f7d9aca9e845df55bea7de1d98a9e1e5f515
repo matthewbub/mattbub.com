@@ -1,0 +1,37 @@
+src/styles/base/variables.css
+  3cf36478d59a06a3 5,7-9,13-19,46,48-50,54-58
+  6849dc0d757701b1 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "9321f7d9aca9e845df55bea7de1d98a9e1e5f515",
+  "prompts": {
+    "3cf36478d59a06a3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c741c-5b37-7c23-a244-73eda7707584",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 20,
+      "total_deletions": 20,
+      "accepted_lines": 20,
+      "overriden_lines": 0
+    },
+    "6849dc0d757701b1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c7470-b2f4-7a92-8907-1a2bbd3a880d",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
