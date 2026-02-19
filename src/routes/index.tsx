@@ -1,88 +1,187 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { loadAllBlogPosts } from "../utils/blogLoader";
+
+type Project = {
+  title: string;
+  url: string;
+  description: string;
+  stack: string;
+  year: string;
+  label: string;
+  external: boolean;
+};
+
+const featuredProjects: Project[] = [
+  {
+    title: "Yulissa and Matthew's Wedding",
+    url: "https://yulissaandmatthew.com",
+    description:
+      "A multilingual wedding platform with custom RSVP workflows, registry checkout, and mobile-first navigation patterns tailored for real-world guests.",
+    stack:
+      "Next.js · Tailwind CSS · Clerk · Neon · Drizzle · Stripe · Vercel · Cloudflare · Sentry · Posthog",
+    year: "2025",
+    label: "Product Build",
+    external: true,
+  },
+  {
+    title: "mattbub.com",
+    url: "https://mattbub.com",
+    description:
+      "A content-driven portfolio built to publish blog posts and second-brain notes quickly with markdown-first workflows and strong editorial UX.",
+    stack: "React · Vite · TanStack Router · TypeScript · Markdown",
+    year: "2026",
+    label: "Personal Platform",
+    external: true,
+  },
+  {
+    title: "Second Brain",
+    url: "/second-brain",
+    description:
+      "A living notes system for technical thinking, architecture decisions, and implementation playbooks that can be published without editorial friction.",
+    stack: "Markdown Pipeline · Content Modeling · Frontend Architecture",
+    year: "2026",
+    label: "Knowledge System",
+    external: false,
+  },
+];
 
 export const Route = createFileRoute("/")({
+  loader: () => {
+    const posts = loadAllBlogPosts().slice(0, 5);
+    return { posts };
+  },
   component: Home,
 });
 
 export default function Home() {
-  const projects = [
-    {
-      title: "Yulissa and Matthew's Wedding",
-      img: "https://q8a0jhjw1u.ufs.sh/f/3POoQHRcbaUOCGU4BfK0vj6I1AQHq32EOlobpw9t8yKmJXBD",
-      url: "https://yulissaandmatthew.com",
-      description: `A wedding website for Yulissa and Matthew (me) with a custom registry and RSVP system. This thing is super fast. Since 99% of the traffic is on mobile, there's intuitive features such as swiping left / right to navigation the
-      app as well as a mobile first design. It has to support multiple languages (Spanish and English).`,
-      stack:
-        "Next.js · Tailwind CSS · Clerk · Neon · Drizzle · Stripe · Vercel · Cloudflare · Sentry · Posthog",
-      year: "2025",
-    },
-  ];
+  const { posts } = Route.useLoaderData();
 
   return (
     <>
       <Header />
-      <main id="front" className="zz-paper">
-        <section className="zz-leadStory">
-          <div className="zz-kicker">Work</div>
-          <h1 className="zz-headline">Developing for the web</h1>
-            <p className="zz-deck">
-            Software engineer by day, indie hacker by night. I move fast &
-            thoughtfully. I can be reached on X{" "}
-            <a href="https://x.com/matthew_bub">@matthew_bub</a> or via
-            {" "}
+      <main id="front" className="zz-paper zz-homePaper">
+        <section className="zz-homeHero" aria-labelledby="home-headline">
+          <p className="zz-kicker">Portfolio</p>
+          <h1 id="home-headline" className="zz-headline zz-homeHeadline">
+            Shipping web products with speed, clarity, and taste.
+          </h1>
+          <p className="zz-deck zz-homeDeck">
+            Software engineer by day, indie hacker by night. I build fast but
+            thoughtfully, and I care about product feel as much as production
+            stability. Reach me on X{" "}
+            <a href="https://x.com/matthew_bub" className="no-ext zz-link">
+              @matthew_bub
+            </a>{" "}
+            or via{" "}
             <a href="mailto:6matbub@gmail.com" className="no-ext zz-link">
               email
-            </a>{" "}
-            for all things.
+            </a>
+            .
           </p>
+          <div className="zz-homeHeroActions">
+            <a href="#projects" className="zz-homePrimaryLink">
+              Explore Projects
+            </a>
+            <a href="/blog" className="zz-homeSecondaryLink">
+              Read Latest Posts
+            </a>
+          </div>
+        </section>
 
-          <section id="projects" aria-labelledby="projects-head">
-            <h2
-              id="projects-head"
-              className="zz-sectionHead zz-sansFont zz-projectsHead"
-            >
-              Selected Projects
-            </h2>
-            <div className="zz-index">
-              {projects.map((p) => (
-                <article key={p.title} className="zz-indexArticle">
-                  <div className="zz-indexContent">
-                    <p className="zz-indexEyebrow">Featured Build</p>
-                    <h3 className="zz-indexHeading">
+        <section className="zz-homeLayout" aria-label="Homepage content">
+          <section
+            id="projects"
+            className="zz-homeProjects"
+            aria-labelledby="projects-head"
+          >
+            <header className="zz-homeSectionHeader">
+              <h2 id="projects-head" className="zz-homeSectionTitle">
+                Selected Projects
+              </h2>
+              <p className="zz-homeSectionDeck">
+                Built for real users, with product constraints and launch
+                pressure in mind.
+              </p>
+            </header>
+
+            <div className="zz-homeProjectList">
+              {featuredProjects.map((project) => {
+                const linkProps = project.external
+                  ? { target: "_blank", rel: "noopener noreferrer external" }
+                  : {};
+
+                return (
+                  <article key={project.title} className="zz-homeProjectCard">
+                    <p className="zz-homeProjectMeta">
+                      {project.label} · {project.year}
+                    </p>
+                    <h3 className="zz-homeProjectTitle">
                       <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer external"
+                        href={project.url}
                         className="zz-link"
+                        aria-label={`Open ${project.title}`}
+                        {...linkProps}
                       >
-                        {p.title}
+                        {project.title}
                       </a>
                     </h3>
-                    <p className="zz-indexParagraph">{p.description}</p>
-                    <div className="zz-indexMetaRow">
-                      <span className="zz-indexYear">{p.year}</span>
-                      <p className="zz-meta">{p.stack}</p>
-                    </div>
-                  </div>
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer external"
-                    className="zz-indexMedia"
-                    aria-label={`Open ${p.title}`}
-                  >
-                    <img src={p.img} alt={p.title} className="zz-indexImage" />
-                  </a>
-                </article>
-              ))}
+                    <p className="zz-homeProjectBody">{project.description}</p>
+                    <p className="zz-homeProjectStack">{project.stack}</p>
+                  </article>
+                );
+              })}
             </div>
           </section>
 
+          <aside className="zz-homePosts" aria-labelledby="posts-head">
+            <header className="zz-homeSectionHeader zz-homePostsHeader">
+              <h2 id="posts-head" className="zz-homeSectionTitle">
+                Latest Posts
+              </h2>
+              <p className="zz-homeSectionDeck">
+                Fresh writing on engineering, product, and building in public.
+              </p>
+            </header>
+
+            <div className="zz-homePostList">
+              {posts.map((post) => (
+                <article key={post.id} className="zz-homePostCard">
+                  <p className="zz-homePostMeta">
+                    {formatDate(post.date || new Date().toISOString())}
+                    {post.readTime ? ` · ${post.readTime}` : ""}
+                  </p>
+                  <h3 className="zz-homePostTitle">
+                    <a href={`/blog/${post.slug}`} className="no-ext zz-link">
+                      {post.title}
+                    </a>
+                  </h3>
+                  {post.deck && <p className="zz-homePostDeck">{post.deck}</p>}
+                </article>
+              ))}
+            </div>
+
+            <a href="/blog" className="zz-homePostsCta">
+              Browse all writing
+            </a>
+          </aside>
         </section>
       </main>
       <Footer />
     </>
   );
+}
+
+function formatDate(iso: string) {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    });
+  } catch {
+    return iso;
+  }
 }

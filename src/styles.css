@@ -20,12 +20,188 @@ body {
   display: block;
 }
 
-.zz-projectsHead {
-  margin-top: 40px;
+/* Home page redesign */
+.zz-homePaper {
+  display: grid;
+  gap: 22px;
+  padding-top: 24px;
+  padding-bottom: 64px;
 }
 
-.zz-homeBlog {
-  margin-top: 44px;
+.zz-homeHero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: clamp(20px, 3.2vw, 38px);
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(160, 70, 104, 0.2), transparent),
+    radial-gradient(120% 140% at 0% 100%, rgba(93, 53, 122, 0.16), transparent),
+    linear-gradient(150deg, var(--panel-from), var(--panel-to));
+  box-shadow: var(--shadow-soft);
+}
+
+.zz-homeHeadline {
+  max-width: 19ch;
+}
+
+.zz-homeDeck {
+  max-width: 58ch;
+  margin-bottom: 18px;
+}
+
+.zz-homeHeroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.zz-homePrimaryLink,
+.zz-homeSecondaryLink,
+.zz-homePostsCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  padding: 10px 16px;
+  transition:
+    transform 140ms ease,
+    background-color 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.zz-homePrimaryLink {
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+}
+
+.zz-homePrimaryLink:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft-hover);
+}
+
+.zz-homeSecondaryLink {
+  border: 1px solid var(--border);
+  color: var(--ink);
+  background: var(--surface);
+}
+
+.zz-homeSecondaryLink:hover {
+  transform: translateY(-1px);
+  border-color: var(--surface-hover-border);
+}
+
+.zz-homeLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(290px, 0.86fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.zz-homeProjects,
+.zz-homePosts {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.zz-homePosts {
+  padding-left: 20px;
+  border-left: 1px solid var(--rule);
+}
+
+.zz-homeSectionHeader {
+  margin-bottom: 12px;
+}
+
+.zz-homeSectionTitle {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.12;
+}
+
+.zz-homeSectionDeck {
+  margin: 8px 0 0;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.zz-homeProjectList,
+.zz-homePostList {
+  display: grid;
+  gap: 10px;
+  border-top: 0;
+}
+
+.zz-homeProjectCard,
+.zz-homePostCard {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(165deg, var(--panel-from) 0%, var(--surface) 100%);
+  padding: 14px;
+}
+
+.zz-homeProjectMeta,
+.zz-homePostMeta {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.zz-homeProjectTitle,
+.zz-homePostTitle {
+  margin: 7px 0 6px;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2vw, 26px);
+  line-height: 1.16;
+}
+
+.zz-homeProjectBody,
+.zz-homePostDeck {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.56;
+}
+
+.zz-homeProjectStack {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.zz-homePostsHeader {
+  margin-bottom: 10px;
+}
+
+.zz-homePostsCta {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  width: fit-content;
+  background: transparent;
+}
+
+.zz-homePostsCta:hover {
+  transform: translateY(-1px);
+  border-color: var(--surface-hover-border);
 }
 
 /* Content layout utilities */
@@ -418,6 +594,15 @@ body {
     column-count: 1;
   }
 
+  .zz-homeLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .zz-homePosts {
+    padding-left: 0;
+    border-left: 0;
+  }
+
   .zz-indexArticle {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -435,6 +620,22 @@ body {
 }
 
 @media (max-width: 680px) {
+  .zz-homeHero {
+    border-radius: 16px;
+  }
+
+  .zz-homeDeck,
+  .zz-homeSectionDeck,
+  .zz-homeProjectBody,
+  .zz-homePostDeck {
+    font-size: 17px;
+  }
+
+  .zz-homeProjectTitle,
+  .zz-homePostTitle {
+    font-size: 23px;
+  }
+
   .zz-blogHubIntro,
   .zz-blogIndexArticle,
   .zz-blogHubCard,
