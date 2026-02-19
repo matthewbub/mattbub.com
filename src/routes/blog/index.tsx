@@ -14,32 +14,36 @@ export default function Blog() {
     <>
       <Header />
       <main className="zz-blogHubPaper">
-        <section className="zz-blogHubIntro" aria-labelledby="blog-hub-title">
-          <p className="zz-blogHubKicker">Archive</p>
-          <h1 id="blog-hub-title" className="zz-blogHubTitle">
+        <header className="zz-blogHubHeader">
+          <div className="zz-blogHubKicker">Archive</div>
+          <h1 className="zz-blogHubTitle">
             Writing on engineering, product, and creative process
           </h1>
           <p className="zz-blogHubDeck">
             Notes from building software quickly, fixing messy systems, and
             figuring things out in public.
           </p>
-        </section>
+        </header>
 
-        <section className="zz-blogHubGrid" aria-label="All blog posts">
+        <section className="zz-blogHubList" aria-label="All blog posts">
           {posts.map((post) => (
             <article key={post.id} className="zz-blogHubCard">
-              <p className="zz-blogHubMeta">
+              <div className="zz-blogHubCardMeta">
                 {formatDate(post.date || new Date().toISOString())}
-                {post.readTime ? ` · ${post.readTime}` : ""}
-              </p>
+                {post.readTime && (
+                  <>
+                    <span className="zz-homePostDivider"> · </span>
+                    {post.readTime}
+                  </>
+                )}
+              </div>
               <h2 className="zz-blogHubCardTitle">
-                <a href={`/blog/${post.slug}`} className="no-ext zz-link">
+                <a href={`/blog/${post.slug}`} className="no-ext">
                   {post.title}
                 </a>
               </h2>
-              {post.deck && <p className="zz-blogHubCardDeck">{post.deck}</p>}
-              {post.tags && post.tags.length > 0 && (
-                <p className="zz-blogHubTags">{post.tags.join(" · ")}</p>
+              {post.deck && (
+                <p className="zz-blogHubCardDeck">{post.deck}</p>
               )}
             </article>
           ))}
@@ -55,8 +59,8 @@ function formatDate(iso: string) {
     const d = new Date(iso);
     return d.toLocaleDateString(undefined, {
       year: "numeric",
-      month: "short",
-      day: "2-digit",
+      month: "long",
+      day: "numeric",
     });
   } catch {
     return iso;

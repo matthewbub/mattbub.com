@@ -13,6 +13,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
 export default function BlogPost() {
   const post = Route.useLoaderData();
+
   function formatDate(dateString: string): string {
     return new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
@@ -25,14 +26,14 @@ export default function BlogPost() {
     return (
       <>
         <Header />
-        <main className="zz-blogPostPaper zz-blogPostPaper--notFound">
-          <article className="zz-blogPostLead">
+        <main className="zz-blogPostPaper">
+          <div className="zz-blogPostNotFound">
             <h1>Post not found</h1>
             <p>The requested blog post could not be found.</p>
-            <a href="/blog" className="zz-blogPostButton zz--backButton">
+            <a href="/blog" className="zz-homeSecondaryLink">
               Back to archive
             </a>
-          </article>
+          </div>
         </main>
         <Footer />
       </>
@@ -43,68 +44,32 @@ export default function BlogPost() {
     <>
       <Header />
       <main className="zz-blogPostPaper">
-        <article className="zz-blogPostLead" aria-labelledby="post-headline">
-          <a href="/blog" className="zz-blogPostBackLink">
-            Back to archive
-          </a>
-          <div className="zz-blogPostKicker">{post.tags?.[0] || "Blog"}</div>
-          <h1 id="post-headline" className="zz-blogPostHeadline">
-            {post.title}
-          </h1>
-          <div className="zz-blogPostByline">
-            {formatDate(post.date!)} · {post.readTime}
-          </div>
-          <p className="zz-blogPostDeck">{post.deck}</p>
+        <article>
+          <header className="zz-blogPostHeader">
+            <a href="/blog" className="zz-blogPostBackLink">
+              Back to archive
+            </a>
+            {post.tags && post.tags.length > 0 && (
+              <div className="zz-blogPostKicker">{post.tags[0]}</div>
+            )}
+            <h1 className="zz-blogPostHeadline">{post.title}</h1>
+            <div className="zz-blogPostByline">
+              {formatDate(post.date!)}
+              {post.readTime && (
+                <>
+                  <span className="zz-homePostDivider"> · </span>
+                  {post.readTime}
+                </>
+              )}
+            </div>
+            {post.deck && <p className="zz-blogPostDeck">{post.deck}</p>}
+          </header>
 
-          <section className="zz-markdownContent zz--blogPost">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h1: (props) => (
-                  <h1 className="zz-heading zz--primaryHeading" {...props} />
-                ),
-                h2: (props) => (
-                  <h2 className="zz-heading zz--secondaryHeading" {...props} />
-                ),
-                h3: (props) => (
-                  <h3 className="zz-heading zz--tertiaryHeading" {...props} />
-                ),
-                p: (props) => <p className="zz-paragraph" {...props} />,
-                ul: (props) => (
-                  <ul className="zz-list zz--unorderedList" {...props} />
-                ),
-                ol: (props) => (
-                  <ol className="zz-list zz--orderedList" {...props} />
-                ),
-                li: (props) => (
-                  <li className="zz-listItem zz--bulletPoint" {...props} />
-                ),
-                code: (props) => (
-                  <code className="zz-code zz--inlineCode" {...props} />
-                ),
-                pre: (props) => (
-                  <pre
-                    className="zz-codeBlock zz--syntaxHighlight"
-                    {...props}
-                  />
-                ),
-                blockquote: (props) => (
-                  <blockquote className="zz-quote zz--blockQuote" {...props} />
-                ),
-                a: (props) => (
-                  <a className="zz-link zz--externalLink" {...props} />
-                ),
-                strong: (props) => (
-                  <strong className="zz-text zz--boldText" {...props} />
-                ),
-                em: (props) => (
-                  <em className="zz-text zz--italicText" {...props} />
-                ),
-              }}
-            >
+          <div className="zz-blogPostContent">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {post.content}
             </ReactMarkdown>
-          </section>
+          </div>
         </article>
       </main>
       <Footer />
