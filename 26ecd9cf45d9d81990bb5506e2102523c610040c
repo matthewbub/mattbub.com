@@ -1,0 +1,25 @@
+src/routes/index.tsx
+  6849dc0d757701b1 4,6-21,25-48,51-54,59,64-68,70-74,76,80,83-107,109-113,115-118,120,122,124-125,127,130-144,146-160,165-168,175-186
+src/styles.css
+  6849dc0d757701b1 23-187,190-199,202-204,597-603,623-638
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "26ecd9cf45d9d81990bb5506e2102523c610040c",
+  "prompts": {
+    "6849dc0d757701b1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c7470-b2f4-7a92-8907-1a2bbd3a880d",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 386,
+      "total_deletions": 86,
+      "accepted_lines": 351,
+      "overriden_lines": 0
+    }
+  }
+}
