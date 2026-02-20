@@ -1,0 +1,40 @@
+src/markdown/second-brain/9-posts-feed-author-filters-and-header-nav-updates.md
+  6e55ce18604bd5c2 1-12
+src/markdown/second-brain/11-stabilized-guests-rsvp-e2e-for-deprecated-lookup-settings.md
+  6e55ce18604bd5c2 1-12
+src/markdown/second-brain/10-remove-redundant-post-preview-text-in-detail-headers.md
+  6e55ce18604bd5c2 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "e6236e98f82b5ae10e5410cd8edf090dac3172f6",
+  "prompts": {
+    "30242fd0d09eca38": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c79b5-6193-74c0-86bb-09c386a12e2f",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "6e55ce18604bd5c2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c79b5-c1a6-7661-b4fa-f520353bedc8",
+        "model": "unknown"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 36,
+      "overriden_lines": 0
+    }
+  }
+}
