@@ -1,0 +1,23 @@
+src/components/header.tsx
+  7fc573eb21cf025f 11-14,16-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "856014804dbe9702ebd90026200aaa37e5059f7d",
+  "prompts": {
+    "7fc573eb21cf025f": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_386a0da76ffesmezyobFntSIYg",
+        "model": "opencode/minimax-m2.5-free"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 20,
+      "total_deletions": 11,
+      "accepted_lines": 13,
+      "overriden_lines": 0
+    }
+  }
+}
