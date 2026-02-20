@@ -66,11 +66,24 @@
 .zz-homeSecondaryLink {
   background: transparent;
   color: var(--ink);
-  border: 1px solid var(--border);
+  border: none;
+  padding: 12px 20px;
+  position: relative;
 }
 
-.zz-homeSecondaryLink:hover {
-  border-color: var(--ink);
+.zz-homeSecondaryLink::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 10px;
+  height: 1px;
+  background: var(--border);
+  transition: background 120ms ease;
+}
+
+.zz-homeSecondaryLink:hover::after {
+  background: var(--ink);
 }
 
 /* Section Layout */
@@ -235,17 +248,34 @@
 }
 
 .zz-homePostsCta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin-top: 8px;
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 600;
   color: var(--ink);
   text-decoration: none;
+  position: relative;
+}
+
+.zz-homePostsCta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1px;
+  background: var(--underline);
+  transition: background 120ms ease;
 }
 
 .zz-homePostsCta:hover {
-  color: var(--link);
+  color: var(--link-hover);
+}
+
+.zz-homePostsCta:hover::after {
+  background: var(--link-hover);
 }
 
 /* === BLOG POST PAGE === */
@@ -730,6 +760,32 @@
 }
 
 .zz-secondBrainSkillCard li::marker {
+  color: var(--muted);
+}
+
+.zz-skillCodeBlock {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 16px;
+}
+
+.zz-skillCodeBlock code {
+  white-space: pre;
+  display: block;
+  font-size: 13px;
+  line-height: 1.55;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+.zz-secondBrainSkillError {
+  margin: 0;
   color: var(--muted);
 }
 

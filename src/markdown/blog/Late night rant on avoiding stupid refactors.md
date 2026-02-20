@@ -3,6 +3,7 @@ title: "Late night rant on avoiding stupid refactors"
 description: "A perspective on choosing the right refactoring approach when dealing with legacy code."
 pubDate: September 19 2025
 tags: ["refactoring", "react", "jsx", "css", "engineering", "best-practices"]
+author: "Matthew Bub"
 ---
 
 As engineers we have to weigh whats most important and generally speaking there's an infinite amount of time that could be spent on refactoring legacy code. (When I say Legacy, I mean code that's already been committed and merged into a release branch)

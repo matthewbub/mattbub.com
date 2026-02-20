@@ -13,6 +13,7 @@ tags:
     "javascript",
     "tooling",
   ]
+author: "Matthew Bub"
 ---
 
 Developers that work in repositories containing some sort of server-side JavaScript have likely encountered ESLint or Prettier at some point in their career. Both packages can be amazing to work with; and when combine, a powerful combination is formed. It's getting that combination working together, across _all environments_ is where the challenges begin.

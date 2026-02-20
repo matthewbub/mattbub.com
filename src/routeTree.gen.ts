@@ -9,37 +9,37 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SecondBrainRouteRouteImport } from './routes/second-brain/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SecondBrainIndexRouteImport } from './routes/second-brain/index'
+import { Route as PostsIndexRouteImport } from './routes/posts/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
-import { Route as SecondBrainPostidRouteImport } from './routes/second-brain/$postid'
+import { Route as SkillsSecondBrainRouteImport } from './routes/skills/second-brain'
+import { Route as PostsSlugRouteImport } from './routes/posts/$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
-const SecondBrainRouteRoute = SecondBrainRouteRouteImport.update({
-  id: '/second-brain',
-  path: '/second-brain',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SecondBrainIndexRoute = SecondBrainIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => SecondBrainRouteRoute,
+const PostsIndexRoute = PostsIndexRouteImport.update({
+  id: '/posts/',
+  path: '/posts/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SecondBrainPostidRoute = SecondBrainPostidRouteImport.update({
-  id: '/$postid',
-  path: '/$postid',
-  getParentRoute: () => SecondBrainRouteRoute,
+const SkillsSecondBrainRoute = SkillsSecondBrainRouteImport.update({
+  id: '/skills/second-brain',
+  path: '/skills/second-brain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostsSlugRoute = PostsSlugRouteImport.update({
+  id: '/posts/$slug',
+  path: '/posts/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
@@ -49,65 +49,67 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/second-brain': typeof SecondBrainRouteRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
-  '/second-brain/$postid': typeof SecondBrainPostidRoute
+  '/posts/$slug': typeof PostsSlugRoute
+  '/skills/second-brain': typeof SkillsSecondBrainRoute
   '/blog': typeof BlogIndexRoute
-  '/second-brain/': typeof SecondBrainIndexRoute
+  '/posts': typeof PostsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/second-brain/$postid': typeof SecondBrainPostidRoute
+  '/posts/$slug': typeof PostsSlugRoute
+  '/skills/second-brain': typeof SkillsSecondBrainRoute
   '/blog': typeof BlogIndexRoute
-  '/second-brain': typeof SecondBrainIndexRoute
+  '/posts': typeof PostsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/second-brain': typeof SecondBrainRouteRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
-  '/second-brain/$postid': typeof SecondBrainPostidRoute
+  '/posts/$slug': typeof PostsSlugRoute
+  '/skills/second-brain': typeof SkillsSecondBrainRoute
   '/blog/': typeof BlogIndexRoute
-  '/second-brain/': typeof SecondBrainIndexRoute
+  '/posts/': typeof PostsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/second-brain'
     | '/blog/$slug'
-    | '/second-brain/$postid'
+    | '/posts/$slug'
+    | '/skills/second-brain'
     | '/blog'
-    | '/second-brain/'
+    | '/posts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog/$slug' | '/second-brain/$postid' | '/blog' | '/second-brain'
+  to:
+    | '/'
+    | '/blog/$slug'
+    | '/posts/$slug'
+    | '/skills/second-brain'
+    | '/blog'
+    | '/posts'
   id:
     | '__root__'
     | '/'
-    | '/second-brain'
     | '/blog/$slug'
-    | '/second-brain/$postid'
+    | '/posts/$slug'
+    | '/skills/second-brain'
     | '/blog/'
-    | '/second-brain/'
+    | '/posts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SecondBrainRouteRoute: typeof SecondBrainRouteRouteWithChildren
   BlogSlugRoute: typeof BlogSlugRoute
+  PostsSlugRoute: typeof PostsSlugRoute
+  SkillsSecondBrainRoute: typeof SkillsSecondBrainRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  PostsIndexRoute: typeof PostsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/second-brain': {
-      id: '/second-brain'
-      path: '/second-brain'
-      fullPath: '/second-brain'
-      preLoaderRoute: typeof SecondBrainRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -115,12 +117,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/second-brain/': {
-      id: '/second-brain/'
-      path: '/'
-      fullPath: '/second-brain/'
-      preLoaderRoute: typeof SecondBrainIndexRouteImport
-      parentRoute: typeof SecondBrainRouteRoute
+    '/posts/': {
+      id: '/posts/'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/blog/': {
       id: '/blog/'
@@ -129,12 +131,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/second-brain/$postid': {
-      id: '/second-brain/$postid'
-      path: '/$postid'
-      fullPath: '/second-brain/$postid'
-      preLoaderRoute: typeof SecondBrainPostidRouteImport
-      parentRoute: typeof SecondBrainRouteRoute
+    '/skills/second-brain': {
+      id: '/skills/second-brain'
+      path: '/skills/second-brain'
+      fullPath: '/skills/second-brain'
+      preLoaderRoute: typeof SkillsSecondBrainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts/$slug': {
+      id: '/posts/$slug'
+      path: '/posts/$slug'
+      fullPath: '/posts/$slug'
+      preLoaderRoute: typeof PostsSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
       id: '/blog/$slug'
@@ -146,24 +155,13 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface SecondBrainRouteRouteChildren {
-  SecondBrainPostidRoute: typeof SecondBrainPostidRoute
-  SecondBrainIndexRoute: typeof SecondBrainIndexRoute
-}
-
-const SecondBrainRouteRouteChildren: SecondBrainRouteRouteChildren = {
-  SecondBrainPostidRoute: SecondBrainPostidRoute,
-  SecondBrainIndexRoute: SecondBrainIndexRoute,
-}
-
-const SecondBrainRouteRouteWithChildren =
-  SecondBrainRouteRoute._addFileChildren(SecondBrainRouteRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SecondBrainRouteRoute: SecondBrainRouteRouteWithChildren,
   BlogSlugRoute: BlogSlugRoute,
+  PostsSlugRoute: PostsSlugRoute,
+  SkillsSecondBrainRoute: SkillsSecondBrainRoute,
   BlogIndexRoute: BlogIndexRoute,
+  PostsIndexRoute: PostsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -156,6 +156,7 @@ function renderMarkdown(record) {
     `title: ${yamlQuote(title)}`,
     `date: ${yamlQuote(date)}`,
     `slug: ${yamlQuote(slug)}`,
+    `author: ${yamlQuote("Marvin (AI assistant)")}`,
     `brainId: ${id}`,
     `project: ${yamlQuote(project)}`,
     `tags: [${tags.map(yamlQuote).join(", ")}]`,

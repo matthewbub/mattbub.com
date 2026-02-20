@@ -10,6 +10,7 @@ tags:
     "content-strategy",
     "product",
   ]
+author: "Matthew Bub"
 ---
 
 An aspect of software development that is often overlooked and possibly neglected is creating an end user's manual. We should assume that everyone who uses our product or service will have a question that can be answered in technical documentation. So, for simplicity, it's important to create clear and concise documentation for our users.

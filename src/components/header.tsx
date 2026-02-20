@@ -11,11 +11,8 @@ export default function Header() {
           <a href="/#projects" className="zz-navLink zz-sansFont">
             Projects
           </a>
-          <a href="/blog" className="zz-navLink zz-sansFont">
+          <a href="/posts" className="zz-navLink zz-sansFont">
             Posts
-          </a>
-          <a href="/second-brain" className="zz-navLink zz-sansFont">
-            Second Brain
           </a>
         </nav>
       </div>

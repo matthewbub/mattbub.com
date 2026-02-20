@@ -3,11 +3,11 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { loadAllPosts } from "../../utils/postsLoader";
 
-export const Route = createFileRoute("/blog/")({
-  component: Blog,
+export const Route = createFileRoute("/posts/")({
+  component: Posts,
 });
 
-export default function Blog() {
+export default function Posts() {
   const posts = loadAllPosts();
 
   return (
@@ -40,9 +40,7 @@ export default function Blog() {
                   {post.title}
                 </a>
               </h2>
-              {post.deck && (
-                <p className="zz-blogHubCardDeck">{post.deck}</p>
-              )}
+              {post.deck && <p className="zz-blogHubCardDeck">{post.deck}</p>}
               <p className="zz-blogHubCardDeck">{post.author}</p>
             </article>
           ))}

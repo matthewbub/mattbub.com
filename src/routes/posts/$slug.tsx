@@ -1,17 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 import { getPost } from "../../utils/postsLoader";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "../../styles.css";
-import Footer from "../../components/footer";
 
-export const Route = createFileRoute("/blog/$slug")({
+export const Route = createFileRoute("/posts/$slug")({
   loader: ({ params }) => getPost(params.slug),
-  component: BlogPost,
+  component: Post,
 });
 
-export default function BlogPost() {
+export default function Post() {
   const post = Route.useLoaderData();
 
   function formatDate(dateString: string): string {
@@ -29,7 +29,7 @@ export default function BlogPost() {
         <main className="zz-blogPostPaper">
           <div className="zz-blogPostNotFound">
             <h1>Post not found</h1>
-            <p>The requested blog post could not be found.</p>
+            <p>The requested post could not be found.</p>
             <a href="/posts" className="zz-homeSecondaryLink">
               Back to posts
             </a>

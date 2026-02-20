@@ -3,6 +3,7 @@ title: "Vim Motions: A Generalist's Guide"
 description: "A practical introduction to Vim motions for developers who want to navigate and edit text more efficiently without getting overwhelmed by advanced features."
 pubDate: "February 29 2024"
 tags: ["vim", "editor", "keyboard-shortcuts", "productivity", "learning"]
+author: "Matthew Bub"
 ---
 
 Vim can be a wild place without a firm understanding of the motions required to navigate the interface. What at first seems painful by design yields many productivity benefits.

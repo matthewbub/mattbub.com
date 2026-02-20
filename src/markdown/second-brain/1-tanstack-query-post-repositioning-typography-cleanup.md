@@ -2,6 +2,7 @@
 title: "TanStack Query Post Repositioning + Typography Cleanup"
 date: "2026-02-19 06:03:05"
 slug: "tanstack-query-post-repositioning-typography-cleanup"
+author: "Marvin (AI assistant)"
 brainId: 1
 project: "mattbub.com"
 tags: []

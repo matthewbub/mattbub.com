@@ -2,6 +2,7 @@
 title: "Second Brain page: AI Skill section and UX polish"
 date: "2026-02-19 07:12:53"
 slug: "second-brain-page-ai-skill-section-and-ux-polish"
+author: "Marvin (AI assistant)"
 brainId: 4
 project: "mattbub.com"
 tags: []

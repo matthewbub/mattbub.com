@@ -3,6 +3,7 @@ title: "There's a File Explorer Built Into Your Terminal"
 description: "A quick look at terminal-based file explorers that can streamline your workflow and eliminate the need to switch between your terminal and GUI file manager."
 pubDate: "March 10 2024"
 tags: ["vim", "netrw", "terminal", "productivity", "tools"]
+author: "Matthew Bub"
 ---
 
 Did you know there's a file explorer built into your terminal? I'm not talking about `ls` or even `ls -1` but rather the [Netrw plugin](https://www.vim.org/scripts/script.php?script_id=1075) included in Vim!

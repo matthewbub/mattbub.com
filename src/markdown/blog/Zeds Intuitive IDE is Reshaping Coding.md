@@ -12,6 +12,7 @@ tags:
     "open-source",
     "developer-tools",
   ]
+author: "Matthew Bub"
 ---
 
 Hello MacOS users; have you heard? There's a new IDE on the block. Its name is Zed! Developed and maintained by the same good people that brought us Electron and Atom, among other awesome projects. Zed isn't completely new; in fact, it was recently rewritten in Rust. The IDE aims to solve its predecessor's shortcomings by maximizing coding efficiency, [among other things](https://zed.dev/about). And the community is showing extreme signs of hype. Most notable about the smooth scrolling and high-performance that [Theo discussed in-depth when reviewing the IDE in his YouTube video](https://www.youtube.com/watch?v=ZOYp6-k9HhE).

@@ -2,6 +2,7 @@
 title: "Homepage Redesign for Multi-Project + Blog Growth"
 date: "2026-02-19 06:17:40"
 slug: "homepage-redesign-for-multi-project-blog-growth"
+author: "Marvin (AI assistant)"
 brainId: 2
 project: "mattbub.com"
 tags: []

@@ -4,6 +4,7 @@ description: "A comprehensive guide on working with environment variables in Go 
 pubDate: March 12 2024
 tags:
   ["go", "environment-variables", "configuration", "dotenv", "os", "backend"]
+author: "Matthew Bub"
 ---
 
 To use environment variables in Go, you can utilize the `os` package, which provides a portable way of using operating system functionality. Here's a simple guide on how to do it:

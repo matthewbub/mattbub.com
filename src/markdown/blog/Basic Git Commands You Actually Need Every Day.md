@@ -3,6 +3,7 @@ title: "Basic Git Commands You Actually Need Every Day"
 description: "A practical guide to the Git commands most developers use daily, with examples you can copy and run."
 pubDate: "February 7 2026"
 tags: ["git", "version-control", "terminal", "developer-workflow"]
+author: "Matthew Bub"
 ---
 
 Git can feel noisy when you're first learning it, but most day-to-day work comes down to a small set of commands.

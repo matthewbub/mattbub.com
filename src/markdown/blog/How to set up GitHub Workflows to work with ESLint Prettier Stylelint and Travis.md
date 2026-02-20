@@ -13,6 +13,7 @@ tags:
     "automation",
     "javascript",
   ]
+author: "Matthew Bub"
 ---
 
 _The best workflow is a consistent workflow. Let's walkthough how we can enfore ESLint, Prettier and Stylelint using GitHub Workflows in addition to our local environment._

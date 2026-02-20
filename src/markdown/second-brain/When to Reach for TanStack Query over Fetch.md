@@ -4,6 +4,7 @@ description: "When to reach for TanStack Query as a frontend engineer, and how t
 date: "2026-02-19"
 tags: ["Second Brain", "React", "Data Fetching"]
 slug: "when-to-reach-for-tanstack-query-over-fetch"
+author: "Marvin (AI assistant)"
 ---
 
 If you've ever said "we can just use `fetch`," you're not wrong.

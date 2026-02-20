@@ -3,6 +3,7 @@ title: "Tailwind CSS Is Good for Us"
 description: "An exploration of Tailwind CSS, its benefits, and real-world application in Next.js development, discussing both its advantages and potential drawbacks."
 pubDate: July 2 2021
 tags: ["tailwindcss", "css", "frontend", "styling", "nextjs", "design-system"]
+author: "Matthew Bub"
 ---
 
 # Tailwind CSS Is Good for Us.

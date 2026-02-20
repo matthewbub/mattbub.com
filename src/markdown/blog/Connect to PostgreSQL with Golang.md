@@ -3,6 +3,7 @@ title: "Connect to PostgreSQL with Golang"
 description: "A guide on establishing and managing PostgreSQL database connections using Go, including best practices and implementation details."
 pubDate: March 14 2024
 tags: ["go", "postgresql", "database", "sql", "dotenv", "connection", "backend"]
+author: "Matthew Bub"
 ---
 
 The goal is simple: create a secure PostgreSQL connection in Golang that will allow you to continue with your mission.

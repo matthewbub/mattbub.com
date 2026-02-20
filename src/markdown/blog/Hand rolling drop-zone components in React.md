@@ -3,6 +3,7 @@ title: "Hand rolling drop-zone components in React"
 description: "Tired of that old 'Choose file' button? Yeah, me too. Let's build a proper drag-and-drop file uploader in React because it's 2024 and we deserve better UX than clicking tiny buttons like savages."
 pubDate: "August 2 2024"
 tags: ["react", "drag-and-drop", "file-upload", "nextjs", "components", "ux"]
+author: "Matthew Bub"
 ---
 
 Alright so like when's the last time you had to actually select that old HTML "Choose file" button? I usually don't like to pull this card but _it is 2024 after all_, and since most of us are using React anyway, I figure we might as well cover what a file uploader with drag and dropping capabilities might look like.

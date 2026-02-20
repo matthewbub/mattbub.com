@@ -3,6 +3,7 @@ title: "How to build a Gravatar Icon with Next.js"
 description: "Learn how to implement and integrate Gravatar icons into your Next.js application. This tutorial shows you how to create a reusable Gravatar component for displaying user profile images."
 pubDate: November 25 2022
 tags: ["nextjs", "gravatar", "react", "avatar", "api", "md5", "tutorial"]
+author: "Matthew Bub"
 ---
 
 Preview: https://with-nextjs-and-gravatar.vercel.app/
