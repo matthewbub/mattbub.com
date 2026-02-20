@@ -64,7 +64,6 @@ export default function Post() {
               <span className="zz-homePostDivider"> · </span>
               {post.author}
             </div>
-            {post.deck && <p className="zz-blogPostDeck">{post.deck}</p>}
           </header>
 
           <div className="zz-blogPostContent">
