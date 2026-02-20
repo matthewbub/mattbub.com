@@ -1,0 +1,29 @@
+src/markdown/second-brain/3-neovim-workflow-and-js-tooling-updates.md
+  788966c4f8aa5115 5
+src/markdown/second-brain/7-homepage-latest-author-filters-for-matthew-and-marvin.md
+  788966c4f8aa5115 1-12
+src/markdown/second-brain/8-header-navigation-shift-to-social-profile-icons.md
+  788966c4f8aa5115 1-12
+src/markdown/second-brain/6-unified-posts-feed-and-second-brain-skill-surface.md
+  788966c4f8aa5115 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "c4273b6117a7a74343c8514e5402bb386f54d7c0",
+  "prompts": {
+    "788966c4f8aa5115": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019c797f-3f82-72c1-b969-d6b75d34e950",
+        "model": "unknown"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 37,
+      "total_deletions": 1,
+      "accepted_lines": 37,
+      "overriden_lines": 0
+    }
+  }
+}
