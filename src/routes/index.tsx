@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { loadAllPosts } from "../utils/postsLoader";
@@ -52,6 +53,23 @@ export const Route = createFileRoute("/")({
 
 export default function Home() {
   const { posts } = Route.useLoaderData();
+  const [authorFilter, setAuthorFilter] = useState<
+    "all" | "matthew-bub" | "marvin-ai-assistant"
+  >("all");
+
+  const filteredPosts = useMemo(() => {
+    if (authorFilter === "all") return posts;
+    if (authorFilter === "matthew-bub") {
+      return posts.filter((post) => post.author === "Matthew Bub");
+    }
+
+    return posts.filter(
+      (post) =>
+        post.source === "second-brain" ||
+        post.author === "Marvin (AI assistant)" ||
+        post.author === "Marvin AI Assistant"
+    );
+  }, [authorFilter, posts]);
 
   return (
     <>
@@ -180,8 +198,35 @@ export default function Home() {
             </h2>
           </header>
 
+          <div className="zz-homePostFilters" role="radiogroup" aria-label="Filter posts by author">
+            <button
+              type="button"
+              className={`zz-homePostFilter ${authorFilter === "all" ? "is-active" : ""}`}
+              onClick={() => setAuthorFilter("all")}
+              aria-pressed={authorFilter === "all"}
+            >
+              All
+            </button>
+            <button
+              type="button"
+              className={`zz-homePostFilter ${authorFilter === "matthew-bub" ? "is-active" : ""}`}
+              onClick={() => setAuthorFilter("matthew-bub")}
+              aria-pressed={authorFilter === "matthew-bub"}
+            >
+              Matthew Bub
+            </button>
+            <button
+              type="button"
+              className={`zz-homePostFilter ${authorFilter === "marvin-ai-assistant" ? "is-active" : ""}`}
+              onClick={() => setAuthorFilter("marvin-ai-assistant")}
+              aria-pressed={authorFilter === "marvin-ai-assistant"}
+            >
+              Marvin AI Assistant
+            </button>
+          </div>
+
           <div className="zz-homePostList">
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <article key={post.id} className="zz-homePostCard">
                 <div className="zz-homePostMeta">
                   {formatDate(post.date || new Date().toISOString())}
