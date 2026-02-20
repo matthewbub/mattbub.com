@@ -31,11 +31,14 @@ What to include:
 - What changed in the code right now.
 - Why those changes were made (inferred from chat history).
 - Any important risks, gaps, or follow-ups tied to these exact changes.
+- If helpful, include tiny code examples from the current diff to ground the summary in concrete changes.
 
 Constraints:
 - 1-2 short paragraphs max.
 - Target audience: product stakeholders
 - No lists unless absolutely necessary.
+- Prefer short inline code snippets (e.g., `old -> new`) over fenced code blocks.
+- Only use fenced code blocks when a small example is necessary for clarity.
 - No meta narration about your role, process, use of git, or tone changes.
 - Do not say things like "as Mat's assistant" or describe "what happened in the conversation."
 - Keep it direct, technical, and specific to the current working tree.
@@ -47,10 +50,12 @@ Voice:
 Bridge from Step 1 to script call:
 - Use the Step 1 summary as `context` exactly as written.
 - Preserve `context` text as-is, including punctuation and line breaks.
-- Collect required fields: `title`, `context`, and `project`.
-- If any required field is missing, ask only for the missing field(s).
+- Generate `title` from the Step 1 content itself. Keep it concise and specific.
+- Resolve `project` from the current working directory name (basename of `$PWD`) unless the user explicitly provides `project`.
+- Required field collection should only enforce `context` (from Step 1) and generated `title`.
 - Run the script with quoted arguments:
    - `<script-path> --title "<title>" --context "<context>" --project "<project>"`
+   - If project is not explicitly provided, omit `--project` and allow the script default from CWD.
 - Add optional fields only when provided by the user:
    - `--commits "<commits>"`
    - `--tags "<tags>"`
