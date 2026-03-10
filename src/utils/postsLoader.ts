@@ -3,12 +3,7 @@ const blogModules = import.meta.glob("/src/markdown/blog/*.md", {
   eager: true,
 });
 
-const secondBrainModules = import.meta.glob("/src/markdown/second-brain/*.md", {
-  as: "raw",
-  eager: true,
-});
-
-export type PostSource = "blog" | "second-brain";
+export type PostSource = "blog";
 
 export type Post = {
   id: string;
@@ -116,16 +111,7 @@ function parseDate(dateStr: string): string {
   return new Date().toISOString();
 }
 
-function defaultAuthorForSource(source: PostSource) {
-  return source === "second-brain"
-    ? "Marvin (AI assistant)"
-    : "Matthew Bub";
-}
-
-function modulesToPosts(
-  source: PostSource,
-  modules: Record<string, unknown>
-): Post[] {
+function modulesToPosts(modules: Record<string, unknown>): Post[] {
   return Object.entries(modules).map(([path, content]) => {
     const filename = path.split("/").pop()?.replace(/\.md$/, "") || "";
     const raw = content as string;
@@ -133,7 +119,7 @@ function modulesToPosts(
     const baseSlug = frontmatter.slug || createSlugFromFilename(filename);
 
     return {
-      id: `${source}:${createSlugFromFilename(filename)}`,
+      id: `blog:${createSlugFromFilename(filename)}`,
       title: frontmatter.title || createTitleFromFilename(filename),
       slug: createSlug(baseSlug),
       filename: `${filename}.md`,
@@ -144,8 +130,8 @@ function modulesToPosts(
       ),
       tags: frontmatter.tags || [],
       readTime: frontmatter.readTime || estimateReadTime(raw),
-      author: frontmatter.author || defaultAuthorForSource(source),
-      source,
+      author: frontmatter.author || "Matthew Bub",
+      source: "blog",
       metadata: {
         frontmatter,
         excerpt: extractExcerpt(raw),
@@ -170,10 +156,7 @@ function withUniqueSlugs(posts: Post[]): Post[] {
 }
 
 export function loadAllPosts(): Post[] {
-  const posts = [
-    ...modulesToPosts("blog", blogModules),
-    ...modulesToPosts("second-brain", secondBrainModules),
-  ];
+  const posts = [...modulesToPosts(blogModules)];
 
   const sorted = posts.sort(
     (a, b) => new Date(b.date!).getTime() - new Date(a.date!).getTime()

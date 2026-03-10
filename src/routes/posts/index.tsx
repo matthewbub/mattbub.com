@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { loadAllPosts } from "../../utils/postsLoader";
+import { formatPostedRelative } from "../../utils/dateFormat";
 
 export const Route = createFileRoute("/posts/")({
   component: Posts,
@@ -16,10 +17,9 @@ export default function Posts() {
       <main className="zz-blogHubPaper">
         <header className="zz-blogHubHeader">
           <div className="zz-blogHubKicker">Archive</div>
-          <h1 className="zz-blogHubTitle">Latest posts across Blog + Marvin</h1>
+          <h1 className="zz-blogHubTitle">Latest blog posts</h1>
           <p className="zz-blogHubDeck">
-            Combined writing feed from human-authored blog notes and
-            second-brain AI entries.
+            Writing on software engineering, product development, and workflow.
           </p>
         </header>
 
@@ -27,7 +27,7 @@ export default function Posts() {
           {posts.map((post) => (
             <article key={post.id} className="zz-blogHubCard">
               <div className="zz-blogHubCardMeta">
-                {formatDate(post.date || new Date().toISOString())}
+                {formatPostedRelative(post.date || new Date().toISOString())}
                 {post.readTime && (
                   <>
                     <span className="zz-homePostDivider"> · </span>
@@ -49,17 +49,4 @@ export default function Posts() {
       <Footer />
     </>
   );
-}
-
-function formatDate(iso: string) {
-  try {
-    const d = new Date(iso);
-    return d.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return iso;
-  }
 }

@@ -11,10 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PostsIndexRouteImport } from './routes/posts/index'
-import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as SkillsSecondBrainRouteImport } from './routes/skills/second-brain'
 import { Route as PostsSlugRouteImport } from './routes/posts/$slug'
-import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,11 +22,6 @@ const IndexRoute = IndexRouteImport.update({
 const PostsIndexRoute = PostsIndexRouteImport.update({
   id: '/posts/',
   path: '/posts/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SkillsSecondBrainRoute = SkillsSecondBrainRouteImport.update({
@@ -41,70 +34,38 @@ const PostsSlugRoute = PostsSlugRouteImport.update({
   path: '/posts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog/$slug': typeof BlogSlugRoute
   '/posts/$slug': typeof PostsSlugRoute
   '/skills/second-brain': typeof SkillsSecondBrainRoute
-  '/blog': typeof BlogIndexRoute
   '/posts': typeof PostsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog/$slug': typeof BlogSlugRoute
   '/posts/$slug': typeof PostsSlugRoute
   '/skills/second-brain': typeof SkillsSecondBrainRoute
-  '/blog': typeof BlogIndexRoute
   '/posts': typeof PostsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog/$slug': typeof BlogSlugRoute
   '/posts/$slug': typeof PostsSlugRoute
   '/skills/second-brain': typeof SkillsSecondBrainRoute
-  '/blog/': typeof BlogIndexRoute
   '/posts/': typeof PostsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/blog/$slug'
-    | '/posts/$slug'
-    | '/skills/second-brain'
-    | '/blog'
-    | '/posts'
+  fullPaths: '/' | '/posts/$slug' | '/skills/second-brain' | '/posts'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/blog/$slug'
-    | '/posts/$slug'
-    | '/skills/second-brain'
-    | '/blog'
-    | '/posts'
-  id:
-    | '__root__'
-    | '/'
-    | '/blog/$slug'
-    | '/posts/$slug'
-    | '/skills/second-brain'
-    | '/blog/'
-    | '/posts/'
+  to: '/' | '/posts/$slug' | '/skills/second-brain' | '/posts'
+  id: '__root__' | '/' | '/posts/$slug' | '/skills/second-brain' | '/posts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogSlugRoute: typeof BlogSlugRoute
   PostsSlugRoute: typeof PostsSlugRoute
   SkillsSecondBrainRoute: typeof SkillsSecondBrainRoute
-  BlogIndexRoute: typeof BlogIndexRoute
   PostsIndexRoute: typeof PostsIndexRoute
 }
 
@@ -124,13 +85,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/skills/second-brain': {
       id: '/skills/second-brain'
       path: '/skills/second-brain'
@@ -145,22 +99,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogSlugRoute: BlogSlugRoute,
   PostsSlugRoute: PostsSlugRoute,
   SkillsSecondBrainRoute: SkillsSecondBrainRoute,
-  BlogIndexRoute: BlogIndexRoute,
   PostsIndexRoute: PostsIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { getPost } from "../../utils/postsLoader";
+import { formatPostedRelative } from "../../utils/dateFormat";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "../../styles.css";
@@ -13,14 +14,6 @@ export const Route = createFileRoute("/posts/$slug")({
 
 export default function Post() {
   const post = Route.useLoaderData();
-
-  function formatDate(dateString: string): string {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  }
 
   if (!post) {
     return (
@@ -54,7 +47,7 @@ export default function Post() {
             )}
             <h1 className="zz-blogPostHeadline">{post.title}</h1>
             <div className="zz-blogPostByline">
-              {formatDate(post.date!)}
+              {formatPostedRelative(post.date || new Date().toISOString())}
               {post.readTime && (
                 <>
                   <span className="zz-homePostDivider"> · </span>

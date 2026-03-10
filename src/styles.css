@@ -799,8 +799,6 @@
 
 .zz-skillCodeBlock {
   margin: 0;
-  width: 100%;
-  max-width: 100%;
   overflow: auto;
   border: 1px solid var(--border);
   border-radius: 10px;

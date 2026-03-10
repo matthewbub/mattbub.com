@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { loadAllPosts } from "../utils/postsLoader";
+import { formatPostedRelative } from "../utils/dateFormat";
 
 type Project = {
   title: string;
@@ -27,19 +27,10 @@ const featuredProjects: Project[] = [
     title: "mattbub.com",
     url: "https://mattbub.com",
     description:
-      "A content-driven portfolio built to publish blog posts and second-brain notes quickly with markdown-first workflows and strong editorial UX.",
+      "A content-driven portfolio built to publish blog posts quickly with markdown-first workflows and strong editorial UX.",
     stack: ["React", "Vite", "TanStack Router", "TypeScript"],
     year: "2026",
     external: true,
-  },
-  {
-    title: "Second Brain",
-    url: "/posts",
-    description:
-      "A living notes system for technical thinking, architecture decisions, and implementation playbooks that can be published without editorial friction.",
-    stack: ["Markdown Pipeline", "Content Modeling"],
-    year: "2026",
-    external: false,
   },
 ];
 
@@ -53,23 +44,6 @@ export const Route = createFileRoute("/")({
 
 export default function Home() {
   const { posts } = Route.useLoaderData();
-  const [authorFilter, setAuthorFilter] = useState<
-    "all" | "matthew-bub" | "marvin-ai-assistant"
-  >("all");
-
-  const filteredPosts = useMemo(() => {
-    if (authorFilter === "all") return posts;
-    if (authorFilter === "matthew-bub") {
-      return posts.filter((post) => post.author === "Matthew Bub");
-    }
-
-    return posts.filter(
-      (post) =>
-        post.source === "second-brain" ||
-        post.author === "Marvin (AI assistant)" ||
-        post.author === "Marvin AI Assistant"
-    );
-  }, [authorFilter, posts]);
 
   return (
     <>
@@ -112,11 +86,7 @@ export default function Home() {
                 <article key={project.title} className="zz-homeProjectCard">
                   <div className="zz-homeProjectHeader">
                     <h3 className="zz-homeProjectTitle">
-                      <a
-                        href={project.url}
-                        className="zz-link"
-                        {...linkProps}
-                      >
+                      <a href={project.url} className="zz-link" {...linkProps}>
                         {project.title}
                       </a>
                     </h3>
@@ -147,7 +117,6 @@ export default function Home() {
           <div className="zz-secondBrainSkillCard">
             <div className="zz-secondBrainSkillCardHeader">
               <div>
-                <div className="zz-secondBrainSkillKicker">A Marvin Capability</div>
                 <h3>Second Brain</h3>
               </div>
               <a
@@ -198,38 +167,11 @@ export default function Home() {
             </h2>
           </header>
 
-          <div className="zz-homePostFilters" role="radiogroup" aria-label="Filter posts by author">
-            <button
-              type="button"
-              className={`zz-homePostFilter ${authorFilter === "all" ? "is-active" : ""}`}
-              onClick={() => setAuthorFilter("all")}
-              aria-pressed={authorFilter === "all"}
-            >
-              All
-            </button>
-            <button
-              type="button"
-              className={`zz-homePostFilter ${authorFilter === "matthew-bub" ? "is-active" : ""}`}
-              onClick={() => setAuthorFilter("matthew-bub")}
-              aria-pressed={authorFilter === "matthew-bub"}
-            >
-              Matthew Bub
-            </button>
-            <button
-              type="button"
-              className={`zz-homePostFilter ${authorFilter === "marvin-ai-assistant" ? "is-active" : ""}`}
-              onClick={() => setAuthorFilter("marvin-ai-assistant")}
-              aria-pressed={authorFilter === "marvin-ai-assistant"}
-            >
-              Marvin AI Assistant
-            </button>
-          </div>
-
           <div className="zz-homePostList">
-            {filteredPosts.map((post) => (
+            {posts.map((post) => (
               <article key={post.id} className="zz-homePostCard">
                 <div className="zz-homePostMeta">
-                  {formatDate(post.date || new Date().toISOString())}
+                  {formatPostedRelative(post.date || new Date().toISOString())}
                   {post.readTime && (
                     <>
                       <span className="zz-homePostDivider">·</span>
@@ -256,17 +198,4 @@ export default function Home() {
       <Footer />
     </>
   );
-}
-
-function formatDate(iso: string) {
-  try {
-    const d = new Date(iso);
-    return d.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return iso;
-  }
 }
