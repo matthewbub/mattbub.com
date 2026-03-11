@@ -1,40 +1,39 @@
 .zz-masthead {
-  border-bottom: 1px solid var(--rule);
   margin: 0 auto;
-  max-width: 720px;
-  padding: 20px var(--gutter) 16px;
+  max-width: var(--maxw);
+  padding: 24px var(--gutter) 20px;
 }
 
 .zz-topline {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  color: var(--muted);
-  font-size: 14px;
 }
 
 .zz-brand {
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 14px;
   letter-spacing: -0.02em;
-  font-size: 20px;
   color: var(--ink);
   text-decoration: none;
+  text-transform: lowercase;
 }
 
 .zz-navigation {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
 }
 
 .zz-navLink {
   color: var(--muted);
   text-decoration: none;
   font-size: 14px;
-  font-weight: 500;
-  padding: 4px 0;
-  transition: color 120ms ease;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  transition: color 200ms ease;
 }
 
 .zz-navLink:hover {

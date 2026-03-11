@@ -1,189 +1,32 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.brand,
-.nav a,
-.meta,
-.pill,
-.btn,
-.toc,
-.caption {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
-pre,
-code,
-kbd {
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  font-size: 14px;
+pre, code, kbd {
+  font-family: var(--font-mono);
+  font-size: 13px;
 }
 
-kbd {
-  background: var(--kbd-bg);
-  color: var(--kbd-fg);
-  border: 1px solid var(--kbd-border);
-  border-bottom-width: 2px;
-  border-radius: 6px;
-  padding: 2px 6px;
+p {
+  font-size: 16px;
+  line-height: 1.65;
+  font-family: var(--font-sans);
 }
 
 .zz-sansFont {
   font-family: var(--font-sans);
 }
 
-p {
-  font-size: 18px;
-  line-height: 1.62;
-}
-
-.zz-kicker,
-.zz-blogKicker,
-.zz-blogPostKicker {
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-size: 12px;
-  color: var(--muted);
-  font-family: var(--font-sans);
-}
-
-.zz-headline {
-  font-size: clamp(34px, 5vw, 54px);
-  line-height: 1.03;
-  margin: 6px 0 8px;
-  text-wrap: balance;
-}
-
-.zz-byline,
-.zz-blogByline,
-.zz-blogPostByline {
-  font-size: 13px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  font-family: var(--font-sans);
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.zz-deck,
-.zz-blogDeck,
-.zz-blogHubDeck,
-.zz-blogPostDeck {
-  font-size: clamp(19px, 1.2vw, 22px);
-  line-height: 1.52;
-  margin: 10px 0 14px;
-  max-width: 52ch;
-}
-
-.zz-meta,
-.zz-blogMeta,
-.zz-blogHubMeta {
-  color: var(--muted);
-  font-size: 13px;
-  font-family: var(--font-sans);
-  letter-spacing: 0.02em;
-}
-
-.zz-meta {
-  border-top: 1px solid var(--rule);
-  padding-top: 10px;
-  margin-top: 20px;
-}
-
-.zz-sectionHead,
-.zz-blogSectionHead {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.zz-teaseHeading,
-.zz-blogTeaseHeading {
-  font-size: 17px;
-  margin: 0 0 6px;
-  line-height: 1.3;
-}
-
-.zz-teaseMeta {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.zz-indexHeading {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 3vw, 34px);
-  font-weight: 650;
-  line-height: 1.14;
-  margin: 0 0 6px;
-}
-
-.zz-indexParagraph {
-  font-size: clamp(18px, 1.4vw, 21px);
-  line-height: 1.55;
-  margin: 8px 0 0;
-}
-
-.zz-indexEyebrow {
-  margin: 0 0 8px;
-  font-family: var(--font-sans);
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12px;
-}
-
-.zz-indexYear {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 9px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  font-family: var(--font-sans);
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.zz-blogHeadline {
-  font-size: clamp(29px, 4.1vw, 44px);
-  line-height: 1.1;
-  margin: 6px 0 8px;
-  text-wrap: balance;
-}
-
-.zz-blogIndexHeading,
-.zz-blogHubCardTitle {
-  font-family: var(--font-serif);
-  font-size: clamp(24px, 2.5vw, 31px);
-  font-weight: 650;
-  line-height: 1.16;
-  margin: 0 0 6px;
-}
-
-.zz-blogPostHeadline,
-.zz-blogHubTitle {
-  font-family: var(--font-serif);
-  font-size: clamp(34px, 4.2vw, 48px);
-  line-height: 1.05;
-  margin: 8px 0 10px;
-  text-wrap: balance;
-}
-
 .zz-markdownContent {
   min-width: 0;
   max-width: 66ch;
-  font-family: var(--font-serif);
-  font-size: clamp(18px, 0.95vw, 21px);
+  font-family: var(--font-sans);
+  font-size: 16px;
   line-height: 1.72;
-  text-wrap: pretty;
+  font-weight: 400;
+  color: var(--ink);
 }
 
 .zz-markdownContent img {
@@ -192,191 +35,102 @@ p {
   width: auto;
   height: auto;
   max-height: 520px;
-  margin: 18px auto;
+  margin: 24px auto;
   object-fit: contain;
-  border-radius: 10px;
 }
 
-.zz-heading {
-  font-family: var(--font-sans);
-  color: var(--ink);
-  letter-spacing: -0.012em;
-}
-
-.zz--primaryHeading,
 .zz-markdownContent h1 {
-  font-size: clamp(34px, 3.7vw, 44px);
+  font-size: clamp(28px, 3vw, 36px);
   line-height: 1.1;
-  margin: 32px 0 14px;
+  margin: 48px 0 16px;
 }
 
-.zz--secondaryHeading,
 .zz-markdownContent h2 {
-  font-size: clamp(27px, 2.8vw, 34px);
+  font-size: clamp(22px, 2.5vw, 28px);
   line-height: 1.16;
-  margin: 34px 0 12px;
+  margin: 40px 0 12px;
 }
 
-.zz--tertiaryHeading,
 .zz-markdownContent h3 {
-  font-size: clamp(22px, 2vw, 27px);
+  font-size: clamp(18px, 2vw, 22px);
   line-height: 1.22;
-  margin: 28px 0 10px;
+  margin: 32px 0 10px;
 }
 
 .zz-markdownContent h4,
 .zz-markdownContent h5,
 .zz-markdownContent h6 {
-  font-family: var(--font-sans);
-  color: var(--ink);
-  margin: 20px 0 8px;
+  font-size: 16px;
+  margin: 24px 0 8px;
 }
 
-.zz-paragraph,
 .zz-markdownContent p {
   font-size: inherit;
-  margin: 0 0 1.02em;
+  margin: 0 0 1.1em;
   line-height: inherit;
   color: var(--ink);
-  font-family: var(--font-serif);
-  font-weight: 400;
 }
 
-.zz-text,
-.zz-markdownContent strong,
-.zz-markdownContent em {
-  color: var(--ink);
-  font-family: var(--font-serif);
-}
-
-.zz--boldText,
 .zz-markdownContent strong {
-  font-weight: 650;
+  font-weight: 600;
+  color: var(--ink);
 }
 
-.zz--italicText,
 .zz-markdownContent em {
   font-style: italic;
+  color: var(--ink);
 }
 
-.zz-list,
 .zz-markdownContent ul,
 .zz-markdownContent ol {
-  padding-left: 1.28em;
-  margin: 1.12em 0 1.18em;
+  padding-left: 1.2em;
+  margin: 1em 0;
   color: var(--ink);
-  font-family: var(--font-serif);
 }
 
-.zz--unorderedList,
 .zz-markdownContent ul {
   list-style: disc;
 }
 
-.zz--orderedList,
 .zz-markdownContent ol {
   list-style: decimal;
 }
 
-.zz-listItem,
-.zz--bulletPoint,
 .zz-markdownContent li {
-  margin: 0.5em 0;
-  line-height: 1.62;
-  padding-left: 0.18em;
+  margin: 0.4em 0;
+  line-height: 1.65;
 }
 
 .zz-markdownContent li::marker {
-  color: var(--muted);
+  color: var(--faint);
 }
 
-.zz-code,
-.zz-codeBlock,
-.zz-markdownContent code,
-.zz-markdownContent pre {
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  font-size: 0.86em;
-  color: var(--ink);
-}
-
-.zz--inlineCode,
 .zz-markdownContent :not(pre) > code {
   background: var(--inline-code-bg);
-  border: 1px solid var(--inline-code-border);
-  border-radius: 6px;
-  padding: 0.1em 0.35em;
+  padding: 0.15em 0.4em;
+  font-size: 0.88em;
 }
 
-.zz-heading .zz-code.zz--inlineCode,
-.zz-heading code.zz-code.zz--inlineCode,
-.zz-markdownContent h1 code,
-.zz-markdownContent h2 code,
-.zz-markdownContent h3 code,
-.zz-markdownContent h4 code {
-  font-size: 0.7em;
-  line-height: 1;
-  vertical-align: baseline;
-  padding: 0.1em 0.35em;
-  border-radius: 0.35em;
-}
-
-.zz--syntaxHighlight,
 .zz-markdownContent pre {
   background: var(--syntax-bg);
-  color: var(--ink);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
+  color: var(--code-fg);
+  padding: 16px 20px;
   overflow: auto;
-  margin: 20px 0;
-  line-height: 1.58;
+  margin: 24px 0;
+  line-height: 1.6;
 }
 
-.zz--syntaxHighlight > code,
 .zz-markdownContent pre > code {
-  color: inherit;
   background: none;
-  border: none;
   padding: 0;
-  font-size: 0.95em;
+  font-size: 13px;
 }
 
-.zz--syntaxHighlight .t-kw {
-  color: var(--syntax-kw);
-}
-
-.zz--syntaxHighlight .t-fn {
-  color: var(--syntax-fn);
-}
-
-.zz--syntaxHighlight .t-ty {
-  color: var(--syntax-ty);
-}
-
-.zz--syntaxHighlight .t-str {
-  color: var(--syntax-str);
-}
-
-.zz--syntaxHighlight .t-cmt {
-  color: var(--syntax-cmt);
-}
-
-.zz--syntaxHighlight .t-num {
-  color: var(--syntax-num);
-}
-
-.zz-quote,
-.zz--blockQuote,
 .zz-markdownContent blockquote {
-  border-left: 3px solid var(--quote-border);
-  padding: 10px 14px;
-  margin: 18px 0;
-  background: var(--quote-bg);
-  color: var(--ink);
-  font-family: var(--font-serif);
-  border-radius: 0 10px 10px 0;
+  padding: 0 0 0 20px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-style: italic;
 }
 
 .zz-markdownContent blockquote p:last-child {
@@ -385,47 +139,38 @@ p {
 
 .zz-markdownContent hr {
   border: 0;
-  border-top: 1px solid var(--rule);
-  margin: 30px 0;
+  height: 1px;
+  background: var(--faint);
+  margin: 40px 0;
+  opacity: 0.5;
 }
 
 .zz-markdownContent table {
   width: 100%;
   border-collapse: collapse;
-  margin: 18px 0;
-  font-family: var(--font-sans);
-  font-size: 0.92em;
+  margin: 24px 0;
+  font-size: 14px;
 }
 
 .zz-markdownContent th,
 .zz-markdownContent td {
-  border: 1px solid var(--border);
-  padding: 8px 10px;
+  padding: 10px 12px;
   text-align: left;
 }
 
-.zz-markdownContent th {
-  background: var(--surface-accent);
+.zz-markdownContent a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 200ms ease;
+}
+
+.zz-markdownContent a:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 680px) {
   .zz-markdownContent {
-    font-size: 17px;
-    line-height: 1.66;
-  }
-
-  .zz--primaryHeading,
-  .zz-markdownContent h1 {
-    margin-top: 24px;
-  }
-
-  .zz--secondaryHeading,
-  .zz-markdownContent h2 {
-    margin-top: 26px;
-  }
-
-  .zz--tertiaryHeading,
-  .zz-markdownContent h3 {
-    margin-top: 22px;
+    font-size: 15px;
+    line-height: 1.68;
   }
 }

@@ -1,12 +1,12 @@
 .zz-footer {
-  border-top: 2px solid var(--rule);
-  margin: 24px auto 0;
+  margin: 64px auto 0;
   max-width: var(--maxw);
-  padding: 12px var(--gutter) 32px;
+  padding: 24px var(--gutter) 40px;
   color: var(--muted);
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 16px;
   flex-wrap: wrap;
 }
