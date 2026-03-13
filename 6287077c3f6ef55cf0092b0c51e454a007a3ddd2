@@ -1,0 +1,62 @@
+src/markdown/docs/site-manifest.md
+  73c3138b8965c5dc 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "6287077c3f6ef55cf0092b0c51e454a007a3ddd2",
+  "prompts": {
+    "003e6a8b145baa7c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfe71c55-623d-44ad-acb6-55c0aa2ad349",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    },
+    "73c3138b8965c5dc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc8280a3-f23d-4672-a0d0-7ea99559eec8",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "d8848b363be30934": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e7cfacf-2e57-4829-b7b2-6b611ec0d065",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 1526,
+      "total_deletions": 1,
+      "accepted_lines": 1521,
+      "overriden_lines": 0
+    },
+    "efe6945f48b058f9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ce5d0-faa0-7850-91c3-c03ac554e544",
+        "model": "gpt-5.4"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 15,
+      "total_deletions": 11,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
