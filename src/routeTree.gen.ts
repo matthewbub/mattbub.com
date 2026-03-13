@@ -11,8 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PostsIndexRouteImport } from './routes/posts/index'
+import { Route as DocsIndexRouteImport } from './routes/docs/index'
 import { Route as SkillsSecondBrainRouteImport } from './routes/skills/second-brain'
 import { Route as PostsSlugRouteImport } from './routes/posts/$slug'
+import { Route as DocsProjectRouteImport } from './routes/docs/$project'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const PostsIndexRoute = PostsIndexRouteImport.update({
   id: '/posts/',
   path: '/posts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsIndexRoute = DocsIndexRouteImport.update({
+  id: '/docs/',
+  path: '/docs/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SkillsSecondBrainRoute = SkillsSecondBrainRouteImport.update({
@@ -34,38 +41,70 @@ const PostsSlugRoute = PostsSlugRouteImport.update({
   path: '/posts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocsProjectRoute = DocsProjectRouteImport.update({
+  id: '/docs/$project',
+  path: '/docs/$project',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/docs/$project': typeof DocsProjectRoute
   '/posts/$slug': typeof PostsSlugRoute
   '/skills/second-brain': typeof SkillsSecondBrainRoute
+  '/docs': typeof DocsIndexRoute
   '/posts': typeof PostsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/docs/$project': typeof DocsProjectRoute
   '/posts/$slug': typeof PostsSlugRoute
   '/skills/second-brain': typeof SkillsSecondBrainRoute
+  '/docs': typeof DocsIndexRoute
   '/posts': typeof PostsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/docs/$project': typeof DocsProjectRoute
   '/posts/$slug': typeof PostsSlugRoute
   '/skills/second-brain': typeof SkillsSecondBrainRoute
+  '/docs/': typeof DocsIndexRoute
   '/posts/': typeof PostsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/posts/$slug' | '/skills/second-brain' | '/posts'
+  fullPaths:
+    | '/'
+    | '/docs/$project'
+    | '/posts/$slug'
+    | '/skills/second-brain'
+    | '/docs'
+    | '/posts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/posts/$slug' | '/skills/second-brain' | '/posts'
-  id: '__root__' | '/' | '/posts/$slug' | '/skills/second-brain' | '/posts/'
+  to:
+    | '/'
+    | '/docs/$project'
+    | '/posts/$slug'
+    | '/skills/second-brain'
+    | '/docs'
+    | '/posts'
+  id:
+    | '__root__'
+    | '/'
+    | '/docs/$project'
+    | '/posts/$slug'
+    | '/skills/second-brain'
+    | '/docs/'
+    | '/posts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DocsProjectRoute: typeof DocsProjectRoute
   PostsSlugRoute: typeof PostsSlugRoute
   SkillsSecondBrainRoute: typeof SkillsSecondBrainRoute
+  DocsIndexRoute: typeof DocsIndexRoute
   PostsIndexRoute: typeof PostsIndexRoute
 }
 
@@ -85,6 +124,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/docs/': {
+      id: '/docs/'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/skills/second-brain': {
       id: '/skills/second-brain'
       path: '/skills/second-brain'
@@ -99,13 +145,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/docs/$project': {
+      id: '/docs/$project'
+      path: '/docs/$project'
+      fullPath: '/docs/$project'
+      preLoaderRoute: typeof DocsProjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DocsProjectRoute: DocsProjectRoute,
   PostsSlugRoute: PostsSlugRoute,
   SkillsSecondBrainRoute: SkillsSecondBrainRoute,
+  DocsIndexRoute: DocsIndexRoute,
   PostsIndexRoute: PostsIndexRoute,
 }
 export const routeTree = rootRouteImport

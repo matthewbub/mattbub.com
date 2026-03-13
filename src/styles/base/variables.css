@@ -36,10 +36,10 @@
     --accent: #4d94ff;
     --surface: transparent;
 
-    --code-bg: #141414;
+    --code-bg: #1a1a1a;
     --code-fg: #e8e8e8;
-    --inline-code-bg: #181818;
-    --syntax-bg: #141414;
+    --inline-code-bg: #1e1e1e;
+    --syntax-bg: #1a1a1a;
     --syntax-kw: #ff7b72;
     --syntax-fn: #d2a8ff;
     --syntax-ty: #79c0ff;

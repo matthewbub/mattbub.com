@@ -11,6 +11,7 @@ const POSTS_PER_PAGE = 4;
 type Project = {
   title: string;
   url: string;
+  description: string;
   category: string;
   year: string;
   external?: boolean;
@@ -18,22 +19,44 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "mattbub.com",
-    url: "https://mattbub.com",
+    title: "Married Next",
+    url: "https://marriednext.com",
+    description:
+      "Create and deploy your wedding website in minutes. Customize the theme, modify locale aware labels. Manage your guest list and collect reservations. Invite collaborators to help manage the website. Includes a free subdomain, but guests can bring own domain too.",
     category: "Product",
-    year: "2026",
-    external: true,
+    year: "2025-2026",
   },
   {
     title: "Yulissa & Matthew's Wedding",
     url: "https://yulissaandmatthew.com",
+    description:
+      "Mine and my fiancées wedding site used to collect RSVPs from our guests. The first live implementation of marriednext.com. The first theme was dogfooded with my fiancée as the first client.",
     category: "Client",
-    year: "2025",
+    year: "2025-2026",
     external: true,
+  },
+  {
+    title: "mattbub.com",
+    url: "https://mattbub.com",
+    description:
+      "Personal portfolio and blog built with TanStack Router. My internet garder for writing, project docs, and building in public.",
+    category: "Product",
+    year: "2019-2026",
+    external: true,
+  },
+  {
+    title: "site-manifest",
+    url: "/docs/site-manifest",
+    description:
+      "TypeScript package for defining editable site content with a single schema-backed contract. I'm using this as the contract between the site label editor for marriednext.com Uses JSON Schema  the contract between what AI generates and what users can edit",
+    category: "Open Source",
+    year: "2026",
   },
   {
     title: "sbrain-SKILL",
     url: "https://github.com/matthewbub/sbrain-SKILL",
+    description:
+      "CLI tool that generates structured knowledge files for AI coding assistants from project context.",
     category: "Open Source",
     year: "2025",
     external: true,
@@ -41,6 +64,8 @@ const projects: Project[] = [
   {
     title: "Chartbrew",
     url: "https://github.com/chartbrew/chartbrew",
+    description:
+      "Open-source platform for creating live dashboards from databases and APIs. Contributed features and fixes.",
     category: "Open Source",
     year: "2023",
     external: true,
@@ -48,6 +73,8 @@ const projects: Project[] = [
   {
     title: "sanern.com",
     url: "https://sanern.com",
+    description:
+      "Marketing site for a local home-services business with scheduling and service pages.",
     category: "Client",
     year: "2024",
     external: true,
@@ -55,6 +82,8 @@ const projects: Project[] = [
   {
     title: "undrstnd-labs",
     url: "https://github.com/undrstnd-labs",
+    description:
+      "Experimental AI tooling org exploring developer-facing LLM integrations and utilities.",
     category: "Open Source",
     year: "2024",
     external: true,
@@ -91,11 +120,11 @@ export default function Home() {
         {/* Hero */}
         <section className="zz-homeHero" aria-labelledby="home-headline">
           <h1 id="home-headline" className="zz-homeHeadline">
-            Software engineer building web products with speed and clarity.
+            Carefully curating food for LLMs
           </h1>
           <p className="zz-homeDeck">
-            I ship thoughtful products that balance product feel with production
-            stability. Currently building in public and sharing what I learn.
+            Software Engineer in HealthCare since 2021, currently at mPulse.
+            Having way too much fun building for people who use the web.
           </p>
           <div className="zz-homeHeroActions">
             <a href="https://x.com/matthew_bub" className="zz-homePrimaryLink">
@@ -123,16 +152,17 @@ export default function Home() {
 
               return (
                 <li key={project.title} className="zz-workItem">
-                  <a
-                    href={project.url}
-                    className="zz-workLink"
-                    {...linkProps}
-                  >
-                    <span className="zz-workName">{project.title}</span>
-                    <span className="zz-workMeta">
-                      <span className="zz-workCategory">{project.category}</span>
-                      <span className="zz-workYear">{project.year}</span>
+                  <a href={project.url} className="zz-workLink" {...linkProps}>
+                    <span className="zz-workHeader">
+                      <span className="zz-workName">{project.title}</span>
+                      <span className="zz-workMeta">
+                        <span className="zz-workCategory">
+                          {project.category}
+                        </span>
+                        <span className="zz-workYear">{project.year}</span>
+                      </span>
                     </span>
+                    <span className="zz-workDesc">{project.description}</span>
                   </a>
                 </li>
               );
@@ -182,7 +212,6 @@ export default function Home() {
                   </a>
                 </h3>
                 {post.deck && <p className="zz-homePostDeck">{post.deck}</p>}
-                <p className="zz-homePostDeck">{post.author}</p>
               </article>
             ))}
           </div>
