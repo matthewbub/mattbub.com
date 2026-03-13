@@ -1,0 +1,80 @@
+src/routes/index.tsx
+  73c3138b8965c5dc 14,32,41,50,58-59,67-68,76-77,85-86,156-157,162,165
+src/styles.css
+  73c3138b8965c5dc 94,99-101,111-115,147-155
+  d8848b363be30934 694-1166,1173-1174,1197-1217
+src/markdown/docs/undrstnd-labs.md
+  d8848b363be30934 1-230
+src/routes/docs/$project.tsx
+  d8848b363be30934 1,3-5,10-60,62-67,69-75,77-175,177-201
+  efe6945f48b058f9 2,6-9,61,68,76,176
+src/styles/base/variables.css
+  003e6a8b145baa7c 39,41-42
+src/markdown/docs/chartbrew.md
+  d8848b363be30934 1-268
+src/utils/docsLoader.ts
+  d8848b363be30934 1-82
+src/routes/docs/index.tsx
+  d8848b363be30934 1-57
+src/markdown/docs/sbrain-skill.md
+  d8848b363be30934 1-195
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "6acee8b0642026a00ce0fd52ba549ea1a61f1f7d",
+  "prompts": {
+    "003e6a8b145baa7c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfe71c55-623d-44ad-acb6-55c0aa2ad349",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    },
+    "73c3138b8965c5dc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc8280a3-f23d-4672-a0d0-7ea99559eec8",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 44,
+      "total_deletions": 9,
+      "accepted_lines": 38,
+      "overriden_lines": 2
+    },
+    "d8848b363be30934": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e7cfacf-2e57-4829-b7b2-6b611ec0d065",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1520,
+      "overriden_lines": 0
+    },
+    "efe6945f48b058f9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ce5d0-faa0-7850-91c3-c03ac554e544",
+        "model": "gpt-5.4"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
