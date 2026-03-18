@@ -1,24 +1,20 @@
 .zz-masthead {
-  margin: 0 auto;
   max-width: var(--maxw);
-  padding: 24px var(--gutter) 20px;
+  margin: 0 auto;
+  padding: 32px var(--gutter) 16px;
 }
 
 .zz-topline {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
 }
 
 .zz-brand {
   font-family: var(--font-mono);
-  font-weight: 500;
   font-size: 14px;
-  letter-spacing: -0.02em;
   color: var(--ink);
   text-decoration: none;
-  text-transform: lowercase;
 }
 
 .zz-navigation {
@@ -32,8 +28,6 @@
   text-decoration: none;
   font-size: 14px;
   font-family: var(--font-sans);
-  font-weight: 400;
-  transition: color 200ms ease;
 }
 
 .zz-navLink:hover {

@@ -1,51 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
-
 :root {
-  --bg: #fafafa;
-  --ink: #111111;
-  --muted: #888888;
-  --faint: #c0c0c0;
-  --accent: #0066ff;
+  --bg: #fff;
+  --ink: #333;
+  --muted: #777;
+  --faint: #ddd;
+  --accent: #0055ff;
   --surface: transparent;
 
-  --maxw: 720px;
-  --gutter: 24px;
+  --maxw: 640px;
+  --gutter: 20px;
 
-  --code-bg: #f2f2f2;
-  --code-fg: #111111;
-  --inline-code-bg: #f2f2f2;
-  --syntax-bg: #f2f2f2;
-  --syntax-kw: #d73a49;
-  --syntax-fn: #6f42c1;
-  --syntax-ty: #005cc5;
-  --syntax-str: #032f62;
-  --syntax-cmt: #999999;
-  --syntax-num: #005cc5;
+  --code-bg: #f5f5f5;
+  --code-fg: #333;
+  --inline-code-bg: #f5f5f5;
+  --syntax-bg: #f5f5f5;
 
   color-scheme: light;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a0a0a;
-    --ink: #e8e8e8;
-    --muted: #666666;
-    --faint: #333333;
-    --accent: #4d94ff;
+    --bg: #1a1a1a;
+    --ink: #ddd;
+    --muted: #999;
+    --faint: #333;
+    --accent: #6cacff;
     --surface: transparent;
 
-    --code-bg: #1a1a1a;
-    --code-fg: #e8e8e8;
-    --inline-code-bg: #1e1e1e;
-    --syntax-bg: #1a1a1a;
-    --syntax-kw: #ff7b72;
-    --syntax-fn: #d2a8ff;
-    --syntax-ty: #79c0ff;
-    --syntax-str: #a5d6ff;
-    --syntax-cmt: #555555;
-    --syntax-num: #79c0ff;
+    --code-bg: #252525;
+    --code-fg: #ddd;
+    --inline-code-bg: #252525;
+    --syntax-bg: #252525;
 
     color-scheme: dark;
   }
