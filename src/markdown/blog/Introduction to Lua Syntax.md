@@ -5,16 +5,6 @@ pubDate: "February 27 2024"
 tags: ["lua", "programming", "syntax", "scripting", "neovim", "language"]
 author: "Matthew Bub"
 ---
-
-export const article = {
-id: "df56f220aca270c4d032b07472911b336bza73c7421ee09fd5123236306378fa",
-author: "Matthew Bub",
-date: "2024-02-27T12:10:54.187351+00:00",
-title: "Introduction to Lua Syntax",
-description: "A general syntax guide intended to introduce the basics of Lua programming.",
-tags: ["lua", "programming", "scripting"],
-}
-
 Lua is a powerful, efficient, lightweight, and embeddable scripting language.
 Due to these features, Lua is frequently used in game engines in placement of C, C++ or similar languages. This also makes Lua a great candidate for embedding into Neovim.
 
