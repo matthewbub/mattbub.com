@@ -204,17 +204,50 @@ export default function Home() {
             <a href="https://x.com/matthew_bub" className="zz-homePrimaryLink">
               Follow on X
             </a>
-            <a href="mailto:6matbub@gmail.com" className="zz-homeSecondaryLink">
-              Get in touch
-            </a>
           </div>
         </section>
 
         {/* Work */}
+        <section className="zz-homeSection" aria-labelledby="career-head">
+          <header className="zz-homeSectionHeader">
+            <h2 id="career-head" className="zz-homeSectionTitle">
+              Work
+            </h2>
+          </header>
+
+          <ul className="zz-workList">
+            <li className="zz-workItem">
+              <div className="zz-workLink" style={{ cursor: "default" }}>
+                <span className="zz-workHeader">
+                  <span className="zz-workName">mPulse</span>
+                  <span className="zz-workMeta">
+                    <span className="zz-workCategory">Software Engineer</span>
+                    <span className="zz-workCategory">(Web portals)</span>
+                    <span className="zz-workYear">2023–2026</span>
+                  </span>
+                </span>
+              </div>
+            </li>
+            <li className="zz-workItem">
+              <div className="zz-workLink" style={{ cursor: "default" }}>
+                <span className="zz-workHeader">
+                  <span className="zz-workName">Health Trio</span>
+                  <span className="zz-workMeta">
+                    <span className="zz-workCategory">Software Engineer</span>
+                    <span className="zz-workCategory">(Web portals)</span>
+                    <span className="zz-workYear">2021–2023</span>
+                  </span>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        {/* External Involvements & Projects */}
         <section className="zz-homeSection" aria-labelledby="work-head">
           <header className="zz-homeSectionHeader">
             <h2 id="work-head" className="zz-homeSectionTitle">
-              Work
+              External Involvements & Projects
             </h2>
           </header>
 
@@ -266,6 +299,12 @@ export default function Home() {
             <h2 id="media-head" className="zz-homeSectionTitle">
               YouTube / Podcasts I Watch
             </h2>
+            <p className="zz-homeSectionDeck">
+              Folks often ask how I keep my finger on the pulse. Fair to say I
+              spend more time on YouTube Premium than the average person, but
+              these are some of the primary sources I use to consume tech
+              content.
+            </p>
           </header>
 
           <ul className="zz-mediaGrid" key={mediaPage}>
@@ -308,7 +347,7 @@ export default function Home() {
         <section className="zz-homeSection" aria-labelledby="posts-head">
           <header className="zz-homeSectionHeader">
             <h2 id="posts-head" className="zz-homeSectionTitle">
-              Latest
+              Latest Articles & Musings
             </h2>
           </header>
 

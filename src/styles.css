@@ -65,6 +65,13 @@
   padding-bottom: 8px;
 }
 
+.zz-homeSectionDeck {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
 .zz-homeSectionTitle {
   font-family: var(--font-sans);
   font-size: 13px;
