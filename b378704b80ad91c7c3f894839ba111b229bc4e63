@@ -1,0 +1,44 @@
+src/utils/docsLoader.ts
+  4b306b9999d42831 1-2
+src/utils/postsLoader.ts
+  4b306b9999d42831 1-2,63,99
+src/utils/blogLoader.ts
+  4b306b9999d42831 1-2,51,102
+src/utils/markdownFrontmatter.ts
+  4b306b9999d42831 1-99
+src/utils/secondBrainLoader.ts
+  4b306b9999d42831 1-2,49,97
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15",
+  "base_commit_sha": "b378704b80ad91c7c3f894839ba111b229bc4e63",
+  "prompts": {
+    "4b306b9999d42831": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019cff97-84d9-7621-b4c1-176ac6158fc8",
+        "model": "gpt-5.4"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 113,
+      "total_deletions": 130,
+      "accepted_lines": 113,
+      "overriden_lines": 0
+    },
+    "e885f2baf538bd8f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7a78b0fd-ed72-4986-8a2e-4f756374d6da",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 278,
+      "total_deletions": 83,
+      "accepted_lines": 243,
+      "overriden_lines": 0
+    }
+  }
+}
