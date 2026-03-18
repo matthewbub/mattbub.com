@@ -1,0 +1,25 @@
+src/styles.css
+  e885f2baf538bd8f 158-225,236,241-243,252-257
+src/routes/index.tsx
+  e885f2baf538bd8f 9,49-56,58-61,64-67,70-73,76-157,172,175,181-183,263-306
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15",
+  "base_commit_sha": "42e6bda99c298d1fb8bf8e8d6b27e4cf800432c3",
+  "prompts": {
+    "e885f2baf538bd8f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7a78b0fd-ed72-4986-8a2e-4f756374d6da",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 230,
+      "overriden_lines": 0
+    }
+  }
+}
