@@ -1,3 +1,5 @@
+import { parseMarkdownFrontmatter } from "./markdownFrontmatter";
+
 const docsModules = import.meta.glob("/src/markdown/docs/*.md", {
   as: "raw",
   eager: true,
@@ -18,23 +20,6 @@ export type DocHeading = {
   text: string;
   level: number;
 };
-
-function parseMarkdownFrontmatter(raw: string) {
-  const match = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
-  if (!match) return { frontmatter: {} as Record<string, string>, content: raw };
-
-  const frontmatter: Record<string, string> = {};
-  match[1].split("\n").forEach((line) => {
-    const i = line.indexOf(":");
-    if (i <= 0) return;
-    frontmatter[line.substring(0, i).trim()] = line
-      .substring(i + 1)
-      .trim()
-      .replace(/^["']|["']$/g, "");
-  });
-
-  return { frontmatter, content: match[2] };
-}
 
 function extractHeadings(content: string): DocHeading[] {
   const headings: DocHeading[] = [];

@@ -1,3 +1,5 @@
+import { parseMarkdownFrontmatter } from "./markdownFrontmatter";
+
 // Auto-import all markdown files from the blog directory
 const markdownModules = import.meta.glob("/src/markdown/blog/*.md", {
   as: "raw",
@@ -19,43 +21,6 @@ export type BlogPost = {
     excerpt: string;
   };
 };
-
-function parseMarkdownFrontmatter(content: string) {
-  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-  const match = content.match(frontmatterRegex);
-
-  if (match) {
-    const frontmatterText = match[1];
-    const bodyContent = match[2];
-
-    // Simple YAML-like parsing for common fields
-    const frontmatter: Record<string, any> = {};
-    frontmatterText.split("\n").forEach((line) => {
-      const colonIndex = line.indexOf(":");
-      if (colonIndex > 0) {
-        const key = line.substring(0, colonIndex).trim();
-        const value = line
-          .substring(colonIndex + 1)
-          .trim()
-          .replace(/^["']|["']$/g, "");
-
-        // Handle arrays (tags)
-        if (value.startsWith("[") && value.endsWith("]")) {
-          frontmatter[key] = value
-            .slice(1, -1)
-            .split(",")
-            .map((s) => s.trim().replace(/^["']|["']$/g, ""));
-        } else {
-          frontmatter[key] = value;
-        }
-      }
-    });
-
-    return { frontmatter, content: bodyContent };
-  }
-
-  return { frontmatter: {}, content };
-}
 
 function createSlugFromFilename(filename: string): string {
   return filename
@@ -83,7 +48,7 @@ function extractExcerpt(content: string): string {
 
 function estimateReadTime(content: string): string {
   const wordsPerMinute = 200;
-  const wordCount = content.split(/\s+/).length;
+  const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
   const minutes = Math.ceil(wordCount / wordsPerMinute);
   return `${minutes} min`;
 }
@@ -134,7 +99,7 @@ export function loadAllBlogPosts(): BlogPost[] {
         frontmatter.date || frontmatter.pubDate || new Date().toISOString()
       ),
       tags: frontmatter.tags || [],
-      readTime: frontmatter.readTime || estimateReadTime(content as string),
+      readTime: frontmatter.readTime || estimateReadTime(bodyContent),
       metadata: {
         frontmatter,
         excerpt: extractExcerpt(content as string),
