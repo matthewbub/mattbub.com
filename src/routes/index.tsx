@@ -6,6 +6,7 @@ import { loadAllPosts } from "../utils/postsLoader";
 import { formatPostedRelative } from "../utils/dateFormat";
 
 const PROJECTS_PER_PAGE = 4;
+const MEDIA_PER_PAGE = 6;
 const POSTS_PER_PAGE = 4;
 
 type Project = {
@@ -36,15 +37,6 @@ const projects: Project[] = [
     external: true,
   },
   {
-    title: "mattbub.com",
-    url: "https://mattbub.com",
-    description:
-      "Personal portfolio and blog built with TanStack Router. My internet garder for writing, project docs, and building in public.",
-    category: "Product",
-    year: "2019-2026",
-    external: true,
-  },
-  {
     title: "site-manifest",
     url: "/docs/site-manifest",
     description:
@@ -52,41 +44,117 @@ const projects: Project[] = [
     category: "Open Source",
     year: "2026",
   },
+];
+
+type MediaItem = {
+  name: string;
+  blurb: string;
+  url: string;
+  type: "podcast" | "youtube" | "newsletter";
+};
+
+const media: MediaItem[] = [
   {
-    title: "sbrain-SKILL",
-    url: "https://github.com/matthewbub/sbrain-SKILL",
-    description:
-      "CLI tool that generates structured knowledge files for AI coding assistants from project context.",
-    category: "Open Source",
-    year: "2025",
-    external: true,
+    name: "Syntax.fm",
+    blurb: "Web dev, tooling, and frontend deep dives.",
+    url: "https://syntax.fm",
+    type: "podcast",
   },
   {
-    title: "Chartbrew",
-    url: "https://github.com/chartbrew/chartbrew",
-    description:
-      "Open-source platform for creating live dashboards from databases and APIs. Contributed features and fixes.",
-    category: "Open Source",
-    year: "2023",
-    external: true,
+    name: "Mostly Technical",
+    blurb: "Ian and Aaron on the tech that actually matters.",
+    url: "https://mostlytechnical.com",
+    type: "podcast",
   },
   {
-    title: "sanern.com",
-    url: "https://sanern.com",
-    description:
-      "Marketing site for a local home-services business with scheduling and service pages.",
-    category: "Client",
-    year: "2024",
-    external: true,
+    name: "How About Tomorrow?",
+    blurb: "Forward-looking conversations on tech and culture.",
+    url: "https://www.youtube.com/@tomorrowfm",
+    type: "podcast",
   },
   {
-    title: "undrstnd-labs",
-    url: "https://github.com/undrstnd-labs",
-    description:
-      "Experimental AI tooling org exploring developer-facing LLM integrations and utilities.",
-    category: "Open Source",
-    year: "2024",
-    external: true,
+    name: "Theo - t3.gg",
+    blurb: "Never miss a live stream. Opinionated takes on the JS ecosystem.",
+    url: "https://www.youtube.com/@t3dotgg",
+    type: "youtube",
+  },
+  {
+    name: "ThePrimeagen & friends",
+    blurb: "Performance, Vim, and entertaining dev commentary.",
+    url: "https://www.youtube.com/@ThePrimeTimeagen",
+    type: "youtube",
+  },
+  {
+    name: "Ben Davis",
+    blurb: "Behind-the-scenes creator and tech business insights.",
+    url: "https://www.youtube.com/@bmdavis419",
+    type: "youtube",
+  },
+  {
+    name: "Aaron Francis",
+    blurb: "Databases, Laravel, and building in public.",
+    url: "https://www.youtube.com/@aarondfrancis",
+    type: "youtube",
+  },
+  {
+    name: "AI Explained",
+    blurb: "Clear breakdowns of the latest AI research and models.",
+    url: "https://www.youtube.com/@aiexplained-official",
+    type: "youtube",
+  },
+  {
+    name: "Boot.dev",
+    blurb: "Backend dev education and CS fundamentals.",
+    url: "https://www.youtube.com/@bootdotdev",
+    type: "youtube",
+  },
+  {
+    name: "Changelog",
+    blurb: "Open source and the software development world.",
+    url: "https://www.youtube.com/@Changelog",
+    type: "youtube",
+  },
+  {
+    name: "Coding Garden",
+    blurb: "Live coding sessions and chill dev vibes.",
+    url: "https://www.youtube.com/@CodingGarden",
+    type: "youtube",
+  },
+  {
+    name: "Cult Repo",
+    blurb: "Curated open source projects and dev tools.",
+    url: "https://www.youtube.com/@cultrepo",
+    type: "youtube",
+  },
+  {
+    name: "devaslife",
+    blurb: "Aesthetic dev setups and indie app building.",
+    url: "https://www.youtube.com/@devaslife",
+    type: "youtube",
+  },
+  {
+    name: "Linq",
+    blurb: "Tech industry insights and developer culture.",
+    url: "https://www.youtube.com/@thelinqapp",
+    type: "youtube",
+  },
+  {
+    name: "Linus Tech Tips",
+    blurb: "Hardware reviews, builds, and tech news.",
+    url: "https://www.youtube.com/@LinusTechTips",
+    type: "youtube",
+  },
+  {
+    name: "Low Level",
+    blurb: "Systems programming and low-level tech deep dives.",
+    url: "https://www.youtube.com/@LowLevelTV",
+    type: "youtube",
+  },
+  {
+    name: "Terminal Shop",
+    blurb: "SSH-powered coffee. Yes, really.",
+    url: "https://www.youtube.com/@TerminalDotShop",
+    type: "youtube",
   },
 ];
 
@@ -101,12 +169,18 @@ export const Route = createFileRoute("/")({
 export default function Home() {
   const { posts } = Route.useLoaderData();
   const [workPage, setWorkPage] = useState(0);
+  const [mediaPage, setMediaPage] = useState(0);
   const [postPage, setPostPage] = useState(0);
   const totalWorkPages = Math.ceil(projects.length / PROJECTS_PER_PAGE);
+  const totalMediaPages = Math.ceil(media.length / MEDIA_PER_PAGE);
   const totalPostPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const visibleProjects = projects.slice(
     workPage * PROJECTS_PER_PAGE,
     (workPage + 1) * PROJECTS_PER_PAGE,
+  );
+  const visibleMedia = media.slice(
+    mediaPage * MEDIA_PER_PAGE,
+    (mediaPage + 1) * MEDIA_PER_PAGE,
   );
   const visiblePosts = posts.slice(
     postPage * POSTS_PER_PAGE,
@@ -180,6 +254,50 @@ export default function Home() {
                   }}
                   aria-label={`Page ${i + 1}`}
                   aria-current={i === workPage ? "true" : undefined}
+                />
+              ))}
+            </nav>
+          )}
+        </section>
+
+        {/* YouTube / Podcasts I Watch */}
+        <section className="zz-homeSection" aria-labelledby="media-head">
+          <header className="zz-homeSectionHeader">
+            <h2 id="media-head" className="zz-homeSectionTitle">
+              YouTube / Podcasts I Watch
+            </h2>
+          </header>
+
+          <ul className="zz-mediaGrid" key={mediaPage}>
+            {visibleMedia.map((item) => (
+              <li key={item.name} className="zz-mediaCard">
+                <a
+                  href={item.url}
+                  className="zz-mediaLink"
+                  target="_blank"
+                  rel="noopener noreferrer external"
+                >
+                  <span className="zz-mediaTop">
+                    <span className="zz-mediaName">{item.name}</span>
+                    <span className="zz-mediaType">{item.type}</span>
+                  </span>
+                  <span className="zz-mediaBlurb">{item.blurb}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {totalMediaPages > 1 && (
+            <nav className="zz-paginationDots" aria-label="Media pages">
+              {Array.from({ length: totalMediaPages }, (_, i) => (
+                <button
+                  key={i}
+                  className={`zz-paginationDot${i === mediaPage ? " is-active" : ""}`}
+                  onClick={() => {
+                    startTransition(() => setMediaPage(i));
+                  }}
+                  aria-label={`Page ${i + 1}`}
+                  aria-current={i === mediaPage ? "true" : undefined}
                 />
               ))}
             </nav>

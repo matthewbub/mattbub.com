@@ -155,6 +155,74 @@
   overflow: hidden;
 }
 
+/* Media / Podcasts */
+.zz-mediaGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.zz-mediaCard {
+  border: 1px solid var(--faint);
+  border-radius: 8px;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.zz-mediaCard:hover {
+  border-color: var(--muted);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .zz-mediaCard:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.zz-mediaLink {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.zz-mediaTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.zz-mediaName {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.zz-mediaType {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: var(--inline-code-bg);
+  padding: 1px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.zz-mediaBlurb {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -165,19 +233,28 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 16px;
   margin-top: 20px;
 }
 
 .zz-paginationDot {
-  width: 6px;
-  height: 6px;
+  position: relative;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: none;
   padding: 0;
   background: var(--faint);
   cursor: pointer;
   transition: background 200ms ease, transform 200ms ease;
+}
+
+.zz-paginationDot::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .zz-paginationDot:hover {
