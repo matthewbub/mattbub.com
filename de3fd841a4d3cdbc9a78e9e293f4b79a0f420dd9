@@ -1,0 +1,23 @@
+src/routes/index.tsx
+  d3914357255d4193 71-115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15",
+  "base_commit_sha": "de3fd841a4d3cdbc9a78e9e293f4b79a0f420dd9",
+  "prompts": {
+    "d3914357255d4193": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "efbfef74-6032-4f0d-8dd6-3ff5ba71e640",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 45,
+      "total_deletions": 0,
+      "accepted_lines": 45,
+      "overriden_lines": 0
+    }
+  }
+}
