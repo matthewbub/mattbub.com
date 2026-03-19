@@ -14,17 +14,17 @@ type Photo = {
 const photos: Photo[] = [
   {
     src: "/photos/egagement_photoshoot.png",
-    alt: "A description of the photo",
+    alt: "A photo from my engagement photoshoot. There's more a https://yulissaandmatthew.com",
     date: "2026-03-18",
   },
   {
     src: "/photos/epic_selfie.jpg",
-    alt: "A description of the photo",
+    alt: 'I call this my "epic selfie". Captured while on a hike in Highland, CA.',
     date: "2026-03-18",
   },
   {
     src: "/photos/fav_selfie.jpg",
-    alt: "A description of the photo",
+    alt: "Desert X 2025 - We encountered a swarm of bee's shortly after taking this photo!",
     date: "2026-03-18",
   },
 ];
@@ -233,13 +233,7 @@ export default function Home() {
         </section>
 
         {/* Photos */}
-        <section className="zz-homeSection" aria-labelledby="photos-head">
-          <header className="zz-homeSectionHeader">
-            <h2 id="photos-head" className="zz-homeSectionTitle">
-              Photos
-            </h2>
-          </header>
-
+        <section className="zz-homeSection">
           {photos.length > 0 && (
             <div className="zz-photosGrid">
               {photos.map((photo, i) => (
@@ -346,56 +340,6 @@ export default function Home() {
           )}
         </section>
 
-        {/* YouTube / Podcasts I Watch */}
-        <section className="zz-homeSection" aria-labelledby="media-head">
-          <header className="zz-homeSectionHeader">
-            <h2 id="media-head" className="zz-homeSectionTitle">
-              YouTube / Podcasts I Watch
-            </h2>
-            <p className="zz-homeSectionDeck">
-              Folks often ask how I keep my finger on the pulse. Fair to say I
-              spend more time on YouTube Premium than the average person, but
-              these are some of the primary sources I use to consume tech
-              content.
-            </p>
-          </header>
-
-          <ul className="zz-mediaGrid" key={mediaPage}>
-            {visibleMedia.map((item) => (
-              <li key={item.name} className="zz-mediaCard">
-                <a
-                  href={item.url}
-                  className="zz-mediaLink"
-                  target="_blank"
-                  rel="noopener noreferrer external"
-                >
-                  <span className="zz-mediaTop">
-                    <span className="zz-mediaName">{item.name}</span>
-                    <span className="zz-mediaType">{item.type}</span>
-                  </span>
-                  <span className="zz-mediaBlurb">{item.blurb}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {totalMediaPages > 1 && (
-            <nav className="zz-paginationDots" aria-label="Media pages">
-              {Array.from({ length: totalMediaPages }, (_, i) => (
-                <button
-                  key={i}
-                  className={`zz-paginationDot${i === mediaPage ? " is-active" : ""}`}
-                  onClick={() => {
-                    startTransition(() => setMediaPage(i));
-                  }}
-                  aria-label={`Page ${i + 1}`}
-                  aria-current={i === mediaPage ? "true" : undefined}
-                />
-              ))}
-            </nav>
-          )}
-        </section>
-
         {/* Posts */}
         <section className="zz-homeSection" aria-labelledby="posts-head">
           <header className="zz-homeSectionHeader">
@@ -446,6 +390,57 @@ export default function Home() {
             Browse all posts
           </a>
         </section>
+
+        {/* YouTube / Podcasts I Watch */}
+        <section className="zz-homeSection" aria-labelledby="media-head">
+          <header className="zz-homeSectionHeader">
+            <h2 id="media-head" className="zz-homeSectionTitle">
+              YouTube / Podcasts I Watch
+            </h2>
+            <p className="zz-homeSectionDeck">
+              Folks often ask how I keep my finger on the pulse. Fair to say I
+              spend more time on YouTube Premium than the average person, but
+              these are some of the primary sources I use to consume tech
+              content.
+            </p>
+          </header>
+
+          <ul className="zz-mediaGrid" key={mediaPage}>
+            {visibleMedia.map((item) => (
+              <li key={item.name} className="zz-mediaCard">
+                <a
+                  href={item.url}
+                  className="zz-mediaLink"
+                  target="_blank"
+                  rel="noopener noreferrer external"
+                >
+                  <span className="zz-mediaTop">
+                    <span className="zz-mediaName">{item.name}</span>
+                    <span className="zz-mediaType">{item.type}</span>
+                  </span>
+                  <span className="zz-mediaBlurb">{item.blurb}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {totalMediaPages > 1 && (
+            <nav className="zz-paginationDots" aria-label="Media pages">
+              {Array.from({ length: totalMediaPages }, (_, i) => (
+                <button
+                  key={i}
+                  className={`zz-paginationDot${i === mediaPage ? " is-active" : ""}`}
+                  onClick={() => {
+                    startTransition(() => setMediaPage(i));
+                  }}
+                  aria-label={`Page ${i + 1}`}
+                  aria-current={i === mediaPage ? "true" : undefined}
+                />
+              ))}
+            </nav>
+          )}
+        </section>
+
         {selected && (
           <div className="zz-photosOverlay" onClick={() => setSelected(null)}>
             <div
