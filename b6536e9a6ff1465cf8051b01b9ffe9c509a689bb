@@ -1,0 +1,42 @@
+src/styles/base/footer.css
+  e885f2baf538bd8f 11,15-28
+src/components/footer.tsx
+  e885f2baf538bd8f 1-2,9-12
+src/routes/index.tsx
+  5cf81dda4c0dabc3 8-31,195,235-262,449-473
+src/styles.css
+  e885f2baf538bd8f 1073-1194,1217-1220
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15",
+  "base_commit_sha": "b6536e9a6ff1465cf8051b01b9ffe9c509a689bb",
+  "prompts": {
+    "5cf81dda4c0dabc3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "480cb937-8bdc-4b3f-a3f3-51836d7ac63e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 80,
+      "total_deletions": 3,
+      "accepted_lines": 79,
+      "overriden_lines": 0
+    },
+    "e885f2baf538bd8f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7a78b0fd-ed72-4986-8a2e-4f756374d6da",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 246,
+      "total_deletions": 4,
+      "accepted_lines": 238,
+      "overriden_lines": 3
+    }
+  }
+}
