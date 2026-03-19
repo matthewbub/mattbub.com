@@ -68,6 +68,51 @@ const projects: Project[] = [
     category: "Open Source",
     year: "2026",
   },
+  {
+    title: "dotfiles",
+    url: "https://github.com/matthewbub/dotfiles",
+    description:
+      "My personal dotfiles. Neovim config, shell setup, and the rest of the tools I use day to day.",
+    category: "Open Source",
+    year: "2024",
+    external: true,
+  },
+  {
+    title: "reddit-slackbot",
+    url: "https://github.com/matthewbub/reddit-slackbot",
+    description:
+      "Reddit integrated into Slack as a message bot.",
+    category: "Open Source",
+    year: "2021",
+    external: true,
+  },
+  {
+    title: "mask-email",
+    url: "https://github.com/matthewbub/mask-email",
+    description:
+      "Util to mask emails.",
+    category: "Open Source",
+    year: "2026",
+    external: true,
+  },
+  {
+    title: "calendar-widgets",
+    url: "https://github.com/matthewbub/calendar-widgets",
+    description:
+      "Craft beautifully robust date components in React.",
+    category: "Open Source",
+    year: "2022",
+    external: true,
+  },
+  {
+    title: "cc",
+    url: "https://github.com/matthewbub/cc",
+    description:
+      "Commit using conventional commits.",
+    category: "Open Source",
+    year: "2026",
+    external: true,
+  },
 ];
 
 type MediaItem = {
