@@ -364,27 +364,28 @@ export default function Home() {
             </h2>
           </header>
 
-          <div className="zz-homePostList" key={postPage}>
+          <ul className="zz-workList" key={postPage}>
             {visiblePosts.map((post) => (
-              <article key={post.id} className="zz-homePostCard">
-                <div className="zz-homePostMeta">
-                  {formatPostedRelative(post.date || new Date().toISOString())}
-                  {post.readTime && (
-                    <>
-                      <span className="zz-homePostDivider">·</span>
-                      {post.readTime}
-                    </>
+              <li key={post.id} className="zz-workItem">
+                <a href={`/posts/${post.slug}`} className="zz-workLink no-ext">
+                  <span className="zz-workHeader">
+                    <span className="zz-workName">{post.title}</span>
+                    <span className="zz-workMeta">
+                      <span className="zz-workCategory">
+                        {formatPostedRelative(post.date || new Date().toISOString())}
+                      </span>
+                      {post.readTime && (
+                        <span className="zz-workYear">{post.readTime}</span>
+                      )}
+                    </span>
+                  </span>
+                  {post.deck && (
+                    <span className="zz-workDesc">{post.deck}</span>
                   )}
-                </div>
-                <h3 className="zz-homePostTitle">
-                  <a href={`/posts/${post.slug}`} className="no-ext zz-link">
-                    {post.title}
-                  </a>
-                </h3>
-                {post.deck && <p className="zz-homePostDeck">{post.deck}</p>}
-              </article>
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {totalPostPages > 1 && (
             <nav className="zz-paginationDots" aria-label="Post pages">
