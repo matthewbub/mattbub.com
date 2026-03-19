@@ -238,6 +238,43 @@
   margin-top: 2px;
 }
 
+/* Filter Chips */
+.zz-filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.zz-filterChip {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--faint);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.zz-filterChip:hover {
+  border-color: var(--muted);
+  color: var(--ink);
+}
+
+.zz-filterChip.is-active {
+  background: color-mix(in srgb, var(--ink) 40%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 40%, transparent);
+  color: var(--ink);
+}
+
+.zz-filterChip.is-active:hover {
+  background: color-mix(in srgb, var(--ink) 50%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 50%, transparent);
+}
+
 /* Pagination */
 .zz-paginationDots {
   display: flex;
