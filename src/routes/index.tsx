@@ -562,7 +562,7 @@ export default function Home() {
                 <li className="zz-roleItem">Assignment Grader <span className="zz-roleDetail">All of Trilogy</span></li>
               </ul>
             </li>
-            <li className="zz-workItem">
+            <li className="zz-workItem zz-workFadeOut">
               <div className="zz-workHeader">
                 <span className="zz-workName">ShipMonk</span>
                 <span className="zz-workYear">2017–2019</span>
