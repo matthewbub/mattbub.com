@@ -8,6 +8,22 @@
   font-size: 13px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.zz-footerNav {
+  display: flex;
+  gap: 16px;
+}
+
+.zz-footerLink {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.zz-footerLink:hover {
+  color: var(--ink);
 }

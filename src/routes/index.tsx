@@ -5,6 +5,30 @@ import Footer from "../components/footer";
 import { loadAllPosts } from "../utils/postsLoader";
 import { formatPostedRelative } from "../utils/dateFormat";
 
+type Photo = {
+  src: string;
+  alt: string;
+  date: string;
+};
+
+const photos: Photo[] = [
+  {
+    src: "/photos/egagement_photoshoot.png",
+    alt: "A description of the photo",
+    date: "2026-03-18",
+  },
+  {
+    src: "/photos/epic_selfie.jpg",
+    alt: "A description of the photo",
+    date: "2026-03-18",
+  },
+  {
+    src: "/photos/fav_selfie.jpg",
+    alt: "A description of the photo",
+    date: "2026-03-18",
+  },
+];
+
 const PROJECTS_PER_PAGE = 4;
 const MEDIA_PER_PAGE = 6;
 const POSTS_PER_PAGE = 4;
@@ -168,6 +192,7 @@ export const Route = createFileRoute("/")({
 
 export default function Home() {
   const { posts } = Route.useLoaderData();
+  const [selected, setSelected] = useState<Photo | null>(null);
   const [workPage, setWorkPage] = useState(0);
   const [mediaPage, setMediaPage] = useState(0);
   const [postPage, setPostPage] = useState(0);
@@ -205,6 +230,34 @@ export default function Home() {
               Follow on X
             </a>
           </div>
+        </section>
+
+        {/* Photos */}
+        <section className="zz-homeSection" aria-labelledby="photos-head">
+          <header className="zz-homeSectionHeader">
+            <h2 id="photos-head" className="zz-homeSectionTitle">
+              Photos
+            </h2>
+          </header>
+
+          {photos.length > 0 && (
+            <div className="zz-photosGrid">
+              {photos.map((photo, i) => (
+                <button
+                  key={i}
+                  className="zz-photosCell"
+                  onClick={() => setSelected(photo)}
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="zz-photosThumb"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Work */}
@@ -393,6 +446,31 @@ export default function Home() {
             Browse all posts
           </a>
         </section>
+        {selected && (
+          <div className="zz-photosOverlay" onClick={() => setSelected(null)}>
+            <div
+              className="zz-photosModal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selected.src}
+                alt={selected.alt}
+                className="zz-photosModalImg"
+              />
+              <div className="zz-photosModalInfo">
+                <p className="zz-photosModalAlt">{selected.alt}</p>
+                <p className="zz-photosModalDate">{selected.date}</p>
+              </div>
+              <button
+                className="zz-photosClose"
+                onClick={() => setSelected(null)}
+                aria-label="Close"
+              >
+                &times;
+              </button>
+            </div>
+          </div>
+        )}
       </main>
       <Footer />
     </>
