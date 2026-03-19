@@ -264,28 +264,44 @@ export default function Home() {
 
           <ul className="zz-workList">
             <li className="zz-workItem">
-              <div className="zz-workLink" style={{ cursor: "default" }}>
-                <span className="zz-workHeader">
-                  <span className="zz-workName">mPulse</span>
-                  <span className="zz-workMeta">
-                    <span className="zz-workCategory">Software Engineer</span>
-                    <span className="zz-workCategory">(Web portals)</span>
-                    <span className="zz-workYear">2023–2026</span>
-                  </span>
-                </span>
+              <div className="zz-workHeader">
+                <span className="zz-workName">mPulse</span>
+                <span className="zz-workYear">2023–2026</span>
               </div>
+              <ul className="zz-roleList">
+                <li className="zz-roleItem">Software Engineer <span className="zz-roleDetail">Web portals</span></li>
+              </ul>
             </li>
             <li className="zz-workItem">
-              <div className="zz-workLink" style={{ cursor: "default" }}>
-                <span className="zz-workHeader">
-                  <span className="zz-workName">Health Trio</span>
-                  <span className="zz-workMeta">
-                    <span className="zz-workCategory">Software Engineer</span>
-                    <span className="zz-workCategory">(Web portals)</span>
-                    <span className="zz-workYear">2021–2023</span>
-                  </span>
-                </span>
+              <div className="zz-workHeader">
+                <span className="zz-workName">Health Trio</span>
+                <span className="zz-workYear">2021–2023</span>
               </div>
+              <ul className="zz-roleList">
+                <li className="zz-roleItem">Software Engineer <span className="zz-roleDetail">Web portals</span></li>
+              </ul>
+            </li>
+            <li className="zz-workItem">
+              <div className="zz-workHeader">
+                <span className="zz-workName">Trilogy</span>
+                <span className="zz-workYear">2019–2021</span>
+              </div>
+              <ul className="zz-roleList">
+                <li className="zz-roleItem">Code Tutor <span className="zz-roleDetail">1:1 Recurring Zoom Calls</span></li>
+                <li className="zz-roleItem">Teaching Assistant <span className="zz-roleDetail">UCLA</span></li>
+                <li className="zz-roleItem">Assignment Grader <span className="zz-roleDetail">All of Trilogy</span></li>
+              </ul>
+            </li>
+            <li className="zz-workItem">
+              <div className="zz-workHeader">
+                <span className="zz-workName">ShipMonk</span>
+                <span className="zz-workYear">2017–2019</span>
+              </div>
+              <ul className="zz-roleList">
+                <li className="zz-roleItem">Warehouse Operations Manager</li>
+                <li className="zz-roleItem">Forklift Manager</li>
+                <li className="zz-roleItem">Forklift Lead</li>
+              </ul>
             </li>
           </ul>
         </section>
