@@ -82,7 +82,7 @@ const projects: Project[] = [
     url: "https://github.com/matthewbub/reddit-slackbot",
     description:
       "Reddit integrated into Slack as a message bot.",
-    category: "Open Source",
+    category: "Experiment",
     year: "2021",
     external: true,
   },
@@ -100,8 +100,233 @@ const projects: Project[] = [
     url: "https://github.com/matthewbub/calendar-widgets",
     description:
       "Craft beautifully robust date components in React.",
-    category: "Open Source",
+    category: "Experiment",
     year: "2022",
+    external: true,
+  },
+  {
+    title: "wussup.chat",
+    url: "https://github.com/matthewbub/wussup.chat",
+    description:
+      "An AI provider agnostic chatbot. I wrote the sync layer between the server and client.",
+    category: "Experiment",
+    year: "2025",
+    external: true,
+  },
+  {
+    title: "Publish a Scoped Package to npm Using TypeScript",
+    url: "https://javascript.plainenglish.io/publish-a-scoped-package-to-npm-using-typescript-b36f2f7475c9",
+    description:
+      "A guide on publishing scoped TypeScript packages to npm.",
+    category: "Publication",
+    year: "2021",
+    external: true,
+  },
+  {
+    title: "fake-things",
+    url: "https://github.com/matthewbub/fake-things",
+    description:
+      "A fake data node module for templating. Generate thousands of random strings, objects, and images.",
+    category: "Experiment",
+    year: "2020",
+    external: true,
+  },
+  {
+    title: "fetch-dogs",
+    url: "https://matthewbub.github.io/fetch-dogs/",
+    description:
+      "Browse and search for dogs. A simple pet discovery tool.",
+    category: "Experiment",
+    year: "2021",
+    external: true,
+  },
+  {
+    title: "video-player-manipulation",
+    url: "https://github.com/matthewbub/video-player-manipulation",
+    description:
+      "Interactive comments tied to the HTML5 video API.",
+    category: "Experiment",
+    year: "2021",
+    external: true,
+  },
+  {
+    title: "execute-once",
+    url: "https://github.com/matthewbub/execute-once",
+    description:
+      "Deploy scoped packages to npm.",
+    category: "Open Source",
+    year: "2021",
+    external: true,
+  },
+  {
+    title: "lg-coffee",
+    url: "https://github.com/matthewbub/lg-coffee",
+    description:
+      "An interface for Stripe Products. The quickest way to bootstrap an e-commerce application without hosting fees.",
+    category: "Experiment",
+    year: "2020",
+    external: true,
+  },
+  {
+    title: "coding-resource-finder",
+    url: "https://github.com/Ngoakor12/coding-resource-finder",
+    description:
+      "An easier way to find coding related topics and projects on the ACN syllabus.",
+    category: "Contributor",
+    year: "2022",
+    external: true,
+  },
+  {
+    title: "trumple",
+    url: "https://github.com/jamesurobertson/trumple",
+    description:
+      "React clone of Wordle.",
+    category: "Contributor",
+    year: "2022",
+    external: true,
+  },
+  {
+    title: "express-example",
+    url: "https://github.com/matthewbub/express-example",
+    description:
+      "Easy-to-read Express server example.",
+    category: "Open Source",
+    year: "2020",
+    external: true,
+  },
+  {
+    title: "PoS-Visualizer",
+    url: "https://github.com/matthewbub/PoS-Visualizer",
+    description:
+      "Parts of Speech (PoS) visualization tool.",
+    category: "Experiment",
+    year: "2023",
+    external: true,
+  },
+  {
+    title: "css4life",
+    url: "https://github.com/matthewbub/css4life",
+    description:
+      "Convert PostCSS to CSS via CLI.",
+    category: "Open Source",
+    year: "2024",
+    external: true,
+  },
+  {
+    title: "dot-properties-ast",
+    url: "https://github.com/matthewbub/dot-properties-ast",
+    description:
+      "Convert .properties files to an abstract syntax tree (AST).",
+    category: "Open Source",
+    year: "2024",
+    external: true,
+  },
+  {
+    title: "golang-dir-watcher-prototype",
+    url: "https://github.com/matthewbub/golang-dir-watcher-prototype",
+    description:
+      "A directory watcher prototype written in Go.",
+    category: "Experiment",
+    year: "2023",
+    external: true,
+  },
+  {
+    title: "pomo",
+    url: "https://github.com/matthewbub/pomo",
+    description:
+      "A pomodoro timer.",
+    category: "Experiment",
+    year: "2024",
+    external: true,
+  },
+  {
+    title: "auth-api",
+    url: "https://github.com/matthewbub/auth-api",
+    description:
+      "JWT auth system.",
+    category: "Experiment",
+    year: "2025",
+    external: true,
+  },
+  {
+    title: "asset_generator",
+    url: "https://github.com/matthewbub/asset_generator",
+    description:
+      "Generate AI images via CLI with the OpenAI API.",
+    category: "Open Source",
+    year: "2025",
+    external: true,
+  },
+  {
+    title: "conventional-commit-helper",
+    url: "https://github.com/matthewbub/conventional-commit-helper",
+    description:
+      "Shell script to assist with conventional commits.",
+    category: "Open Source",
+    year: "2020",
+    external: true,
+  },
+  {
+    title: "snaketitles",
+    url: "https://github.com/matthewbub/snaketitles",
+    description:
+      "Snake case + title case = snaketitles.",
+    category: "Open Source",
+    year: "2025",
+    external: true,
+  },
+  {
+    title: "Redux Presentation",
+    url: "https://redux-presentation-zeta.vercel.app",
+    description:
+      "An interactive slide deck about React Redux. Slides vibe coded with v0, presentation vibed with my brain.",
+    category: "Presentation",
+    year: "2025",
+    external: true,
+  },
+  {
+    title: "learnflexbox",
+    url: "https://github.com/matthewbub/learnflexbox",
+    description:
+      "An interactive visualization of flexbox with grab-and-go code bits.",
+    category: "Experiment",
+    year: "2020",
+    external: true,
+  },
+  {
+    title: "start-local",
+    url: "https://github.com/matthewbub/start-local",
+    description:
+      "Runs a forwarded dev command and automatically infers a port from the current folder name when it ends with ___<port>.",
+    category: "Open Source",
+    year: "2026",
+    external: true,
+  },
+  {
+    title: "sbrain",
+    url: "https://github.com/matthewbub/sbrain",
+    description:
+      "DB & API for sbrain — a little AI assistant that documents your code journey as you go about it.",
+    category: "Open Source",
+    year: "2026",
+    external: true,
+  },
+  {
+    title: "sbrain-SKILL",
+    url: "https://github.com/matthewbub/sbrain-SKILL",
+    description:
+      "SKILL for sbrain — a little AI assistant that documents your code journey as you go about it.",
+    category: "Skill",
+    year: "2026",
+    external: true,
+  },
+  {
+    title: "screenshotter",
+    url: "https://github.com/matthewbub/screenshotter",
+    description:
+      "Capture full page screenshots from the terminal (for marketing).",
+    category: "Open Source",
+    year: "2026",
     external: true,
   },
   {
@@ -109,7 +334,7 @@ const projects: Project[] = [
     url: "https://github.com/matthewbub/cc",
     description:
       "Commit using conventional commits.",
-    category: "Open Source",
+    category: "Skill",
     year: "2026",
     external: true,
   },
