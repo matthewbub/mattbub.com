@@ -1,0 +1,37 @@
+"src/markdown/blog/My Mom Tried To RSVP Through A MarriedNext Portal.md"
+  19c6f3b14ca8c2b2 3-5,9,11,13,17,21,26
+  28e2bfd7be2b57c1 1-2,6-8,10,12,14-16,18-20,22-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.17",
+  "base_commit_sha": "d27ed14e6772501842b4c92cec49d70d41d7ca85",
+  "prompts": {
+    "19c6f3b14ca8c2b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019d145a-5d29-73c2-bd9b-b010924017f3",
+        "model": "gpt-5.4"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 15,
+      "total_deletions": 15,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    },
+    "28e2bfd7be2b57c1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019d145a-da50-7163-b6d7-c2bcf6be53ec",
+        "model": "unknown"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 28,
+      "total_deletions": 0,
+      "accepted_lines": 17,
+      "overriden_lines": 0
+    }
+  }
+}
