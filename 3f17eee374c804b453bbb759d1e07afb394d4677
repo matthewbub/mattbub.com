@@ -1,0 +1,25 @@
+src/markdown/docs/gh-secrets-from-env.md
+  dae239bc2cf79546 1-62
+src/markdown/docs/porkbun-provider.md
+  dae239bc2cf79546 1-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.18",
+  "base_commit_sha": "3f17eee374c804b453bbb759d1e07afb394d4677",
+  "prompts": {
+    "dae239bc2cf79546": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "970f9ac0-9dab-489c-a86b-9abc298a3631",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "matéo! <6matbub@gmail.com>",
+      "messages": [],
+      "total_additions": 213,
+      "total_deletions": 30,
+      "accepted_lines": 183,
+      "overriden_lines": 0
+    }
+  }
+}
