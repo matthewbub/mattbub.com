@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
@@ -18,6 +19,7 @@ function RootComponent() {
       <main>
         <Outlet />
       </main>
+      <Analytics />
     </div>
   );
 }
